@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mais Saúde — Saúde e Segurança do Trabalho em Guarulhos</title>
+  <!-- v2.2 - 20260605-1408 - logo real + cache bust -->
+  <meta name="description" content="Mais Saúde: empresa especializada em Medicina Ocupacional, PPRA, PCMSO, Exames Admissionais e Segurança do Trabalho em Guarulhos/SP. 8+ anos, 250+ empresas atendidas.">
+  <meta name="keywords" content="medicina ocupacional, PPRA, PCMSO, eSocial, exame admissional, RBAC 120, segurança do trabalho, Guarulhos, FAP, SIGMAS, SOC">
+  <meta name="author" content="Mais Saúde | WG Build.tech">
+  <link rel="canonical" href="https://www.maissaude.seg.br">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Mais Saúde">
+  <meta property="og:url" content="https://www.maissaude.seg.br">
+  <meta property="og:title" content="Mais Saúde — Saúde e Segurança do Trabalho">
+  <meta property="og:description" content="Especialistas em Medicina Ocupacional há mais de 8 anos. 250+ empresas, 3 milhões de exames realizados.">
+  <meta property="og:image" content="assets/og-maissaude.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Mais Saúde — Saúde e Segurança do Trabalho">
+  <meta name="twitter:description" content="Especialistas em Medicina Ocupacional há mais de 8 anos.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/favicom.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0&display=block" rel="stylesheet">
+
+  <!-- GA4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7VVDS874Q3"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-7VVDS874Q3');
+  </script>
+
+  <style>
+    :root {
+      --green: #2bb673; --green-dark: #1c7c52; --green-light: #e8f7f0; --green-mid: #d0f0e2;
+      --bg: #f8f9fa; --surface: #ffffff; --surface-2: #f1f3f4;
+      --border: #e8eaed; --border-strong: #dadce0;
+      --text: #202124; --text-muted: #5f6368; --text-caption: #80868b;
+      --warning: #f9ab00; --error: #d93025; --success: #1e8e3e; --info: #1a73e8;
+      --font-sans: 'Google Sans', 'Segoe UI', system-ui, sans-serif;
+      --radius-sm: 8px; --radius-md: 14px; --radius-lg: 24px; --radius-xl: 32px; --radius-full: 999px;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,.08); --shadow-md: 0 4px 16px rgba(0,0,0,.10);
+      --shadow-lg: 0 12px 40px rgba(0,0,0,.12); --shadow-green: 0 8px 32px rgba(43,182,115,.25);
+      --max-w: 1200px; --section-pad: clamp(60px, 8vw, 120px);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-sans); font-size: 16px; line-height: 1.6; color: var(--text); background: var(--bg); -webkit-font-smoothing: antialiased; }
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+    button { cursor: pointer; font-family: inherit; border: none; background: none; }
+
+    .container { width: 100%; max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+    .material-symbols-rounded { font-variation-settings: 'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 24; vertical-align: middle; line-height: 1; }
+    .tag { display: inline-flex; align-items: center; gap: 6px; background: var(--green-light); color: var(--green-dark); font-size: 13px; font-weight: 500; padding: 4px 12px; border-radius: var(--radius-full); border: 1px solid var(--green-mid); }
+    .section-label { font-size: 13px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--green); }
+    .section-title { font-size: clamp(28px, 4vw, 44px); font-weight: 700; line-height: 1.15; color: var(--text); }
+    .section-desc { font-size: 18px; line-height: 1.7; color: var(--text-muted); max-width: 560px; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; border-radius: var(--radius-full); font-size: 15px; font-weight: 600; transition: all .2s ease; }
+    .btn-primary { background: var(--green); color: #fff; box-shadow: var(--shadow-green); }
+    .btn-primary:hover { background: var(--green-dark); transform: translateY(-1px); }
+    .btn-outline { background: transparent; color: var(--text); border: 1.5px solid var(--border-strong); }
+    .btn-outline:hover { background: var(--surface-2); border-color: var(--green); color: var(--green); }
+    .btn-ghost { background: rgba(255,255,255,.12); color: #fff; border: 1.5px solid rgba(255,255,255,.25); backdrop-filter: blur(8px); }
+    .btn-ghost:hover { background: rgba(255,255,255,.22); }
+    .fade-in { opacity: 0; transform: translateY(28px); transition: opacity .6s ease, transform .6s ease; }
+    .fade-in.visible { opacity: 1; transform: none; }
+    .fade-in-delay-1 { transition-delay: .1s; } .fade-in-delay-2 { transition-delay: .2s; } .fade-in-delay-3 { transition-delay: .3s; }
+
+    /* TOPBAR */
+    .topbar { background: var(--green-dark); color: rgba(255,255,255,.85); font-size: 13px; padding: 8px 0; }
+    .topbar-inner { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+    .topbar-contacts { display: flex; gap: 20px; flex-wrap: wrap; }
+    .topbar-contacts a { display: flex; align-items: center; gap: 6px; color: rgba(255,255,255,.85); transition: color .2s; }
+    .topbar-contacts a:hover { color: #fff; }
+    .topbar-contacts .material-symbols-rounded { font-size: 16px; }
+    .topbar-social { display: flex; gap: 10px; }
+    .topbar-social a { width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: rgba(255,255,255,.12); color: #fff; font-size: 13px; transition: background .2s; }
+    .topbar-social a:hover { background: rgba(255,255,255,.25); }
+
+    /* NAVBAR */
+    .navbar { position: sticky; top: 0; z-index: 1000; background: rgba(255,255,255,.92); backdrop-filter: blur(16px) saturate(180%); border-bottom: 1px solid var(--border); transition: box-shadow .3s; }
+    .navbar.scrolled { box-shadow: var(--shadow-md); }
+    .navbar-inner { display: flex; align-items: center; justify-content: space-between; padding: 0 24px; max-width: var(--max-w); margin: 0 auto; height: 64px; }
+    .navbar-logo { display: flex; align-items: center; gap: 10px; font-size: 20px; font-weight: 700; color: var(--text); }
+    .navbar-logo-icon { width: 36px; height: 36px; border-radius: 10px; background: var(--green); display: flex; align-items: center; justify-content: center; }
+    .navbar-logo-icon .material-symbols-rounded { color: #fff; font-size: 20px; }
+    .navbar-logo-text span { color: var(--green); }
+    .navbar-nav { display: flex; align-items: center; gap: 2px; }
+    .navbar-nav a { padding: 8px 14px; border-radius: var(--radius-sm); font-size: 14px; font-weight: 500; color: var(--text-muted); transition: all .18s; white-space: nowrap; }
+    .navbar-nav a:hover { color: var(--text); background: var(--surface-2); }
+    .navbar-nav a.active { color: var(--green); background: var(--green-light); }
+    .navbar-cta { display: flex; align-items: center; gap: 10px; }
+    .navbar-menu-btn { display: none; padding: 8px; border-radius: var(--radius-sm); }
+    .mobile-menu { display: none; position: fixed; inset: 0; z-index: 999; background: rgba(32,33,36,.6); backdrop-filter: blur(4px); }
+    .mobile-menu.open { display: block; }
+    .mobile-menu-panel { position: absolute; top: 0; right: 0; width: min(360px, 100%); height: 100%; background: var(--surface); padding: 24px; display: flex; flex-direction: column; gap: 8px; box-shadow: var(--shadow-lg); }
+    .mobile-menu-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+    .mobile-menu-panel a { display: flex; align-items: center; gap: 12px; padding: 14px 16px; border-radius: var(--radius-md); font-size: 16px; font-weight: 500; color: var(--text); transition: background .18s; }
+    .mobile-menu-panel a:hover { background: var(--surface-2); }
+    .mobile-menu-panel a .material-symbols-rounded { color: var(--green); font-size: 20px; }
+
+    /* HERO */
+    .hero { position: relative; overflow: hidden; background: linear-gradient(135deg, #0f2d1e 0%, #1a4a32 35%, #0d3b28 100%); padding: clamp(80px, 12vw, 160px) 0 clamp(60px, 10vw, 120px); color: #fff; }
+    .hero::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(43,182,115,.08) 1px, transparent 1px), linear-gradient(90deg, rgba(43,182,115,.08) 1px, transparent 1px); background-size: 60px 60px; }
+    .hero::after { content: ''; position: absolute; top: -120px; right: -80px; width: 600px; height: 600px; background: radial-gradient(circle, rgba(43,182,115,.18) 0%, transparent 65%); pointer-events: none; }
+    .hero-inner { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 60px; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(43,182,115,.15); color: #7ee8b5; border: 1px solid rgba(43,182,115,.3); padding: 6px 14px; border-radius: var(--radius-full); font-size: 13px; font-weight: 500; margin-bottom: 24px; }
+    .hero-badge-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); animation: pulse 2s infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: .6; transform: scale(1.3); } }
+    .hero h1 { font-size: clamp(36px, 5.5vw, 64px); font-weight: 700; line-height: 1.08; margin-bottom: 20px; letter-spacing: -.02em; }
+    .hero h1 em { font-style: normal; background: linear-gradient(90deg, #2bb673, #7ee8b5); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .hero-desc { font-size: clamp(16px, 2vw, 19px); line-height: 1.65; color: rgba(255,255,255,.72); margin-bottom: 36px; max-width: 500px; }
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 48px; }
+    .hero-stats { display: flex; gap: 32px; flex-wrap: wrap; padding-top: 32px; border-top: 1px solid rgba(255,255,255,.1); }
+    .hero-stat-value { font-size: 28px; font-weight: 700; color: #fff; line-height: 1; }
+    .hero-stat-label { font-size: 13px; color: rgba(255,255,255,.55); margin-top: 4px; }
+    .hero-visual { position: relative; display: flex; align-items: center; justify-content: center; }
+    .hero-card { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); border-radius: var(--radius-lg); backdrop-filter: blur(12px); padding: 28px; width: 100%; max-width: 380px; animation: float 6s ease-in-out infinite; }
+    @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+    .hero-card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
+    .hero-card-icon { width: 40px; height: 40px; border-radius: 10px; background: var(--green); display: flex; align-items: center; justify-content: center; }
+    .hero-card-icon .material-symbols-rounded { color: #fff; font-size: 22px; }
+    .hero-card-title { font-size: 15px; font-weight: 600; color: #fff; }
+    .hero-card-subtitle { font-size: 12px; color: rgba(255,255,255,.5); }
+    .hero-metric-row { display: flex; gap: 12px; margin-bottom: 16px; }
+    .hero-metric { flex: 1; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1); border-radius: var(--radius-md); padding: 14px; }
+    .hero-metric-num { font-size: 22px; font-weight: 700; color: #fff; }
+    .hero-metric-lbl { font-size: 11px; color: rgba(255,255,255,.5); margin-top: 3px; }
+    .ecg-bar { height: 48px; position: relative; overflow: hidden; background: rgba(43,182,115,.08); border-radius: var(--radius-sm); margin-bottom: 16px; }
+    .ecg-svg { width: 200%; height: 100%; animation: ecg-scroll 3s linear infinite; }
+    @keyframes ecg-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .hero-status-row { display: flex; align-items: center; gap: 8px; font-size: 13px; color: rgba(255,255,255,.6); }
+    .hero-status-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); animation: pulse 1.5s infinite; }
+
+    /* PARCEIROS */
+    .partners { background: var(--surface); padding: 40px 0; border-bottom: 1px solid var(--border); }
+    .partners-label { text-align: center; font-size: 13px; font-weight: 500; color: var(--text-caption); letter-spacing: .06em; text-transform: uppercase; margin-bottom: 28px; }
+    .partners-track-wrapper { overflow: hidden; position: relative; }
+    .partners-track-wrapper::before, .partners-track-wrapper::after { content: ''; position: absolute; top: 0; bottom: 0; width: 80px; z-index: 2; }
+    .partners-track-wrapper::before { left: 0; background: linear-gradient(to right, var(--surface), transparent); }
+    .partners-track-wrapper::after { right: 0; background: linear-gradient(to left, var(--surface), transparent); }
+    .partners-track { display: flex; gap: 48px; align-items: center; animation: scroll-left 22s linear infinite; width: max-content; }
+    .partners-track:hover { animation-play-state: paused; }
+    @keyframes scroll-left { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .partner-name { font-size: 18px; font-weight: 700; color: var(--border-strong); white-space: nowrap; transition: color .3s; letter-spacing: -.01em; }
+    .partner-name:hover { color: var(--green); }
+
+    /* SERVIÇOS */
+    .services { padding: var(--section-pad) 0; background: var(--surface); }
+    .services-header { text-align: center; margin-bottom: 56px; }
+    .services-header .section-desc { margin: 16px auto 0; }
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .service-card { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 28px; transition: all .25s ease; position: relative; overflow: hidden; }
+    .service-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(43,182,115,.04), transparent); opacity: 0; transition: opacity .25s; }
+    .service-card:hover { border-color: var(--green); transform: translateY(-4px); box-shadow: var(--shadow-green); }
+    .service-card:hover::before { opacity: 1; }
+    .service-icon { width: 52px; height: 52px; border-radius: var(--radius-md); background: var(--green-light); display: flex; align-items: center; justify-content: center; margin-bottom: 18px; transition: background .25s; }
+    .service-card:hover .service-icon { background: var(--green); }
+    .service-icon .material-symbols-rounded { font-size: 26px; color: var(--green); transition: color .25s; }
+    .service-card:hover .service-icon .material-symbols-rounded { color: #fff; }
+    .service-title { font-size: 17px; font-weight: 600; margin-bottom: 10px; }
+    .service-desc { font-size: 14px; color: var(--text-muted); line-height: 1.65; }
+    .service-tag { display: inline-block; margin-top: 14px; background: var(--green-light); color: var(--green-dark); font-size: 11px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; padding: 3px 10px; border-radius: var(--radius-full); }
+    .service-highlight { background: linear-gradient(135deg, #0f2d1e, #1a4a32); border-color: transparent; }
+    .service-highlight .service-icon { background: rgba(43,182,115,.2); }
+    .service-highlight .service-icon .material-symbols-rounded { color: var(--green); }
+    .service-highlight .service-title { color: #fff; }
+    .service-highlight .service-desc { color: rgba(255,255,255,.65); }
+    .service-highlight .service-tag { background: rgba(43,182,115,.2); color: #7ee8b5; }
+    .service-highlight:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,.3); }
+
+    /* NÚMEROS */
+    .numbers { padding: var(--section-pad) 0; background: linear-gradient(135deg, #0a2218, #0f3328); position: relative; overflow: hidden; }
+    .numbers::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(43,182,115,.06) 1px, transparent 1px), linear-gradient(90deg, rgba(43,182,115,.06) 1px, transparent 1px); background-size: 40px 40px; }
+    .numbers-inner { position: relative; z-index: 1; text-align: center; }
+    .numbers-label { color: rgba(255,255,255,.5); margin-bottom: 8px; }
+    .numbers-title { font-size: clamp(28px, 4vw, 44px); font-weight: 700; color: #fff; margin-bottom: 16px; }
+    .numbers-desc { color: rgba(255,255,255,.6); font-size: 17px; margin-bottom: 64px; }
+    .numbers-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+    .number-card { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1); border-radius: var(--radius-lg); padding: 32px 24px; text-align: center; transition: all .25s; }
+    .number-card:hover { background: rgba(43,182,115,.12); border-color: rgba(43,182,115,.3); transform: translateY(-4px); }
+    .number-icon { width: 56px; height: 56px; border-radius: var(--radius-md); background: rgba(43,182,115,.15); display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; }
+    .number-icon .material-symbols-rounded { font-size: 28px; color: var(--green); }
+    .number-value { font-size: clamp(36px, 4vw, 52px); font-weight: 700; color: #fff; line-height: 1; margin-bottom: 8px; }
+    .number-value span { color: var(--green); }
+    .number-label { font-size: 15px; color: rgba(255,255,255,.6); }
+
+    /* CLIENTES */
+    .clients { padding: var(--section-pad) 0; background: var(--bg); }
+    .clients-header { text-align: center; margin-bottom: 56px; }
+    .clients-header .section-desc { margin: 16px auto 0; }
+    .clients-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 48px; }
+    .client-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 32px 24px; text-align: center; transition: all .25s; }
+    .client-card:hover { border-color: var(--green); transform: translateY(-3px); box-shadow: var(--shadow-md); }
+    .client-logo-wrap { height: 60px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
+    .client-logo-text { font-size: 22px; font-weight: 800; color: var(--text-caption); letter-spacing: -.02em; transition: color .25s; }
+    .client-card:hover .client-logo-text { color: var(--green); }
+    .client-sector { font-size: 13px; color: var(--text-caption); }
+    .clients-cta { text-align: center; }
+    .clients-note { font-size: 14px; color: var(--text-caption); margin-top: 16px; }
+
+    /* DEPOIMENTOS */
+    .testimonials { padding: var(--section-pad) 0; background: var(--surface); }
+    .testimonials-header { text-align: center; margin-bottom: 56px; }
+    .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .testimonial-card { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 28px; transition: all .25s; }
+    .testimonial-card:hover { border-color: var(--green); transform: translateY(-3px); box-shadow: var(--shadow-md); }
+    .testimonial-stars { display: flex; gap: 3px; margin-bottom: 16px; }
+    .testimonial-stars .material-symbols-rounded { color: var(--warning); font-size: 18px; }
+    .testimonial-text { font-size: 15px; color: var(--text-muted); line-height: 1.75; margin-bottom: 24px; font-style: italic; }
+    .testimonial-author { display: flex; align-items: center; gap: 12px; }
+    .testimonial-avatar { width: 44px; height: 44px; border-radius: 50%; background: var(--green-light); display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 700; color: var(--green-dark); flex-shrink: 0; }
+    .testimonial-name { font-size: 15px; font-weight: 600; }
+    .testimonial-role { font-size: 13px; color: var(--text-caption); }
+
+    /* SOBRE */
+    .about { padding: var(--section-pad) 0; background: var(--bg); }
+    .about-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .about-chips { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+    .about-chip { display: flex; align-items: center; gap: 6px; background: var(--green-light); border: 1px solid var(--green-mid); color: var(--green-dark); padding: 5px 12px; border-radius: var(--radius-full); font-size: 13px; font-weight: 500; }
+    .about-chip .material-symbols-rounded { font-size: 15px; }
+    .about-body { margin: 20px 0 32px; color: var(--text-muted); line-height: 1.8; font-size: 17px; }
+    .about-list { display: flex; flex-direction: column; gap: 12px; }
+    .about-item { display: flex; align-items: flex-start; gap: 12px; font-size: 15px; color: var(--text-muted); }
+    .about-item .material-symbols-rounded { color: var(--green); font-size: 20px; flex-shrink: 0; margin-top: 1px; }
+    .about-visual { position: relative; }
+    .about-card-main { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); overflow: hidden; }
+    .about-card-header { background: linear-gradient(135deg, #0f2d1e, #1a4a32); padding: 24px; display: flex; align-items: center; gap: 12px; }
+    .about-card-header .material-symbols-rounded { color: var(--green); font-size: 28px; }
+    .about-card-header-title { font-size: 16px; font-weight: 600; color: #fff; }
+    .about-card-header-sub { font-size: 13px; color: rgba(255,255,255,.55); }
+    .about-card-body { padding: 24px; display: flex; flex-direction: column; gap: 14px; }
+    .about-stat-row { display: flex; align-items: center; justify-content: space-between; padding: 14px 16px; background: var(--surface-2); border-radius: var(--radius-md); }
+    .about-stat-row-left { display: flex; align-items: center; gap: 10px; }
+    .about-stat-row-left .material-symbols-rounded { color: var(--green); font-size: 20px; }
+    .about-stat-label { font-size: 14px; font-weight: 500; }
+    .about-stat-value { font-size: 18px; font-weight: 700; color: var(--green); }
+    .about-badge-float { position: absolute; bottom: -16px; right: -16px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md); box-shadow: var(--shadow-md); padding: 14px 18px; display: flex; align-items: center; gap: 10px; }
+    .about-badge-float .material-symbols-rounded { color: var(--green); font-size: 24px; }
+    .about-badge-float-text strong { display: block; font-size: 16px; color: var(--text); }
+    .about-badge-float-text span { font-size: 13px; color: var(--text-muted); }
+
+    /* CTA FINAL */
+    .cta-final { padding: var(--section-pad) 0; background: linear-gradient(135deg, #0a2218, #1a4a32); position: relative; overflow: hidden; }
+    .cta-final::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(43,182,115,.06) 1px, transparent 1px), linear-gradient(90deg, rgba(43,182,115,.06) 1px, transparent 1px); background-size: 50px 50px; }
+    .cta-final-inner { position: relative; z-index: 1; text-align: center; max-width: 700px; margin: 0 auto; }
+    .cta-final-label { color: rgba(255,255,255,.5); margin-bottom: 16px; }
+    .cta-final h2 { font-size: clamp(28px, 4vw, 48px); font-weight: 700; color: #fff; margin-bottom: 20px; line-height: 1.15; }
+    .cta-final h2 em { font-style: normal; background: linear-gradient(90deg, #2bb673, #7ee8b5); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .cta-final-desc { font-size: 18px; color: rgba(255,255,255,.65); margin-bottom: 40px; }
+    .cta-final-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 48px; }
+    .cta-trust { display: flex; gap: 32px; justify-content: center; flex-wrap: wrap; }
+    .cta-trust-item { display: flex; align-items: center; gap: 8px; font-size: 14px; color: rgba(255,255,255,.55); }
+    .cta-trust-item .material-symbols-rounded { color: var(--green); font-size: 18px; }
+
+    /* FOOTER */
+    .footer { background: #0a1a12; color: rgba(255,255,255,.65); padding: 64px 0 32px; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+    .footer-brand-logo { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+    .footer-brand-logo-icon { width: 36px; height: 36px; border-radius: 10px; background: var(--green); display: flex; align-items: center; justify-content: center; }
+    .footer-brand-logo-icon .material-symbols-rounded { color: #fff; font-size: 20px; }
+    .footer-brand-name { font-size: 18px; font-weight: 700; color: #fff; }
+    .footer-brand-desc { font-size: 14px; line-height: 1.7; margin-bottom: 24px; }
+    .footer-social { display: flex; gap: 10px; }
+    .footer-social a { width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,.08); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,.6); transition: all .2s; }
+    .footer-social a:hover { background: var(--green); color: #fff; }
+    .footer-col-title { font-size: 13px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: rgba(255,255,255,.4); margin-bottom: 20px; }
+    .footer-links { display: flex; flex-direction: column; gap: 12px; }
+    .footer-links a { font-size: 14px; color: rgba(255,255,255,.6); transition: color .2s; }
+    .footer-links a:hover { color: #fff; }
+    .footer-contact-item { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; margin-bottom: 14px; }
+    .footer-contact-item .material-symbols-rounded { color: var(--green); font-size: 18px; flex-shrink: 0; margin-top: 2px; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,.08); padding-top: 32px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; font-size: 13px; }
+    .footer-bottom-links { display: flex; gap: 20px; }
+    .footer-bottom-links a { color: rgba(255,255,255,.4); transition: color .2s; }
+    .footer-bottom-links a:hover { color: rgba(255,255,255,.8); }
+    .footer-credit { color: rgba(255,255,255,.3); }
+    .footer-credit a { color: var(--green); }
+
+    /* WHATSAPP FLOAT */
+    .wa-float { position: fixed; bottom: 28px; right: 28px; z-index: 900; }
+    .wa-float a { width: 56px; height: 56px; border-radius: 50%; background: #25d366; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 24px rgba(37,211,102,.4); transition: all .25s; animation: float 4s ease-in-out infinite; }
+    .wa-float a:hover { background: #20b858; transform: scale(1.08); }
+    .wa-float .material-symbols-rounded { color: #fff; font-size: 28px; }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .services-grid, .numbers-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      .hero-inner, .about-inner { grid-template-columns: 1fr; gap: 40px; }
+      .hero-visual { display: none; }
+      .navbar-nav, .navbar-cta .btn-outline { display: none; }
+      .navbar-menu-btn { display: flex; }
+      .services-grid, .clients-grid, .testimonials-grid, .numbers-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .about-badge-float { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <div class="container">
+      <div class="topbar-inner">
+        <div class="topbar-contacts">
+          <a href="tel:+551140035555">
+            <span class="material-symbols-rounded">phone</span>
+            (11) 4003-5555
+          </a>
+          <a href="mailto:contato@maissaude.seg.br">
+            <span class="material-symbols-rounded">mail</span>
+            contato@maissaude.seg.br
+          </a>
+          <a href="#" style="color:rgba(255,255,255,.6)">
+            <span class="material-symbols-rounded">location_on</span>
+            Guarulhos, SP
+          </a>
+        </div>
+        <div class="topbar-social">
+          <a href="#" aria-label="Instagram" title="Instagram">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </a>
+          <a href="#" aria-label="LinkedIn" title="LinkedIn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="navbar-inner">
+      <a href="#" class="navbar-logo">
+        <img src="assets/logo_nova-branca.png"
+             alt="Mais Saúde"
+             height="40"
+             style="height:40px;width:auto;filter:invert(1) sepia(1) saturate(3) hue-rotate(100deg);">
+      </a>
+      <div class="navbar-nav">
+        <a href="#servicos" class="active">Serviços</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#clientes">Clientes</a>
+        <a href="#depoimentos">Depoimentos</a>
+        <a href="#contato">Contato</a>
+      </div>
+      <div class="navbar-cta">
+        <a href="https://www.socnet.com.br" target="_blank" rel="noopener" class="btn btn-outline" style="padding:10px 20px;font-size:13px;">
+          <span class="material-symbols-rounded" style="font-size:16px;">login</span>
+          Área do Cliente
+        </a>
+        <a href="https://wa.me/5511940035555?text=Olá%2C%20gostaria%20de%20um%20orçamento" target="_blank" rel="noopener" class="btn btn-primary" style="padding:10px 20px;font-size:13px;">
+          <span class="material-symbols-rounded" style="font-size:16px;">chat</span>
+          Falar com Especialista
+        </a>
+      </div>
+      <button class="navbar-menu-btn" id="menuBtn" aria-label="Menu">
+        <span class="material-symbols-rounded">menu</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-panel">
+      <div class="mobile-menu-header">
+        <span style="font-size:17px;font-weight:700;">Menu</span>
+        <button id="menuClose" aria-label="Fechar">
+          <span class="material-symbols-rounded">close</span>
+        </button>
+      </div>
+      <a href="#servicos"><span class="material-symbols-rounded">medical_services</span>Serviços</a>
+      <a href="#sobre"><span class="material-symbols-rounded">info</span>Sobre</a>
+      <a href="#clientes"><span class="material-symbols-rounded">business</span>Clientes</a>
+      <a href="#depoimentos"><span class="material-symbols-rounded">star</span>Depoimentos</a>
+      <a href="#contato"><span class="material-symbols-rounded">contact_phone</span>Contato</a>
+      <div style="margin-top:16px;">
+        <a href="https://www.socnet.com.br" target="_blank" class="btn btn-primary" style="width:100%;justify-content:center;">
+          <span class="material-symbols-rounded">login</span>Área do Cliente
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-inner">
+        <div class="hero-content">
+          <div class="hero-badge fade-in">
+            <div class="hero-badge-dot"></div>
+            Medicina Ocupacional · Guarulhos/SP
+          </div>
+          <h1 class="fade-in">
+            Saúde e Segurança<br>do Trabalho<br><em>que protege sua empresa</em>
+          </h1>
+          <p class="hero-desc fade-in fade-in-delay-1">
+            Há mais de 8 anos cuidando da saúde ocupacional de grandes empresas. PPRA, PCMSO, eSocial, RBAC 120 e muito mais — tudo integrado ao sistema SOC.
+          </p>
+          <div class="hero-actions fade-in fade-in-delay-2">
+            <a href="https://wa.me/5511940035555?text=Olá%2C%20gostaria%20de%20um%20orçamento" target="_blank" rel="noopener" class="btn btn-primary">
+              <span class="material-symbols-rounded">chat</span>
+              Solicitar Orçamento
+            </a>
+            <a href="#servicos" class="btn btn-ghost">
+              <span class="material-symbols-rounded">arrow_downward</span>
+              Conhecer Serviços
+            </a>
+          </div>
+          <div class="hero-stats fade-in fade-in-delay-3">
+            <div>
+              <div class="hero-stat-value">8+</div>
+              <div class="hero-stat-label">Anos de experiência</div>
+            </div>
+            <div>
+              <div class="hero-stat-value">250+</div>
+              <div class="hero-stat-label">Empresas atendidas</div>
+            </div>
+            <div>
+              <div class="hero-stat-value">3M</div>
+              <div class="hero-stat-label">Exames realizados</div>
+            </div>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="hero-card fade-in fade-in-delay-1">
+            <div class="hero-card-header">
+              <div class="hero-card-icon">
+                <span class="material-symbols-rounded">monitor_heart</span>
+              </div>
+              <div>
+                <div class="hero-card-title">Painel SOC — Ao Vivo</div>
+                <div class="hero-card-subtitle">Última atualização: agora</div>
+              </div>
+            </div>
+            <div class="hero-metric-row">
+              <div class="hero-metric">
+                <div class="hero-metric-num">98%</div>
+                <div class="hero-metric-lbl">Conformidade eSocial</div>
+              </div>
+              <div class="hero-metric">
+                <div class="hero-metric-num">247</div>
+                <div class="hero-metric-lbl">Empresas ativas</div>
+              </div>
+            </div>
+            <div class="ecg-bar">
+              <svg class="ecg-svg" viewBox="0 0 400 48" preserveAspectRatio="none" fill="none">
+                <polyline points="0,24 40,24 50,6 60,42 70,12 80,24 120,24 130,8 140,40 150,16 160,24 200,24 210,6 220,42 230,12 240,24 280,24 290,8 300,40 310,16 320,24 360,24 370,6 380,42 390,12 400,24" stroke="#2bb673" stroke-width="2" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="hero-status-row">
+              <div class="hero-status-dot"></div>
+              Monitoramento contínuo ativo
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARCEIROS / CLIENTES LOGO STRIP -->
+  <section class="partners">
+    <div class="container">
+      <p class="partners-label">Empresas que confiam na Mais Saúde</p>
+      <div class="partners-track-wrapper">
+        <div class="partners-track">
+          <span class="partner-name">CCR</span>
+          <span class="partner-name">Gestamp</span>
+          <span class="partner-name">Graal</span>
+          <span class="partner-name">DNata</span>
+          <span class="partner-name">Proair</span>
+          <span class="partner-name">Santa Clara</span>
+          <span class="partner-name">CCR</span>
+          <span class="partner-name">Gestamp</span>
+          <span class="partner-name">Graal</span>
+          <span class="partner-name">DNata</span>
+          <span class="partner-name">Proair</span>
+          <span class="partner-name">Santa Clara</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVIÇOS -->
+  <section class="services" id="servicos">
+    <div class="container">
+      <div class="services-header fade-in">
+        <span class="section-label">Nossos Serviços</span>
+        <h2 class="section-title" style="margin-top:10px;">Soluções completas em<br>Saúde Ocupacional</h2>
+        <p class="section-desc">Do PPRA ao eSocial, do PCMSO ao RBAC 120 — atendimento especializado com sistema SOC integrado para gestão total da saúde dos seus colaboradores.</p>
+      </div>
+      <div class="services-grid">
+        <!-- Card destaque -->
+        <div class="service-card service-highlight fade-in">
+          <div class="service-icon">
+            <span class="material-symbols-rounded">hub</span>
+          </div>
+          <div class="service-title">Gestão Integrada SOC</div>
+          <div class="service-desc">Plataforma SOCNET, SOCGED e SOC Indicadores unificados. Acesso ao portal do colaborador, laudos digitais e relatórios em tempo real.</div>
+          <span class="service-tag">Sistema Próprio</span>
+        </div>
+        <div class="service-card fade-in fade-in-delay-1">
+          <div class="service-icon">
+            <span class="material-symbols-rounded">description</span>
+          </div>
+          <div class="service-title">PPRA</div>
+          <div class="service-desc">Programa de Prevenção de Riscos Ambientais. Identificação, avaliação e controle dos agentes nocivos no ambiente de trabalho.</div>
+          <span class="service-tag">NR-9</span>
+        </div>
+        <div class="service-card fade-in fade-in-delay-2">
+          <div class="service-icon">
+            <span class="material-symbols-rounded">health_metrics</span>
+          </div>
+          <div class="service-title">PCMSO</div>
+          <div class="service-desc">Programa de Controle Médico de Saúde Ocupacional. Exames periódicos, admissionais e demissionais com laudos digitais no SOC.</div>
+          <span class="service-tag">NR-7</span>
+        </div>
+        <div class="service-card fade-in">
+          <div class="service-icon">
+            <span class="material-symbols-rounded">fact_check</span>
+          </div>
+          <div class="service-title">eSocial SST</div>
+          <div class="service-desc">Envio dos eventos S-2210, S-2220 e S-2240. Conformidade total com o eSocial para Saúde e Segurança do Trabalho.</div>
+          <span class="service-tag">Obrigatório</span>
+        </div>
+        <div class="service-card fade-in fade-in-delay-1">
+          <div class="service-icon">
+            <span class="material-symbols-rounded">local_hospital</span>
+          </div>
+          <div class="service-title">ASO Admissional</div>
+          <div class="service-desc">Atestado de Saúde Ocupacional para admissão, periódico, mudança de função e demissional. Laudos emitidos no sistema SOC.</div>
+          <span class="service-tag">Exames</span>
+        </div>
+        <div class="service-card fade-in fade-in-delay-2">
+          <div class="service-icon">
+            <span class="material-symbols-rounded">flight</span>
+          </div>
+          <div class="service-title">RBAC 120 — Aviação</div>
+          <div class="service-desc">Gestão de saúde ocupacional para empresas de aviação. Exames específicos conforme regulamentação ANAC / RBAC 120.</div>
+          <span class="service-tag">Aeroportos</span>
+        </div>
+        <div class="service-card fade-in">
+          <div class="service-icon">
+            <span class="material-symbols-rounded">trending_up</span>
+          </div>
+          <div class="service-title">Gestão do FAP</div>
+          <div class="service-desc">Análise e redução do Fator Acidentário de Prevenção. Estratégias para reduzir a alíquota RAT e diminuir custos previdenciários.</div>
+          <span class="service-tag">Economia</span>
+        </div>
+        <div class="service-card fade-in fade-in-delay-1">
+          <div class="service-icon">
+            <span class="material-symbols-rounded">chair_alt</span>
+          </div>
+          <div class="service-title">NR-17 Ergonomia</div>
+          <div class="service-desc">Análise ergonômica do trabalho, adequação de postos e mobiliário. Laudo AET para cumprimento da norma e redução de afastamentos.</div>
+          <span class="service-tag">Ergonomia</span>
+        </div>
+        <div class="service-card fade-in fade-in-delay-2">
+          <div class="service-icon">
+            <span class="material-symbols-rounded">construction</span>
+          </div>
+          <div class="service-title">NR-18 Construção Civil</div>
+          <div class="service-desc">Condições e meio ambiente de trabalho na construção civil. PCMAT, treinamentos obrigatórios e gestão de EPIs conforme NR-18.</div>
+          <span class="service-tag">Construção</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NÚMEROS -->
+  <section class="numbers">
+    <div class="container">
+      <div class="numbers-inner">
+        <span class="section-label numbers-label fade-in">Resultados Comprovados</span>
+        <h2 class="numbers-title fade-in">Números que falam por nós</h2>
+        <p class="numbers-desc fade-in">Mais de 8 anos construindo uma história de excelência em saúde ocupacional no Brasil.</p>
+        <div class="numbers-grid">
+          <div class="number-card fade-in">
+            <div class="number-icon">
+              <span class="material-symbols-rounded">calendar_month</span>
+            </div>
+            <div class="number-value">8<span>+</span></div>
+            <div class="number-label">Anos de experiência</div>
+          </div>
+          <div class="number-card fade-in fade-in-delay-1">
+            <div class="number-icon">
+              <span class="material-symbols-rounded">business</span>
+            </div>
+            <div class="number-value">250<span>+</span></div>
+            <div class="number-label">Empresas atendidas</div>
+          </div>
+          <div class="number-card fade-in fade-in-delay-2">
+            <div class="number-icon">
+              <span class="material-symbols-rounded">biotech</span>
+            </div>
+            <div class="number-value">3<span>M</span></div>
+            <div class="number-label">Exames realizados</div>
+          </div>
+          <div class="number-card fade-in fade-in-delay-3">
+            <div class="number-icon">
+              <span class="material-symbols-rounded">verified</span>
+            </div>
+            <div class="number-value">98<span>%</span></div>
+            <div class="number-label">Satisfação dos clientes</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLIENTES -->
+  <section class="clients" id="clientes">
+    <div class="container">
+      <div class="clients-header fade-in">
+        <span class="section-label">Clientes</span>
+        <h2 class="section-title" style="margin-top:10px;">Empresas que confiam<br>na Mais Saúde</h2>
+        <p class="section-desc">De pequenas empresas a grandes corporações dos setores de aviação, logística, alimentação e construção.</p>
+      </div>
+      <div class="clients-grid">
+        <div class="client-card fade-in">
+          <div class="client-logo-wrap">
+            <span class="client-logo-text">CCR</span>
+          </div>
+          <div class="client-sector">Concessões / Infraestrutura</div>
+        </div>
+        <div class="client-card fade-in fade-in-delay-1">
+          <div class="client-logo-wrap">
+            <span class="client-logo-text">Gestamp</span>
+          </div>
+          <div class="client-sector">Autopeças / Metalurgia</div>
+        </div>
+        <div class="client-card fade-in fade-in-delay-2">
+          <div class="client-logo-wrap">
+            <span class="client-logo-text">Graal</span>
+          </div>
+          <div class="client-sector">Alimentação / Food Service</div>
+        </div>
+        <div class="client-card fade-in">
+          <div class="client-logo-wrap">
+            <span class="client-logo-text">DNata</span>
+          </div>
+          <div class="client-sector">Aviação / Ground Handling</div>
+        </div>
+        <div class="client-card fade-in fade-in-delay-1">
+          <div class="client-logo-wrap">
+            <span class="client-logo-text">Proair</span>
+          </div>
+          <div class="client-sector">Aviação / Serviços Aeroportuários</div>
+        </div>
+        <div class="client-card fade-in fade-in-delay-2">
+          <div class="client-logo-wrap">
+            <span class="client-logo-text">Santa Clara</span>
+          </div>
+          <div class="client-sector">Alimentos / Laticínios</div>
+        </div>
+      </div>
+      <div class="clients-cta fade-in">
+        <a href="https://wa.me/5511940035555?text=Olá%2C%20quero%20conhecer%20os%20serviços" target="_blank" rel="noopener" class="btn btn-primary">
+          <span class="material-symbols-rounded">handshake</span>
+          Seja nosso próximo cliente
+        </a>
+        <p class="clients-note">+250 empresas já confiam na Mais Saúde para cuidar de seus colaboradores</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEPOIMENTOS -->
+  <section class="testimonials" id="depoimentos">
+    <div class="container">
+      <div class="testimonials-header fade-in">
+        <span class="section-label">Depoimentos</span>
+        <h2 class="section-title" style="margin-top:10px;">O que nossos clientes dizem</h2>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card fade-in">
+          <div class="testimonial-stars">
+            <span class="material-symbols-rounded">star</span>
+            <span class="material-symbols-rounded">star</span>
+            <span class="material-symbols-rounded">star</span>
+            <span class="material-symbols-rounded">star</span>
+            <span class="material-symbols-rounded">star</span>
+          </div>
+          <p class="testimonial-text">"A Mais Saúde transformou nossa gestão de SST. A integração com o eSocial ficou perfeita e o atendimento é sempre ágil. Confiamos 100% na equipe deles."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">R</div>
+            <div>
+              <div class="testimonial-name">Renata Oliveira</div>
+              <div class="testimonial-role">Gerente de RH · Setor de Aviação</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card fade-in fade-in-delay-1">
+          <div class="testimonial-stars">
+            <span class="material-symbols-rounded">star</span>
+            <span class="material-symbols-rounded">star</span>
+            <span class="material-symbols-rounded">star</span>
+            <span class="material-symbols-rounded">star</span>
+            <span class="material-symbols-rounded">star</span>
+          </div>
+          <p class="testimonial-text">"Excelente suporte no RBAC 120 para nossa operação aeroportuária. Cumprem todos os prazos, a documentação é impecável e o portal SOC facilita tudo."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">M</div>
+            <div>
+              <div class="testimonial-name">Marcos Souza</div>
+              <div class="testimonial-role">Coordenador de Segurança · Ground Handling</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card fade-in fade-in-delay-2">
+          <div class="testimonial-stars">
+            <span class="material-symbols-rounded">star</span>
+            <span class="material-symbols-rounded">star</span>
+            <span class="material-symbols-rounded">star</span>
+            <span class="material-symbols-rounded">star</span>
+            <span class="material-symbols-rounded">star</span>
+          </div>
+          <p class="testimonial-text">"Reduzimos 30% no nosso FAP em dois anos com a consultoria deles. Equipe altamente qualificada, muito além do básico em medicina ocupacional."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">C</div>
+            <div>
+              <div class="testimonial-name">Carla Mendes</div>
+              <div class="testimonial-role">Diretora Administrativa · Metalurgia</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE -->
+  <section class="about" id="sobre">
+    <div class="container">
+      <div class="about-inner">
+        <div class="about-content fade-in">
+          <div class="about-chips">
+            <span class="about-chip"><span class="material-symbols-rounded">verified</span>CRM Ativo</span>
+            <span class="about-chip"><span class="material-symbols-rounded">location_on</span>Guarulhos/SP</span>
+            <span class="about-chip"><span class="material-symbols-rounded">corporate_fare</span>Desde 2016</span>
+          </div>
+          <span class="section-label">Sobre a Mais Saúde</span>
+          <h2 class="section-title" style="margin-top:10px;">Especialistas em<br>Saúde Ocupacional</h2>
+          <p class="about-body">
+            A Mais Saúde é uma empresa especializada em Medicina Ocupacional e Segurança do Trabalho, sediada em Guarulhos/SP. Com mais de 8 anos de atuação, atendemos empresas de diversos setores — da aviação civil à construção pesada — com rigor técnico, agilidade e tecnologia.
+          </p>
+          <ul class="about-list">
+            <li class="about-item">
+              <span class="material-symbols-rounded">check_circle</span>
+              <span>Sistema SOC com SOCNET, SOCGED e SOC Indicadores integrados</span>
+            </li>
+            <li class="about-item">
+              <span class="material-symbols-rounded">check_circle</span>
+              <span>Equipe médica especializada e corpo técnico multidisciplinar</span>
+            </li>
+            <li class="about-item">
+              <span class="material-symbols-rounded">check_circle</span>
+              <span>Atendimento ágil com SLA definido e portal online para clientes</span>
+            </li>
+            <li class="about-item">
+              <span class="material-symbols-rounded">check_circle</span>
+              <span>Conformidade total com eSocial SST, NRs e RBAC 120 (aviação)</span>
+            </li>
+            <li class="about-item">
+              <span class="material-symbols-rounded">check_circle</span>
+              <span>Consultoria estratégica para redução do FAP e custos previdenciários</span>
+            </li>
+          </ul>
+        </div>
+        <div class="about-visual fade-in fade-in-delay-1">
+          <div class="about-card-main">
+            <div class="about-card-header">
+              <span class="material-symbols-rounded">analytics</span>
+              <div>
+                <div class="about-card-header-title">Indicadores Mais Saúde</div>
+                <div class="about-card-header-sub">Sistema SOC · Atualizado 2026</div>
+              </div>
+            </div>
+            <div class="about-card-body">
+              <div class="about-stat-row">
+                <div class="about-stat-row-left">
+                  <span class="material-symbols-rounded">business</span>
+                  <span class="about-stat-label">Empresas na carteira</span>
+                </div>
+                <span class="about-stat-value">250+</span>
+              </div>
+              <div class="about-stat-row">
+                <div class="about-stat-row-left">
+                  <span class="material-symbols-rounded">biotech</span>
+                  <span class="about-stat-label">Exames realizados</span>
+                </div>
+                <span class="about-stat-value">3 milhões</span>
+              </div>
+              <div class="about-stat-row">
+                <div class="about-stat-row-left">
+                  <span class="material-symbols-rounded">fact_check</span>
+                  <span class="about-stat-label">Conformidade eSocial</span>
+                </div>
+                <span class="about-stat-value">98%</span>
+              </div>
+              <div class="about-stat-row">
+                <div class="about-stat-row-left">
+                  <span class="material-symbols-rounded">schedule</span>
+                  <span class="about-stat-label">Anos de mercado</span>
+                </div>
+                <span class="about-stat-value">8+ anos</span>
+              </div>
+            </div>
+          </div>
+          <div class="about-badge-float">
+            <span class="material-symbols-rounded">workspace_premium</span>
+            <div class="about-badge-float-text">
+              <strong>Top Referência</strong>
+              <span>Medicina Ocupacional · GRU</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="cta-final" id="contato">
+    <div class="container">
+      <div class="cta-final-inner">
+        <span class="section-label cta-final-label fade-in">Pronto para começar?</span>
+        <h2 class="fade-in">Proteja seus colaboradores<br>com quem entende de <em>saúde ocupacional</em></h2>
+        <p class="cta-final-desc fade-in">Entre em contato agora e receba uma proposta personalizada para a realidade da sua empresa. Atendemos Guarulhos e Grande SP.</p>
+        <div class="cta-final-actions fade-in">
+          <a href="https://wa.me/5511940035555?text=Olá%2C%20quero%20uma%20proposta%20personalizada" target="_blank" rel="noopener" class="btn btn-primary" style="font-size:16px;padding:16px 32px;">
+            <span class="material-symbols-rounded">whatsapp</span>
+            Falar pelo WhatsApp
+          </a>
+          <a href="mailto:contato@maissaude.seg.br" class="btn btn-ghost" style="font-size:16px;padding:16px 32px;">
+            <span class="material-symbols-rounded">mail</span>
+            Enviar E-mail
+          </a>
+        </div>
+        <div class="cta-trust fade-in">
+          <span class="cta-trust-item">
+            <span class="material-symbols-rounded">verified</span>
+            Equipe médica certificada
+          </span>
+          <span class="cta-trust-item">
+            <span class="material-symbols-rounded">schedule</span>
+            Resposta em até 2h úteis
+          </span>
+          <span class="cta-trust-item">
+            <span class="material-symbols-rounded">lock</span>
+            LGPD Compliant
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand-logo">
+            <img src="assets/logo_nova-branca.png"
+                 alt="Mais Saúde"
+                 height="44"
+                 style="height:44px;width:auto;filter:brightness(0) invert(1);">
+          </div>
+          <p class="footer-brand-desc">Especialistas em Medicina Ocupacional e Segurança do Trabalho em Guarulhos/SP. 8+ anos cuidando da saúde dos colaboradores de mais de 250 empresas.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Instagram">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            </a>
+            <a href="#" aria-label="LinkedIn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-title">Serviços</div>
+          <ul class="footer-links">
+            <li><a href="#servicos">PPRA</a></li>
+            <li><a href="#servicos">PCMSO</a></li>
+            <li><a href="#servicos">eSocial SST</a></li>
+            <li><a href="#servicos">ASO Admissional</a></li>
+            <li><a href="#servicos">RBAC 120</a></li>
+            <li><a href="#servicos">Gestão do FAP</a></li>
+            <li><a href="#servicos">NR-17 Ergonomia</a></li>
+            <li><a href="#servicos">NR-18 Construção</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">Empresa</div>
+          <ul class="footer-links">
+            <li><a href="#sobre">Sobre nós</a></li>
+            <li><a href="#clientes">Clientes</a></li>
+            <li><a href="#depoimentos">Depoimentos</a></li>
+            <li><a href="https://www.socnet.com.br" target="_blank">Portal SOC</a></li>
+            <li><a href="#contato">Contato</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">Contato</div>
+          <div class="footer-contact-item">
+            <span class="material-symbols-rounded">location_on</span>
+            <span>Guarulhos, São Paulo — SP</span>
+          </div>
+          <div class="footer-contact-item">
+            <span class="material-symbols-rounded">phone</span>
+            <a href="tel:+551140035555" style="color:rgba(255,255,255,.6)">(11) 4003-5555</a>
+          </div>
+          <div class="footer-contact-item">
+            <span class="material-symbols-rounded">mail</span>
+            <a href="mailto:contato@maissaude.seg.br" style="color:rgba(255,255,255,.6)">contato@maissaude.seg.br</a>
+          </div>
+          <div class="footer-contact-item">
+            <span class="material-symbols-rounded">language</span>
+            <a href="https://www.maissaude.seg.br" target="_blank" style="color:rgba(255,255,255,.6)">maissaude.seg.br</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Mais Saúde — Medicina Ocupacional. Todos os direitos reservados.</span>
+        <div class="footer-bottom-links">
+          <a href="#">Política de Privacidade</a>
+          <a href="#">LGPD</a>
+        </div>
+        <span class="footer-credit">Desenvolvido por <a href="https://wgalmeida.com.br" target="_blank">WG Build.tech</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WHATSAPP FLOAT -->
+  <div class="wa-float">
+    <a href="https://wa.me/5511940035555?text=Olá%2C%20vim%20pelo%20site%20e%20quero%20um%20orçamento" target="_blank" rel="noopener" aria-label="WhatsApp">
+      <span class="material-symbols-rounded">chat</span>
+    </a>
+  </div>
+
+  <script>
+    // Navbar scroll
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 20);
+    });
+
+    // Mobile menu
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuClose = document.getElementById('menuClose');
+    menuBtn.addEventListener('click', () => mobileMenu.classList.add('open'));
+    menuClose.addEventListener('click', () => mobileMenu.classList.remove('open'));
+    mobileMenu.addEventListener('click', (e) => { if (e.target === mobileMenu) mobileMenu.classList.remove('open'); });
+
+    // Fechar menu ao clicar em link
+    mobileMenu.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => mobileMenu.classList.remove('open'));
+    });
+
+    // Fade-in ao scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Active nav link
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.navbar-nav a');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          navLinks.forEach(l => l.classList.remove('active'));
+          const link = document.querySelector(`.navbar-nav a[href="#${e.target.id}"]`);
+          if (link) link.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-40% 0px -50% 0px' });
+    sections.forEach(s => io.observe(s));
+  </script>
+</body>
+</html>
