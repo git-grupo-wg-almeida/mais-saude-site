@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mais Saúde — Saúde e Segurança do Trabalho em Guarulhos</title>
-  <!-- v2.3 - 20260606 - identidade visual aprovada: logo + favicon corrigido com S + circulo -->
+  <!-- v2.2 - 20260605-1408 - logo real + cache bust -->
   <meta name="description" content="Mais Saúde: empresa especializada em Medicina Ocupacional, PPRA, PCMSO, Exames Admissionais e Segurança do Trabalho em Guarulhos/SP. 8+ anos, 250+ empresas atendidas.">
   <meta name="keywords" content="medicina ocupacional, PPRA, PCMSO, eSocial, exame admissional, RBAC 120, segurança do trabalho, Guarulhos, FAP, SIGMAS, SOC">
   <meta name="author" content="Mais Saúde | WG Build.tech">
@@ -23,10 +23,8 @@
   <meta name="twitter:title" content="Mais Saúde — Saúde e Segurança do Trabalho">
   <meta name="twitter:description" content="Especialistas em Medicina Ocupacional há mais de 8 anos.">
 
-  <!-- Favicon aprovado identidade visual 2026-06-06 -->
-  <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
-  <link rel="icon" type="image/png" sizes="512x512" href="assets/favicon-512.png">
-  <link rel="apple-touch-icon" sizes="1024x1024" href="assets/apple-touch.png">
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/favicom.png">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -256,6 +254,36 @@
     .about-badge-float-text span { font-size: 13px; color: var(--text-muted); }
 
     /* CTA FINAL */
+    /* ===== BLOG ===== */
+    .blog { padding: var(--section-pad) 0; background: var(--bg); }
+    .blog-header { text-align: center; margin-bottom: 56px; }
+    .blog-header .section-title { margin: 12px 0 16px; }
+    .blog-header .section-desc { margin: 0 auto; }
+    .blog-grid { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: auto auto; gap: 24px; }
+    .blog-card--featured { grid-row: 1 / 3; }
+    .blog-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 32px; display: flex; flex-direction: column; gap: 16px; transition: box-shadow .2s, transform .2s; position: relative; overflow: hidden; }
+    .blog-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+    .blog-card--featured { background: linear-gradient(145deg, #fff 60%, #f0faf6); border-color: var(--green-mid); }
+    .blog-card-badge { position: absolute; top: 20px; right: 20px; background: var(--green); color: #fff; font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; padding: 4px 10px; border-radius: var(--radius-full); }
+    .blog-card-meta { display: flex; align-items: center; gap: 10px; }
+    .blog-tag { font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: var(--radius-full); }
+    .blog-tag--norma { background: #e8f0fe; color: #1a73e8; }
+    .blog-tag--expansao { background: #fce8b2; color: #b06000; }
+    .blog-tag--compliance { background: #e6f4ea; color: #1e8e3e; }
+    .blog-date { font-size: 13px; color: var(--text-caption); margin-left: auto; }
+    .blog-card h3 { font-size: clamp(17px, 2vw, 21px); font-weight: 700; line-height: 1.3; color: var(--text); }
+    .blog-card p { font-size: 15px; line-height: 1.65; color: var(--text-muted); flex: 1; }
+    .blog-list { display: flex; flex-direction: column; gap: 8px; padding: 0; }
+    .blog-list li { display: flex; align-items: flex-start; gap: 8px; font-size: 14px; color: var(--text-muted); line-height: 1.5; }
+    .blog-list .material-symbols-rounded { color: var(--green); font-size: 18px; margin-top: 1px; flex-shrink: 0; }
+    .blog-link { display: inline-flex; align-items: center; gap: 6px; color: var(--green-dark); font-weight: 600; font-size: 14px; margin-top: auto; transition: gap .2s; }
+    .blog-link:hover { gap: 10px; }
+    .blog-link .material-symbols-rounded { font-size: 18px; }
+    @media (max-width: 768px) {
+      .blog-grid { grid-template-columns: 1fr; }
+      .blog-card--featured { grid-row: auto; }
+    }
+
     .cta-final { padding: var(--section-pad) 0; background: linear-gradient(135deg, #0a2218, #1a4a32); position: relative; overflow: hidden; }
     .cta-final::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(43,182,115,.06) 1px, transparent 1px), linear-gradient(90deg, rgba(43,182,115,.06) 1px, transparent 1px); background-size: 50px 50px; }
     .cta-final-inner { position: relative; z-index: 1; text-align: center; max-width: 700px; margin: 0 auto; }
@@ -350,7 +378,7 @@
   <nav class="navbar" id="navbar">
     <div class="navbar-inner">
       <a href="#" class="navbar-logo">
-        <img src="assets/logo.png"
+        <img src="assets/logo_nova-branca.png"
              alt="Mais Saúde"
              height="40"
              style="height:40px;width:auto;filter:invert(1) sepia(1) saturate(3) hue-rotate(100deg);">
@@ -358,6 +386,7 @@
       <div class="navbar-nav">
         <a href="#servicos" class="active">Serviços</a>
         <a href="#sobre">Sobre</a>
+          <a href="#blog">Blog</a>
         <a href="#clientes">Clientes</a>
         <a href="#depoimentos">Depoimentos</a>
         <a href="#contato">Contato</a>
@@ -836,6 +865,69 @@
   </section>
 
   <!-- CTA FINAL -->
+  <!-- ===== BLOG ===== -->
+  <section class="blog" id="blog">
+    <div class="container">
+      <div class="blog-header">
+        <span class="section-label">Blog & Conteúdo</span>
+        <h2 class="section-title">Fique por dentro de SST,<br>NR-1 e Saúde Corporativa</h2>
+        <p class="section-desc">Artigos técnicos, atualizações normativas e tendências do mercado de saúde ocupacional para você e sua empresa.</p>
+      </div>
+      <div class="blog-grid">
+
+        <!-- Post 1: NR-1 Saúde Mental -->
+        <article class="blog-card blog-card--featured">
+          <div class="blog-card-badge">Em destaque</div>
+          <div class="blog-card-meta">
+            <span class="blog-tag blog-tag--norma">NR-1 / GRO</span>
+            <span class="blog-date">Jun 2026</span>
+          </div>
+          <h3>Saúde Mental e NR-1: o que sua empresa precisa fazer agora</h3>
+          <p>Desde 26 de maio de 2026, a atualização da NR-1 tornou obrigatório o gerenciamento dos fatores psicossociais no GRO e PGR. Sobrecarga, assédio e jornadas desgastantes passam a ser avaliados tecnicamente — e a fiscalização já está atenta.</p>
+          <ul class="blog-list">
+            <li><span class="material-symbols-rounded">check_circle</span> 546.254 benefícios por transtornos mentais concedidos em 2025 (+15,6%)</li>
+            <li><span class="material-symbols-rounded">check_circle</span> Identificar, avaliar, registrar e acompanhar riscos organizacionais</li>
+            <li><span class="material-symbols-rounded">check_circle</span> Campanhas isoladas não bastam — revisão de fluxos é obrigatória</li>
+          </ul>
+          <a href="https://www.migalhas.com.br/depeso/456960/saude-mental-e-nr-1-o-que-as-empresas-precisam-entender" target="_blank" rel="noopener noreferrer" class="blog-link">Ler artigo completo <span class="material-symbols-rounded">arrow_outward</span></a>
+        </article>
+
+        <!-- Post 2: Paraguai / América Latina -->
+        <article class="blog-card">
+          <div class="blog-card-meta">
+            <span class="blog-tag blog-tag--expansao">Expansão</span>
+            <span class="blog-date">Jun 2026</span>
+          </div>
+          <h3>Saúde Corporativa no Paraguai: oportunidade para empresas brasileiras</h3>
+          <p>O Paraguai vive expansão empresarial relevante, com presença de indústrias, maquiladoras e empresas brasileiras que precisam estruturar saúde ocupacional, exames, documentação e gestão de risco. A Mais Saúde apresenta um modelo integrado para esse mercado.</p>
+          <ul class="blog-list">
+            <li><span class="material-symbols-rounded">check_circle</span> SST, ASO, PGR e PCMSO para operações no Paraguai</li>
+            <li><span class="material-symbols-rounded">check_circle</span> Rede de clínicas e laboratórios parceiros credenciados</li>
+            <li><span class="material-symbols-rounded">check_circle</span> 5 fases: SST → Rede → Telemedicina → Plataforma → América Latina</li>
+          </ul>
+          <a href="#contato" class="blog-link">Solicitar diagnóstico <span class="material-symbols-rounded">arrow_forward</span></a>
+        </article>
+
+        <!-- Post 3: ASO e eSocial -->
+        <article class="blog-card">
+          <div class="blog-card-meta">
+            <span class="blog-tag blog-tag--compliance">Compliance</span>
+            <span class="blog-date">Mai 2026</span>
+          </div>
+          <h3>ASO, eSocial e SIGMAS: como integrar tudo sem retrabalho</h3>
+          <p>Empresas que ainda gerenciam ASOs em planilhas enfrentam riscos sérios com a fiscalização do eSocial. Veja como a integração com o SOC System e SIGMAS elimina pendências, automatiza convocações e garante conformidade total.</p>
+          <ul class="blog-list">
+            <li><span class="material-symbols-rounded">check_circle</span> Integração direta com SOC System e envio automático ao eSocial</li>
+            <li><span class="material-symbols-rounded">check_circle</span> Convocações automáticas por função, risco e prazo</li>
+            <li><span class="material-symbols-rounded">check_circle</span> Histórico ocupacional digital com acesso para RH e SESMT</li>
+          </ul>
+          <a href="#contato" class="blog-link">Falar com especialista <span class="material-symbols-rounded">arrow_forward</span></a>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
   <section class="cta-final" id="contato">
     <div class="container">
       <div class="cta-final-inner">
@@ -876,7 +968,7 @@
       <div class="footer-grid">
         <div>
           <div class="footer-brand-logo">
-            <img src="assets/logo.png"
+            <img src="assets/logo_nova-branca.png"
                  alt="Mais Saúde"
                  height="44"
                  style="height:44px;width:auto;filter:brightness(0) invert(1);">
