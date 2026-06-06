@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mais Saúde — Saúde e Segurança do Trabalho em Guarulhos</title>
-  <!-- v2.2 - 20260605-1408 - logo real + cache bust -->
+  <!-- v2.4 - 20260606 - logo novo real + icone + dropdown area cliente 2 opcoes + footer link sistema -->
   <meta name="description" content="Mais Saúde: empresa especializada em Medicina Ocupacional, PPRA, PCMSO, Exames Admissionais e Segurança do Trabalho em Guarulhos/SP. 8+ anos, 250+ empresas atendidas.">
   <meta name="keywords" content="medicina ocupacional, PPRA, PCMSO, eSocial, exame admissional, RBAC 120, segurança do trabalho, Guarulhos, FAP, SIGMAS, SOC">
   <meta name="author" content="Mais Saúde | WG Build.tech">
@@ -24,7 +24,9 @@
   <meta name="twitter:description" content="Especialistas em Medicina Ocupacional há mais de 8 anos.">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="assets/favicom.png">
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+  <link rel="icon" type="image/png" sizes="512x512" href="assets/maisaude_icon.png">
+  <link rel="apple-touch-icon" href="assets/maisaude_icon.png">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -78,6 +80,22 @@
     .fade-in { opacity: 0; transform: translateY(28px); transition: opacity .6s ease, transform .6s ease; }
     .fade-in.visible { opacity: 1; transform: none; }
     .fade-in-delay-1 { transition-delay: .1s; } .fade-in-delay-2 { transition-delay: .2s; } .fade-in-delay-3 { transition-delay: .3s; }
+
+    /* LOGO IMG */
+    .navbar-logo img { height: 40px; width: auto; display: block; }
+
+    /* DROPDOWN ÁREA CLIENTE */
+    .client-dropdown { position: relative; }
+    .client-dropdown-btn { display: inline-flex; align-items: center; gap: 6px; padding: 9px 18px; background: var(--green); color: #fff; border-radius: var(--radius-full); font-size: 14px; font-weight: 600; cursor: pointer; transition: background .18s; border: none; font-family: inherit; }
+    .client-dropdown-btn:hover { background: var(--green-dark); }
+    .client-dropdown-btn .arrow { font-size: 18px; transition: transform .2s; }
+    .client-dropdown-btn.open .arrow { transform: rotate(180deg); }
+    .client-dropdown-menu { position: absolute; top: calc(100% + 8px); right: 0; min-width: 210px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md); box-shadow: var(--shadow-lg); padding: 6px; z-index: 200; opacity: 0; visibility: hidden; transform: translateY(-6px); transition: all .18s ease; }
+    .client-dropdown-menu.open { opacity: 1; visibility: visible; transform: translateY(0); }
+    .client-dropdown-menu a { display: flex; align-items: center; gap: 10px; padding: 10px 14px; border-radius: var(--radius-sm); font-size: 14px; font-weight: 500; color: var(--text); transition: background .15s; }
+    .client-dropdown-menu a:hover { background: var(--green-light); color: var(--green-dark); }
+    .client-dropdown-menu a .material-symbols-rounded { font-size: 20px; color: var(--green); flex-shrink: 0; }
+    .client-dropdown-divider { height: 1px; background: var(--border); margin: 4px 0; }
 
     /* TOPBAR */
     .topbar { background: var(--green-dark); color: rgba(255,255,255,.85); font-size: 13px; padding: 8px 0; }
