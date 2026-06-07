@@ -1,0 +1,5 @@
+*.bak
+*.bak-*
+*.bak2
+README_OPERACIONAL_SITE.md
+.editorconfig
