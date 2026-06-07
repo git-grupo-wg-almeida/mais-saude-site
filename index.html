@@ -8,6 +8,7 @@
   <meta name="description" content="Mais Saúde: empresa especializada em Medicina Ocupacional, PPRA, PCMSO, Exames Admissionais e Segurança do Trabalho em Guarulhos/SP. 8+ anos, 250+ empresas atendidas.">
   <meta name="keywords" content="medicina ocupacional, PPRA, PCMSO, eSocial, exame admissional, RBAC 120, segurança do trabalho, Guarulhos, FAP, SIGMAS, SOC">
   <meta name="author" content="Mais Saúde | WG Build.tech">
+  <meta name="robots" content="index, follow, noai, noimageai">
   <link rel="canonical" href="https://www.maissaude.seg.br">
 
   <!-- Open Graph -->
@@ -432,6 +433,20 @@
       .about-badge-float { display: none; }
       .topbar-meta { width: 100%; justify-content: flex-start; }
       .lang-current { font-size: 10px; padding: 5px 9px; }
+      .navbar-inner { height: auto; min-height: 64px; padding: 10px 14px; flex-wrap: wrap; gap: 10px; }
+      .navbar-logo img { height: 34px !important; }
+      .navbar-menu-btn { min-width: 44px; min-height: 44px; align-items: center; justify-content: center; }
+      .navbar-cta { order: 3; width: 100%; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 8px; }
+      .client-dropdown { width: 100%; }
+      .client-dropdown-btn,
+      .navbar-cta > .btn-primary { width: 100%; min-height: 44px; padding: 8px 10px !important; justify-content: center; font-size: 12px !important; line-height: 1.15; text-align: center; }
+      .client-dropdown-btn .material-symbols-rounded,
+      .navbar-cta > .btn-primary .material-symbols-rounded { font-size: 17px !important; flex-shrink: 0; }
+      .client-dropdown-menu { left: 0; right: auto; width: min(280px, calc(100vw - 28px)); }
+      .lang-current-label,
+      .lang-option-code { min-width: 2ch; text-transform: uppercase; letter-spacing: .08em; }
+      .lang-menu { min-width: 104px; }
+      .lang-option { justify-content: flex-start; }
     }
   </style>
 </head>
@@ -459,15 +474,15 @@
           <div class="lang-switcher" aria-label="Seletor de idiomas">
             <button type="button" class="lang-current" aria-haspopup="true" aria-expanded="false">
               <span class="lang-flag lang-current-flag" aria-hidden="true"><img src="https://flagcdn.com/w40/br.png" alt="Bandeira do Brasil"></span>
-              <span class="lang-current-label">Português</span>
+              <span class="lang-current-label">PT</span>
               <span class="material-symbols-rounded lang-caret" aria-hidden="true">expand_more</span>
             </button>
             <div class="lang-menu" role="menu">
-              <button type="button" class="lang-option active" data-lang="pt" data-flag-src="https://flagcdn.com/w40/br.png" data-flag-alt="Bandeira do Brasil" data-label="Português"><span class="lang-flag" aria-hidden="true"><img src="https://flagcdn.com/w40/br.png" alt="Bandeira do Brasil"></span><span>Português</span></button>
-              <button type="button" class="lang-option" data-lang="en" data-flag-src="https://flagcdn.com/w40/us.png" data-flag-alt="Flag of the United States" data-label="English"><span class="lang-flag" aria-hidden="true"><img src="https://flagcdn.com/w40/us.png" alt="Flag of the United States"></span><span>English</span></button>
-              <button type="button" class="lang-option" data-lang="es" data-flag-src="https://flagcdn.com/w40/es.png" data-flag-alt="Bandera de España" data-label="Español"><span class="lang-flag" aria-hidden="true"><img src="https://flagcdn.com/w40/es.png" alt="Bandera de España"></span><span>Español</span></button>
-              <button type="button" class="lang-option" data-lang="ar" data-flag-src="https://flagcdn.com/w40/sa.png" data-flag-alt="علم السعودية" data-label="عربي"><span class="lang-flag" aria-hidden="true"><img src="https://flagcdn.com/w40/sa.png" alt="علم السعودية"></span><span>عربي</span></button>
-              <button type="button" class="lang-option" data-lang="tr" data-flag-src="https://flagcdn.com/w40/tr.png" data-flag-alt="Türkiye Bayrağı" data-label="Türkçe"><span class="lang-flag" aria-hidden="true"><img src="https://flagcdn.com/w40/tr.png" alt="Türkiye Bayrağı"></span><span>Türkçe</span></button>
+              <button type="button" class="lang-option active" data-lang="pt" data-code="PT" data-flag-src="https://flagcdn.com/w40/br.png" data-flag-alt="Bandeira do Brasil" data-label="Português"><span class="lang-flag" aria-hidden="true"><img src="https://flagcdn.com/w40/br.png" alt="Bandeira do Brasil"></span><span class="lang-option-code">PT</span></button>
+              <button type="button" class="lang-option" data-lang="en" data-code="EN" data-flag-src="https://flagcdn.com/w40/us.png" data-flag-alt="Flag of the United States" data-label="English"><span class="lang-flag" aria-hidden="true"><img src="https://flagcdn.com/w40/us.png" alt="Flag of the United States"></span><span class="lang-option-code">EN</span></button>
+              <button type="button" class="lang-option" data-lang="es" data-code="ES" data-flag-src="https://flagcdn.com/w40/es.png" data-flag-alt="Bandera de España" data-label="Español"><span class="lang-flag" aria-hidden="true"><img src="https://flagcdn.com/w40/es.png" alt="Bandera de España"></span><span class="lang-option-code">ES</span></button>
+              <button type="button" class="lang-option" data-lang="ar" data-code="AR" data-flag-src="https://flagcdn.com/w40/sa.png" data-flag-alt="علم السعودية" data-label="عربي"><span class="lang-flag" aria-hidden="true"><img src="https://flagcdn.com/w40/sa.png" alt="علم السعودية"></span><span class="lang-option-code">AR</span></button>
+              <button type="button" class="lang-option" data-lang="tr" data-code="TR" data-flag-src="https://flagcdn.com/w40/tr.png" data-flag-alt="Türkiye Bayrağı" data-label="Türkçe"><span class="lang-flag" aria-hidden="true"><img src="https://flagcdn.com/w40/tr.png" alt="Türkiye Bayrağı"></span><span class="lang-option-code">TR</span></button>
             </div>
           </div>
           <div class="topbar-social">
@@ -512,12 +527,12 @@
             <span class="material-symbols-rounded arrow">expand_more</span>
           </button>
           <div class="client-dropdown-menu" id="clientDropdownMenu" role="menu">
-            <a href="http://127.0.0.1:3013/05_DEMO_E_PROTOTIPO/maissaude-os-demo.html" target="_blank" rel="noopener" role="menuitem">
+            <a href="https://mais-saude-sistema.vercel.app/" target="_blank" rel="noopener" role="menuitem">
               <span class="material-symbols-rounded">flight</span>
               <span data-i18n="client_aviation">Aviação Civil</span>
             </a>
             <div class="client-dropdown-divider"></div>
-            <a href="http://127.0.0.1:3013/05_DEMO_E_PROTOTIPO/maissaude-os-demo.html" target="_blank" rel="noopener" role="menuitem">
+            <a href="https://mais-saude-sistema.vercel.app/" target="_blank" rel="noopener" role="menuitem">
               <span class="material-symbols-rounded">health_and_safety</span>
               <span data-i18n="client_sst">Gestão SST</span>
             </a>
@@ -1451,7 +1466,7 @@
             const alt = btn.dataset.flagAlt || 'Idioma';
             flag.innerHTML = `<img src="${src}" alt="${alt}">`;
           }
-          if (label) label.textContent = btn.dataset.label || btn.textContent.trim();
+          if (label) label.textContent = btn.dataset.code || btn.dataset.lang.toUpperCase();
         }
       });
       try { localStorage.setItem('maissaude_lang', lang); } catch {}
@@ -1544,5 +1559,6 @@
     })();
     applyLanguage(initialLang);
   </script>
+  <script src="assets/protecao-conteudo.js"></script>
 </body>
 </html>
