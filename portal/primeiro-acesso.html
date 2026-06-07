@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Primeiro Acesso — Portal Mais Saúde</title>
+  <link rel="icon" href="../assets/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0&display=block" rel="stylesheet">
+  <style>
+    :root{--green:#2bb673;--green-dark:#1c7c52;--green-light:#e8f7f0;--bg:#f0faf5;--surface:#fff;--border:#e8eaed;--text:#202124;--text-muted:#5f6368;--success:#1e8e3e;--error:#d93025;--font-sans:'Google Sans','Segoe UI',system-ui,sans-serif;--radius-md:16px;--shadow-md:0 4px 20px rgba(0,0,0,.10)}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:var(--font-sans);min-height:100vh;display:flex;background:linear-gradient(135deg,var(--green-dark) 0%,var(--green) 60%,#3dd68c 100%);align-items:center;justify-content:center;padding:24px}
+    .card{background:var(--surface);border-radius:24px;padding:48px 40px;width:100%;max-width:480px;box-shadow:var(--shadow-md)}
+    .logo{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:8px}
+    .logo img{height:40px}
+    .logo-text{font-size:20px;font-weight:700;color:var(--green-dark)}
+    .subtitle{text-align:center;color:var(--text-muted);font-size:14px;margin-bottom:28px}
+    .steps{display:flex;justify-content:center;gap:8px;margin-bottom:32px}
+    .step{width:32px;height:32px;border-radius:50%;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;color:var(--text-muted);position:relative}
+    .step.active{background:var(--green);border-color:var(--green);color:#fff}
+    .step.done{background:var(--green-light);border-color:var(--green);color:var(--green-dark)}
+    .step-line{flex:1;height:2px;background:var(--border);align-self:center;margin:0 -4px}
+    .step-line.done{background:var(--green)}
+    h2{font-size:20px;font-weight:700;color:var(--text);margin-bottom:6px;text-align:center}
+    .desc{text-align:center;color:var(--text-muted);font-size:14px;margin-bottom:28px}
+    label{display:block;font-size:13px;font-weight:600;color:var(--text);margin-bottom:6px}
+    .input-wrap{position:relative;margin-bottom:18px}
+    .input-wrap .material-symbols-rounded{position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:18px;color:var(--text-muted)}
+    input[type=text],input[type=email],input[type=password]{width:100%;padding:12px 14px 12px 42px;border:1.5px solid var(--border);border-radius:10px;font-family:inherit;font-size:15px;color:var(--text);background:var(--bg);transition:.2s;outline:none}
+    input:focus{border-color:var(--green);background:#fff;box-shadow:0 0 0 3px rgba(43,182,115,.12)}
+    .btn{width:100%;padding:14px;background:var(--green);color:#fff;border:none;border-radius:10px;font-family:inherit;font-size:16px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:.2s;margin-top:8px}
+    .btn:hover{background:var(--green-dark)}
+    .btn-outline{background:transparent;color:var(--green-dark);border:1.5px solid var(--green);margin-top:12px}
+    .btn-outline:hover{background:var(--green-light)}
+    .info-box{background:var(--green-light);border:1px solid rgba(43,182,115,.3);border-radius:10px;padding:14px;font-size:13px;color:var(--green-dark);margin-bottom:20px;display:flex;gap:10px;align-items:flex-start}
+    .back-link{text-align:center;font-size:13px;color:var(--text-muted);margin-top:16px}
+    .back-link a{color:var(--green-dark);font-weight:500}
+    .success-state{text-align:center;padding:20px 0}
+    .success-state .icon{width:72px;height:72px;background:var(--green);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px}
+    .success-state .icon .material-symbols-rounded{font-size:36px;color:#fff}
+    .panel-selector{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px}
+    .panel-option{border:2px solid var(--border);border-radius:12px;padding:16px;cursor:pointer;transition:.2s;text-align:center}
+    .panel-option:hover,.panel-option.selected{border-color:var(--green);background:var(--green-light)}
+    .panel-option .material-symbols-rounded{font-size:28px;color:var(--green);display:block;margin-bottom:8px}
+    .panel-option strong{font-size:14px;color:var(--text);display:block;margin-bottom:4px}
+    .panel-option span{font-size:12px;color:var(--text-muted)}
+  </style>
+</head>
+<body>
+<div class="card">
+  <div class="logo">
+    <img src="../assets/maisaude_logo.png" alt="" onerror="this.style.display='none'">
+    <span class="logo-text">Mais Saúde</span>
+  </div>
+  <p class="subtitle">Primeiro Acesso ao Portal</p>
+
+  <!-- Steps -->
+  <div class="steps">
+    <div class="step active" id="s1">1</div>
+    <div class="step-line" id="l1"></div>
+    <div class="step" id="s2">2</div>
+    <div class="step-line" id="l2"></div>
+    <div class="step" id="s3">3</div>
+  </div>
+
+  <!-- Step 1: CNPJ -->
+  <div id="step1">
+    <h2>Identifique sua empresa</h2>
+    <p class="desc">Informe o CNPJ para localizar seu contrato com a Mais Saúde.</p>
+    <div class="info-box">
+      <span class="material-symbols-rounded" style="font-size:18px">info</span>
+      <span>Certifique-se de usar o CNPJ da empresa contratante. Em caso de dúvida, consulte seu contrato ou ligue para (11) 4322-1234.</span>
+    </div>
+    <label for="cnpj">CNPJ da empresa</label>
+    <div class="input-wrap">
+      <span class="material-symbols-rounded">business</span>
+      <input type="text" id="cnpj" placeholder="00.000.000/0001-00" maxlength="18" oninput="maskCNPJ(this)">
+    </div>
+    <label for="emailPrimeiro">E-mail do responsável</label>
+    <div class="input-wrap">
+      <span class="material-symbols-rounded">mail</span>
+      <input type="email" id="emailPrimeiro" placeholder="seu@email.com.br">
+    </div>
+    <button class="btn" onclick="goStep2()">
+      <span class="material-symbols-rounded">arrow_forward</span>
+      Continuar
+    </button>
+    <p class="back-link"><a href="login.html">← Já tenho acesso</a></p>
+  </div>
+
+  <!-- Step 2: Perfil -->
+  <div id="step2" style="display:none">
+    <h2>Qual é seu perfil?</h2>
+    <p class="desc">Selecione como você usa os serviços da Mais Saúde.</p>
+    <div class="panel-selector">
+      <div class="panel-option" onclick="selectPerfil(this,'rh')">
+        <span class="material-symbols-rounded">groups</span>
+        <strong>RH</strong>
+        <span>Gestão de funcionários e exames</span>
+      </div>
+      <div class="panel-option" onclick="selectPerfil(this,'contabilidade')">
+        <span class="material-symbols-rounded">calculate</span>
+        <strong>Contabilidade</strong>
+        <span>Documentação e conformidade</span>
+      </div>
+      <div class="panel-option" onclick="selectPerfil(this,'sesmt')">
+        <span class="material-symbols-rounded">health_and_safety</span>
+        <strong>SESMT</strong>
+        <span>Segurança e saúde no trabalho</span>
+      </div>
+      <div class="panel-option" onclick="selectPerfil(this,'diretor')">
+        <span class="material-symbols-rounded">manage_accounts</span>
+        <strong>Diretoria</strong>
+        <span>Visão executiva e relatórios</span>
+      </div>
+    </div>
+    <button class="btn" onclick="goStep3()">
+      <span class="material-symbols-rounded">arrow_forward</span>
+      Continuar
+    </button>
+    <button class="btn btn-outline" onclick="goStep(1)">Voltar</button>
+  </div>
+
+  <!-- Step 3: Senha -->
+  <div id="step3" style="display:none">
+    <h2>Crie sua senha</h2>
+    <p class="desc">Sua senha deve ter pelo menos 8 caracteres com letras e números.</p>
+    <label>Nova senha</label>
+    <div class="input-wrap">
+      <span class="material-symbols-rounded">lock</span>
+      <input type="password" id="novaSenha" placeholder="Mínimo 8 caracteres">
+    </div>
+    <label>Confirmar senha</label>
+    <div class="input-wrap">
+      <span class="material-symbols-rounded">lock_reset</span>
+      <input type="password" id="confirmaSenha" placeholder="Repita a senha">
+    </div>
+    <button class="btn" onclick="finalizar()">
+      <span class="material-symbols-rounded">check_circle</span>
+      Criar acesso e entrar
+    </button>
+    <button class="btn btn-outline" onclick="goStep(2)">Voltar</button>
+  </div>
+
+  <!-- Sucesso -->
+  <div id="stepOk" style="display:none">
+    <div class="success-state">
+      <div class="icon"><span class="material-symbols-rounded">check</span></div>
+      <h2>Acesso criado!</h2>
+      <p style="color:var(--text-muted);margin:8px 0 24px">Seu portal está pronto. Bem-vindo à Mais Saúde.</p>
+      <a href="dashboard.html" style="display:inline-flex;align-items:center;gap:8px;background:var(--green);color:#fff;border-radius:10px;padding:14px 28px;font-weight:600;font-size:15px">
+        <span class="material-symbols-rounded">dashboard</span> Ir ao Dashboard
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+function maskCNPJ(el){let v=el.value.replace(/\D/g,'').substring(0,14);v=v.replace(/(\d{2})(\d)/,'$1.$2').replace(/(\d{2}\.\d{3})(\d)/,'$1.$2').replace(/(\d{2}\.\d{3}\.\d{3})(\d)/,'$1/$2').replace(/(\d{2}\.\d{3}\.\d{3}\/\d{4})(\d)/,'$1-$2');el.value=v;}
+function goStep(n){['step1','step2','step3','stepOk'].forEach((id,i)=>document.getElementById(id).style.display=i===n-1?'block':'none');['s1','s2','s3'].forEach((id,i)=>{const el=document.getElementById(id);el.className='step'+(i<n-1?' done':i===n-1?' active':'')});['l1','l2'].forEach((id,i)=>document.getElementById(id).className='step-line'+(i<n-1?' done':''))}
+function goStep2(){const cnpj=document.getElementById('cnpj').value;if(cnpj.length<18){alert('Informe o CNPJ completo.');return;}goStep(2);}
+let perfilSel='';
+function selectPerfil(el,p){document.querySelectorAll('.panel-option').forEach(e=>e.classList.remove('selected'));el.classList.add('selected');perfilSel=p;}
+function goStep3(){if(!perfilSel){alert('Selecione seu perfil.');return;}goStep(3);}
+function finalizar(){const s=document.getElementById('novaSenha').value,c=document.getElementById('confirmaSenha').value;if(s.length<8){alert('Senha muito curta.');return;}if(s!==c){alert('Senhas não conferem.');return;}goStep(4);document.getElementById('stepOk').style.display='block';['step3'].forEach(id=>document.getElementById(id).style.display='none');}
+</script>
+</body>
+</html>

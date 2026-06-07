@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contato — Mais Saúde | Guarulhos SP</title>
+  <!-- v1.0 - 20260606 - página de contato com form Supabase -->
+  <meta name="description" content="Entre em contato com a Mais Saúde. Solicite orçamento de PCMSO, PPRA, exames ocupacionais e segurança do trabalho em Guarulhos.">
+  <link rel="canonical" href="https://www.maissaude.seg.br/contato">
+  <meta property="og:title" content="Contato — Mais Saúde">
+  <meta property="og:description" content="Fale com nossos especialistas em Medicina Ocupacional e Segurança do Trabalho.">
+  <meta property="og:image" content="assets/og-maissaude.png">
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+  <link rel="icon" type="image/png" sizes="512x512" href="assets/maisaude_icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0&display=block" rel="stylesheet">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7VVDS874Q3"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-7VVDS874Q3');</script>
+  <!-- Supabase SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    :root {
+      --green:#2bb673;--green-dark:#1c7c52;--green-light:#e8f7f0;--green-mid:#d0f0e2;
+      --bg:#f8f9fa;--surface:#ffffff;--surface-2:#f1f3f4;
+      --border:#e8eaed;--border-strong:#dadce0;
+      --text:#202124;--text-muted:#5f6368;--text-caption:#80868b;
+      --warning:#f9ab00;--error:#d93025;--success:#1e8e3e;
+      --font-sans:'Google Sans','Segoe UI',system-ui,sans-serif;
+      --radius-sm:8px;--radius-md:14px;--radius-lg:24px;--radius-full:999px;
+      --shadow-sm:0 1px 3px rgba(0,0,0,.08);--shadow-md:0 4px 16px rgba(0,0,0,.10);
+      --shadow-lg:0 12px 40px rgba(0,0,0,.12);--shadow-green:0 8px 32px rgba(43,182,115,.25);
+      --max-w:1200px;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{font-family:var(--font-sans);font-size:16px;line-height:1.6;color:var(--text);background:var(--bg);-webkit-font-smoothing:antialiased;}
+    a{color:inherit;text-decoration:none;}
+    ul{list-style:none;}
+    button{cursor:pointer;font-family:inherit;border:none;background:none;}
+    .container{width:100%;max-width:var(--max-w);margin:0 auto;padding:0 24px;}
+    .material-symbols-rounded{font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 24;vertical-align:middle;line-height:1;}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:var(--radius-full);font-size:15px;font-weight:600;transition:all .2s ease;}
+    .btn-primary{background:var(--green);color:#fff;box-shadow:var(--shadow-green);}
+    .btn-primary:hover{background:var(--green-dark);transform:translateY(-1px);}
+    .btn-outline{background:transparent;color:var(--text);border:1.5px solid var(--border-strong);}
+    .btn-outline:hover{background:var(--surface-2);border-color:var(--green);color:var(--green);}
+
+    /* TOPBAR */
+    .topbar{background:var(--green-dark);color:rgba(255,255,255,.85);font-size:13px;padding:8px 0;}
+    .topbar-inner{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+    .topbar-contacts{display:flex;gap:20px;flex-wrap:wrap;}
+    .topbar-contacts a{display:flex;align-items:center;gap:6px;color:rgba(255,255,255,.85);transition:color .2s;}
+    .topbar-contacts a:hover{color:#fff;}
+    .topbar-contacts .material-symbols-rounded{font-size:16px;}
+
+    /* NAVBAR */
+    .navbar{position:sticky;top:0;z-index:1000;background:rgba(255,255,255,.92);backdrop-filter:blur(16px) saturate(180%);border-bottom:1px solid var(--border);box-shadow:var(--shadow-md);}
+    .navbar-inner{display:flex;align-items:center;justify-content:space-between;padding:0 24px;max-width:var(--max-w);margin:0 auto;height:64px;}
+    .navbar-logo{display:flex;align-items:center;gap:10px;font-size:20px;font-weight:700;color:var(--text);}
+    .navbar-logo img{height:40px;width:auto;display:block;}
+    .navbar-nav{display:flex;align-items:center;gap:2px;}
+    .navbar-nav a{padding:8px 14px;border-radius:var(--radius-sm);font-size:14px;font-weight:500;color:var(--text-muted);transition:all .18s;white-space:nowrap;}
+    .navbar-nav a:hover{color:var(--text);background:var(--surface-2);}
+    .navbar-nav a.active{color:var(--green);background:var(--green-light);}
+    .navbar-cta{display:flex;align-items:center;gap:10px;}
+    @media(max-width:900px){.navbar-nav{display:none;}.navbar-cta .btn-outline{display:none;}}
+
+    /* HERO PÁGINA */
+    .page-hero{background:linear-gradient(135deg,#0f2d1e,#1a4a32);padding:64px 0 56px;color:#fff;}
+    .page-hero-inner{display:flex;flex-direction:column;align-items:center;text-align:center;gap:16px;}
+    .page-hero-label{font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.55);}
+    .page-hero h1{font-size:clamp(28px,4vw,44px);font-weight:700;line-height:1.15;}
+    .page-hero h1 em{font-style:normal;background:linear-gradient(90deg,#2bb673,#7ee8b5);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+    .page-hero-desc{font-size:17px;color:rgba(255,255,255,.65);max-width:540px;}
+    .breadcrumb{display:flex;align-items:center;gap:6px;font-size:13px;color:rgba(255,255,255,.45);margin-bottom:8px;}
+    .breadcrumb a{color:rgba(255,255,255,.55);transition:color .2s;}
+    .breadcrumb a:hover{color:#fff;}
+    .breadcrumb .material-symbols-rounded{font-size:14px;}
+
+    /* LAYOUT CONTATO */
+    .contact-section{padding:72px 0 96px;}
+    .contact-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:56px;align-items:start;}
+    @media(max-width:900px){.contact-grid{grid-template-columns:1fr;gap:40px;}}
+
+    /* INFO LATERAL */
+    .contact-info h2{font-size:26px;font-weight:700;margin-bottom:8px;}
+    .contact-info .subtitle{font-size:16px;color:var(--text-muted);line-height:1.7;margin-bottom:32px;}
+    .contact-cards{display:flex;flex-direction:column;gap:16px;margin-bottom:40px;}
+    .contact-card{display:flex;align-items:flex-start;gap:16px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);padding:20px;transition:all .2s;}
+    .contact-card:hover{border-color:var(--green);box-shadow:var(--shadow-sm);}
+    .contact-card-icon{width:44px;height:44px;border-radius:var(--radius-sm);background:var(--green-light);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+    .contact-card-icon .material-symbols-rounded{color:var(--green);font-size:22px;}
+    .contact-card-label{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text-caption);margin-bottom:4px;}
+    .contact-card-value{font-size:15px;font-weight:600;color:var(--text);}
+    .contact-card-sub{font-size:13px;color:var(--text-muted);margin-top:2px;}
+    .contact-card a{color:var(--text);}
+    .contact-card a:hover{color:var(--green);}
+    .contact-map-wrap{border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--border);}
+    .contact-map-wrap iframe{width:100%;height:220px;display:block;border:none;}
+    .contact-map-label{background:var(--surface);padding:14px 18px;display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text-muted);border-top:1px solid var(--border);}
+    .contact-map-label .material-symbols-rounded{color:var(--green);font-size:18px;}
+    .office-hours{background:var(--green-light);border:1px solid var(--green-mid);border-radius:var(--radius-md);padding:20px;}
+    .office-hours-title{font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--green-dark);margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+    .office-hours-title .material-symbols-rounded{font-size:16px;}
+    .office-hours-row{display:flex;justify-content:space-between;font-size:14px;padding:4px 0;border-bottom:1px solid var(--green-mid);}
+    .office-hours-row:last-child{border-bottom:none;}
+    .office-hours-row span:first-child{color:var(--text-muted);}
+    .office-hours-row span:last-child{font-weight:600;color:var(--text);}
+
+    /* FORMULÁRIO */
+    .contact-form-wrap{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:40px;box-shadow:var(--shadow-sm);}
+    .form-title{font-size:22px;font-weight:700;margin-bottom:6px;}
+    .form-subtitle{font-size:14px;color:var(--text-muted);margin-bottom:32px;}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+    @media(max-width:600px){.form-grid{grid-template-columns:1fr;}}
+    .form-group{display:flex;flex-direction:column;gap:6px;}
+    .form-group.full{grid-column:1/-1;}
+    .form-label{font-size:13px;font-weight:600;color:var(--text);}
+    .form-label span{color:var(--error);margin-left:2px;}
+    .form-input,.form-select,.form-textarea{
+      width:100%;padding:12px 16px;border:1.5px solid var(--border-strong);
+      border-radius:var(--radius-sm);font-family:var(--font-sans);font-size:15px;
+      color:var(--text);background:var(--bg);transition:border-color .18s,box-shadow .18s;
+      outline:none;
+    }
+    .form-input:focus,.form-select:focus,.form-textarea:focus{
+      border-color:var(--green);box-shadow:0 0 0 3px rgba(43,182,115,.12);
+    }
+    .form-input::placeholder,.form-textarea::placeholder{color:var(--text-caption);}
+    .form-textarea{resize:vertical;min-height:120px;}
+    .form-select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%235f6368' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:40px;}
+    .form-check{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--text-muted);}
+    .form-check input{margin-top:2px;accent-color:var(--green);width:16px;height:16px;flex-shrink:0;cursor:pointer;}
+    .form-check a{color:var(--green-dark);text-decoration:underline;}
+    .form-btn{width:100%;padding:16px;font-size:16px;font-weight:700;border-radius:var(--radius-full);background:var(--green);color:#fff;border:none;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:10px;box-shadow:var(--shadow-green);margin-top:8px;}
+    .form-btn:hover{background:var(--green-dark);transform:translateY(-1px);}
+    .form-btn:disabled{background:var(--border-strong);box-shadow:none;cursor:not-allowed;transform:none;}
+    .form-btn .spinner{width:18px;height:18px;border:2px solid rgba(255,255,255,.4);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite;display:none;}
+    @keyframes spin{to{transform:rotate(360deg);}}
+    .form-divider{display:flex;align-items:center;gap:12px;margin:24px 0;font-size:13px;color:var(--text-caption);}
+    .form-divider::before,.form-divider::after{content:'';flex:1;height:1px;background:var(--border);}
+    .form-wpp-btn{width:100%;padding:14px;font-size:15px;font-weight:600;border-radius:var(--radius-full);background:#25d366;color:#fff;border:none;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:10px;}
+    .form-wpp-btn:hover{background:#1da851;transform:translateY(-1px);}
+    /* STATUS MESSAGE */
+    .form-status{display:none;padding:14px 18px;border-radius:var(--radius-sm);font-size:14px;font-weight:500;margin-top:16px;align-items:center;gap:10px;}
+    .form-status.success{display:flex;background:#e6f4ea;border:1px solid #a8d5b5;color:#1e8e3e;}
+    .form-status.error{display:flex;background:#fce8e6;border:1px solid #f5c6c2;color:#d93025;}
+    .form-status .material-symbols-rounded{font-size:20px;flex-shrink:0;}
+    /* TRUST */
+    .form-trust{display:flex;gap:16px;flex-wrap:wrap;margin-top:24px;padding-top:20px;border-top:1px solid var(--border);}
+    .form-trust-item{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text-caption);}
+    .form-trust-item .material-symbols-rounded{font-size:16px;color:var(--green);}
+
+    /* SERVIÇOS RÁPIDOS */
+    .quick-services{padding:48px 0 64px;background:var(--surface);border-top:1px solid var(--border);}
+    .quick-services-title{text-align:center;font-size:22px;font-weight:700;margin-bottom:32px;}
+    .quick-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;}
+    .quick-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-md);padding:20px;text-align:center;cursor:pointer;transition:all .2s;}
+    .quick-card:hover{border-color:var(--green);background:var(--green-light);transform:translateY(-2px);}
+    .quick-card .material-symbols-rounded{font-size:28px;color:var(--green);margin-bottom:10px;}
+    .quick-card-title{font-size:14px;font-weight:600;color:var(--text);}
+
+    /* FOOTER MINI */
+    .footer-mini{background:#0a1a12;color:rgba(255,255,255,.5);padding:28px 0;text-align:center;font-size:13px;}
+    .footer-mini a{color:rgba(255,255,255,.6);transition:color .2s;}
+    .footer-mini a:hover{color:#fff;}
+
+    /* FLOAT WPP */
+    .wpp-float{position:fixed;bottom:28px;right:28px;z-index:900;}
+    .wpp-float a{width:56px;height:56px;background:#25d366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.4);transition:all .2s;}
+    .wpp-float a:hover{transform:scale(1.1);box-shadow:0 6px 28px rgba(37,211,102,.5);}
+    .wpp-float svg{width:28px;height:28px;fill:#fff;}
+  </style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="container">
+    <div class="topbar-inner">
+      <div class="topbar-contacts">
+        <a href="tel:+551140035555"><span class="material-symbols-rounded">call</span>(11) 4003-5555</a>
+        <a href="mailto:contato@maissaude.seg.br"><span class="material-symbols-rounded">mail</span>contato@maissaude.seg.br</a>
+        <a href="https://wa.me/5511940035555" target="_blank" rel="noopener"><span class="material-symbols-rounded">chat</span>WhatsApp</a>
+      </div>
+      <span style="color:rgba(255,255,255,.5);font-size:12px;">Guarulhos/SP — Seg–Sex 08h–18h</span>
+    </div>
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="navbar-inner">
+    <a href="index.html" class="navbar-logo">
+      <img src="assets/maisaude_logo.png" alt="Mais Saúde" onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+      <span style="display:none;font-weight:700;">Mais <span style="color:var(--green)">Saúde</span></span>
+    </a>
+    <nav class="navbar-nav">
+      <a href="index.html#servicos">Serviços</a>
+      <a href="index.html#sobre">Sobre</a>
+      <a href="index.html#blog">Blog</a>
+      <a href="index.html#clientes">Clientes</a>
+      <a href="contato.html" class="active">Contato</a>
+    </nav>
+    <div class="navbar-cta">
+      <a href="area-cliente.html" class="btn btn-outline" style="padding:10px 20px;font-size:13px;"><span class="material-symbols-rounded">login</span>Área do Cliente</a>
+      <a href="https://wa.me/5511940035555?text=Olá%2C%20gostaria%20de%20um%20orçamento" target="_blank" rel="noopener" class="btn btn-primary" style="padding:10px 20px;font-size:13px;"><span class="material-symbols-rounded">chat</span>WhatsApp</a>
+    </div>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="container">
+    <div class="page-hero-inner">
+      <div class="breadcrumb">
+        <a href="index.html">Início</a>
+        <span class="material-symbols-rounded">chevron_right</span>
+        <span>Contato</span>
+      </div>
+      <p class="page-hero-label">Fale com a gente</p>
+      <h1>Solicite sua <em>proposta gratuita</em></h1>
+      <p class="page-hero-desc">Resposta em até 2 horas úteis. Nossa equipe vai analisar o perfil da sua empresa e montar um plano sob medida.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTATO PRINCIPAL -->
+<section class="contact-section">
+  <div class="container">
+    <div class="contact-grid">
+
+      <!-- INFO LATERAL -->
+      <div class="contact-info">
+        <h2>Vamos conversar?</h2>
+        <p class="subtitle">Atendemos empresas de todos os portes em Guarulhos e região. Sem burocracia — fale diretamente com quem decide.</p>
+
+        <div class="contact-cards">
+          <div class="contact-card">
+            <div class="contact-card-icon"><span class="material-symbols-rounded">call</span></div>
+            <div>
+              <div class="contact-card-label">Telefone / WhatsApp</div>
+              <div class="contact-card-value"><a href="tel:+551140035555">(11) 4003-5555</a></div>
+              <div class="contact-card-sub"><a href="https://wa.me/5511940035555" target="_blank">(11) 94003-5555 — WhatsApp</a></div>
+            </div>
+          </div>
+          <div class="contact-card">
+            <div class="contact-card-icon"><span class="material-symbols-rounded">mail</span></div>
+            <div>
+              <div class="contact-card-label">E-mail</div>
+              <div class="contact-card-value"><a href="mailto:contato@maissaude.seg.br">contato@maissaude.seg.br</a></div>
+              <div class="contact-card-sub">Retorno em até 2 horas úteis</div>
+            </div>
+          </div>
+          <div class="contact-card">
+            <div class="contact-card-icon"><span class="material-symbols-rounded">location_on</span></div>
+            <div>
+              <div class="contact-card-label">Endereço</div>
+              <div class="contact-card-value">Guarulhos — SP</div>
+              <div class="contact-card-sub">Atendimento presencial e remoto</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="office-hours">
+          <div class="office-hours-title"><span class="material-symbols-rounded">schedule</span>Horário de Atendimento</div>
+          <div class="office-hours-row"><span>Segunda — Sexta</span><span>08h00 — 18h00</span></div>
+          <div class="office-hours-row"><span>Sábado</span><span>08h00 — 12h00</span></div>
+          <div class="office-hours-row"><span>Domingo</span><span>Fechado</span></div>
+        </div>
+
+        <div style="margin-top:24px;">
+          <div class="contact-map-wrap">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d117889.89!2d-46.633309!3d-23.462792!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cef5d3a5f1f1b1%3A0x7c8a5b3f2e1d4a6e!2sGuarulhos%2C%20SP!5e0!3m2!1spt-BR!2sbr!4v1717660000000" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Localização Mais Saúde Guarulhos"></iframe>
+            <div class="contact-map-label"><span class="material-symbols-rounded">business</span>Guarulhos, São Paulo — SP</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FORMULÁRIO -->
+      <div class="contact-form-wrap">
+        <h2 class="form-title">Solicitar Proposta</h2>
+        <p class="form-subtitle">Preencha os dados abaixo. Nossa equipe retorna em até 2 horas úteis com uma proposta personalizada.</p>
+
+        <form id="contactForm" novalidate>
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label" for="nome">Nome completo <span>*</span></label>
+              <input class="form-input" type="text" id="nome" name="nome" placeholder="João da Silva" required autocomplete="name">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="cargo">Cargo / Função</label>
+              <input class="form-input" type="text" id="cargo" name="cargo" placeholder="RH, Diretor, Sócio..." autocomplete="organization-title">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="empresa">Nome da empresa <span>*</span></label>
+              <input class="form-input" type="text" id="empresa" name="empresa" placeholder="Razão social ou nome fantasia" required autocomplete="organization">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="cnpj">CNPJ</label>
+              <input class="form-input" type="text" id="cnpj" name="cnpj" placeholder="00.000.000/0001-00" maxlength="18" autocomplete="off">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="telefone">Telefone / WhatsApp <span>*</span></label>
+              <input class="form-input" type="tel" id="telefone" name="telefone" placeholder="(11) 99999-9999" required autocomplete="tel">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="email">E-mail <span>*</span></label>
+              <input class="form-input" type="email" id="email" name="email" placeholder="joao@empresa.com.br" required autocomplete="email">
+            </div>
+            <div class="form-group full">
+              <label class="form-label" for="servico">Serviço de interesse <span>*</span></label>
+              <select class="form-select" id="servico" name="servico" required>
+                <option value="" disabled selected>Selecione o serviço...</option>
+                <option value="pcmso">PCMSO — Programa de Controle Médico</option>
+                <option value="ppra_pgr">PGR / PPRA — Gestão de Riscos</option>
+                <option value="exames">Exames Ocupacionais (Admissional, Periódico, Demissional)</option>
+                <option value="esocial">eSocial SST</option>
+                <option value="rbac120">RBAC 120 — Aviação</option>
+                <option value="fap">Gestão do FAP/NTEP</option>
+                <option value="ergonomia">NR-17 Ergonomia</option>
+                <option value="treinamentos">Treinamentos NR</option>
+                <option value="psicologia">Psicologia Corporativa</option>
+                <option value="nutricao">Nutrição Corporativa</option>
+                <option value="completo">Pacote Completo SST</option>
+                <option value="outro">Outro / Não sei ainda</option>
+              </select>
+            </div>
+            <div class="form-group full">
+              <label class="form-label" for="funcionarios">Número de funcionários</label>
+              <select class="form-select" id="funcionarios" name="funcionarios">
+                <option value="" disabled selected>Selecione o porte...</option>
+                <option value="1-10">1 a 10 funcionários</option>
+                <option value="11-50">11 a 50 funcionários</option>
+                <option value="51-200">51 a 200 funcionários</option>
+                <option value="201-500">201 a 500 funcionários</option>
+                <option value="500+">Acima de 500 funcionários</option>
+              </select>
+            </div>
+            <div class="form-group full">
+              <label class="form-label" for="mensagem">Mensagem (opcional)</label>
+              <textarea class="form-textarea" id="mensagem" name="mensagem" placeholder="Descreva sua necessidade, urgência ou dúvida..."></textarea>
+            </div>
+            <div class="form-group full">
+              <label class="form-check">
+                <input type="checkbox" id="lgpd" name="lgpd" required>
+                Concordo com a <a href="politica.html">Política de Privacidade</a> e autorizo o contato por e-mail e WhatsApp. <span style="color:var(--error);">*</span>
+              </label>
+            </div>
+          </div>
+
+          <button type="submit" class="form-btn" id="submitBtn">
+            <span class="material-symbols-rounded">send</span>
+            <span id="btnText">Enviar Solicitação</span>
+            <span class="spinner" id="btnSpinner"></span>
+          </button>
+
+          <div class="form-status" id="formStatus"></div>
+
+          <div class="form-divider">ou fale diretamente</div>
+
+          <a href="https://wa.me/5511940035555?text=Olá%2C%20vim%20pela%20página%20de%20contato%20e%20gostaria%20de%20um%20orçamento" target="_blank" rel="noopener" class="form-wpp-btn">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Chamar no WhatsApp agora
+          </a>
+
+          <div class="form-trust">
+            <div class="form-trust-item"><span class="material-symbols-rounded">lock</span>Dados protegidos — LGPD</div>
+            <div class="form-trust-item"><span class="material-symbols-rounded">verified</span>8+ anos de mercado</div>
+            <div class="form-trust-item"><span class="material-symbols-rounded">schedule</span>Resposta em 2h úteis</div>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SERVIÇOS RÁPIDOS -->
+<section class="quick-services">
+  <div class="container">
+    <h2 class="quick-services-title">Solicite por serviço específico</h2>
+    <div class="quick-grid">
+      <div class="quick-card" onclick="document.getElementById('servico').value='pcmso';document.getElementById('contactForm').scrollIntoView({behavior:'smooth'});">
+        <span class="material-symbols-rounded">medical_services</span>
+        <div class="quick-card-title">PCMSO</div>
+      </div>
+      <div class="quick-card" onclick="document.getElementById('servico').value='ppra_pgr';document.getElementById('contactForm').scrollIntoView({behavior:'smooth'});">
+        <span class="material-symbols-rounded">security</span>
+        <div class="quick-card-title">PGR / PPRA</div>
+      </div>
+      <div class="quick-card" onclick="document.getElementById('servico').value='exames';document.getElementById('contactForm').scrollIntoView({behavior:'smooth'});">
+        <span class="material-symbols-rounded">labs</span>
+        <div class="quick-card-title">Exames Ocupacionais</div>
+      </div>
+      <div class="quick-card" onclick="document.getElementById('servico').value='esocial';document.getElementById('contactForm').scrollIntoView({behavior:'smooth'});">
+        <span class="material-symbols-rounded">assignment</span>
+        <div class="quick-card-title">eSocial SST</div>
+      </div>
+      <div class="quick-card" onclick="document.getElementById('servico').value='rbac120';document.getElementById('contactForm').scrollIntoView({behavior:'smooth'});">
+        <span class="material-symbols-rounded">flight</span>
+        <div class="quick-card-title">RBAC 120</div>
+      </div>
+      <div class="quick-card" onclick="document.getElementById('servico').value='completo';document.getElementById('contactForm').scrollIntoView({behavior:'smooth'});">
+        <span class="material-symbols-rounded">workspace_premium</span>
+        <div class="quick-card-title">Pacote Completo SST</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER MINI -->
+<footer class="footer-mini">
+  <div class="container">
+    <p>© 2026 Mais Saúde — Medicina Ocupacional e Segurança do Trabalho | Guarulhos — SP | <a href="politica.html">Privacidade</a> · <a href="lgpd.html">LGPD</a> · Desenvolvido por <a href="https://wgalmeida.com.br" target="_blank">WG Build.tech</a></p>
+  </div>
+</footer>
+
+<!-- FLOAT WHATSAPP -->
+<div class="wpp-float">
+  <a href="https://wa.me/5511940035555?text=Olá%2C%20vim%20pelo%20site%20e%20quero%20um%20orçamento" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+</div>
+
+<script>
+// ---- SUPABASE CONFIG ----
+// ATENÇÃO: Substituir pelas credenciais reais do Supabase da Mais Saúde
+const SUPABASE_URL = 'https://SEU_PROJETO.supabase.co';
+const SUPABASE_ANON_KEY = 'SUA_ANON_KEY';
+const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+// ---- MÁSCARA CNPJ ----
+document.getElementById('cnpj').addEventListener('input', function(e) {
+  let v = e.target.value.replace(/\D/g,'');
+  if (v.length > 14) v = v.slice(0,14);
+  v = v.replace(/(\d{2})(\d)/,'$1.$2');
+  v = v.replace(/(\d{3})(\d)/,'$1.$2');
+  v = v.replace(/(\d{3})(\d)/,'$1/$2');
+  v = v.replace(/(\d{4})(\d{1,2})$/,'$1-$2');
+  e.target.value = v;
+});
+
+// ---- MÁSCARA TELEFONE ----
+document.getElementById('telefone').addEventListener('input', function(e) {
+  let v = e.target.value.replace(/\D/g,'');
+  if (v.length > 11) v = v.slice(0,11);
+  if (v.length > 10) v = v.replace(/(\d{2})(\d{5})(\d{4})/,'($1) $2-$3');
+  else if (v.length > 6) v = v.replace(/(\d{2})(\d{4})(\d{0,4})/,'($1) $2-$3');
+  else if (v.length > 2) v = v.replace(/(\d{2})(\d{0,5})/,'($1) $2');
+  e.target.value = v;
+});
+
+// ---- SUBMIT FORM ----
+document.getElementById('contactForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const form = e.target;
+  const btn = document.getElementById('submitBtn');
+  const btnText = document.getElementById('btnText');
+  const spinner = document.getElementById('btnSpinner');
+  const status = document.getElementById('formStatus');
+
+  // Validação básica
+  const campos = ['nome','empresa','telefone','email','servico'];
+  let valido = true;
+  campos.forEach(id => {
+    const el = document.getElementById(id);
+    if (!el.value.trim()) { el.style.borderColor = 'var(--error)'; valido = false; }
+    else el.style.borderColor = '';
+  });
+  if (!document.getElementById('lgpd').checked) {
+    status.className = 'form-status error';
+    status.innerHTML = '<span class="material-symbols-rounded">error</span> Você precisa aceitar a Política de Privacidade para continuar.';
+    valido = false;
+  }
+  if (!valido) return;
+
+  // Loading state
+  btn.disabled = true;
+  btnText.textContent = 'Enviando...';
+  spinner.style.display = 'block';
+  status.className = 'form-status';
+
+  const payload = {
+    nome: document.getElementById('nome').value.trim(),
+    cargo: document.getElementById('cargo').value.trim(),
+    empresa: document.getElementById('empresa').value.trim(),
+    cnpj: document.getElementById('cnpj').value.trim(),
+    telefone: document.getElementById('telefone').value.trim(),
+    email: document.getElementById('email').value.trim(),
+    servico: document.getElementById('servico').value,
+    funcionarios: document.getElementById('funcionarios').value,
+    mensagem: document.getElementById('mensagem').value.trim(),
+    origem: 'site_contato',
+    criado_em: new Date().toISOString()
+  };
+
+  try {
+    // Tenta Supabase primeiro
+    if (SUPABASE_URL !== 'https://SEU_PROJETO.supabase.co') {
+      const { error } = await supabase.from('leads_site').insert([payload]);
+      if (error) throw error;
+    } else {
+      // Fallback: Formspree (configurar ID abaixo)
+      const resp = await fetch('https://formspree.io/f/FORMSPREE_ID', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      if (!resp.ok) throw new Error('Erro no envio');
+    }
+
+    // Sucesso
+    form.reset();
+    status.className = 'form-status success';
+    status.innerHTML = '<span class="material-symbols-rounded">check_circle</span> Proposta solicitada com sucesso! Nossa equipe retorna em até 2 horas úteis.';
+    btn.disabled = false;
+    btnText.textContent = 'Enviar Solicitação';
+    spinner.style.display = 'none';
+
+    // GA4 event
+    if (typeof gtag !== 'undefined') gtag('event', 'lead_form_submit', { servico: payload.servico, empresa: payload.empresa });
+
+  } catch (err) {
+    status.className = 'form-status error';
+    status.innerHTML = '<span class="material-symbols-rounded">error</span> Erro ao enviar. Tente pelo WhatsApp: <a href="https://wa.me/5511940035555" target="_blank" style="color:var(--error);text-decoration:underline;font-weight:600;">clique aqui</a>.';
+    btn.disabled = false;
+    btnText.textContent = 'Enviar Solicitação';
+    spinner.style.display = 'none';
+    console.error(err);
+  }
+});
+
+// Limpar borda vermelha no focus
+document.querySelectorAll('.form-input,.form-select,.form-textarea').forEach(el => {
+  el.addEventListener('focus', () => el.style.borderColor = '');
+});
+</script>
+
+</body>
+</html>

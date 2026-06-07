@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login — Portal Mais Saúde</title>
+  <link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0&display=block" rel="stylesheet">
+  <style>
+    :root{--green:#2bb673;--green-dark:#1c7c52;--green-light:#e8f7f0;--green-mid:#d0f0e2;--bg:#f0faf5;--surface:#fff;--border:#e8eaed;--text:#202124;--text-muted:#5f6368;--error:#d93025;--font-sans:'Google Sans','Segoe UI',system-ui,sans-serif;--radius-md:16px;--shadow-md:0 4px 20px rgba(0,0,0,.10);--shadow-green:0 8px 32px rgba(43,182,115,.2)}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:var(--font-sans);min-height:100vh;display:flex;background:linear-gradient(135deg,var(--green-dark) 0%,var(--green) 60%,#3dd68c 100%);align-items:center;justify-content:center;padding:24px}
+    .card{background:var(--surface);border-radius:24px;padding:48px 40px;width:100%;max-width:420px;box-shadow:var(--shadow-md)}
+    .logo{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:8px}
+    .logo img{height:44px}
+    .logo-text{font-size:22px;font-weight:700;color:var(--green-dark)}
+    .subtitle{text-align:center;color:var(--text-muted);font-size:14px;margin-bottom:32px}
+    .badge{display:inline-flex;align-items:center;gap:6px;background:var(--green-light);color:var(--green-dark);border-radius:999px;padding:4px 12px;font-size:12px;font-weight:600;margin:0 auto 24px;display:flex;justify-content:center;width:fit-content}
+    label{display:block;font-size:13px;font-weight:600;color:var(--text);margin-bottom:6px}
+    .input-wrap{position:relative;margin-bottom:20px}
+    .input-wrap .material-symbols-rounded{position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:18px;color:var(--text-muted)}
+    input[type=email],input[type=password],input[type=text]{width:100%;padding:12px 14px 12px 42px;border:1.5px solid var(--border);border-radius:10px;font-family:inherit;font-size:15px;color:var(--text);background:var(--bg);transition:.2s;outline:none}
+    input:focus{border-color:var(--green);background:#fff;box-shadow:0 0 0 3px rgba(43,182,115,.12)}
+    .btn{width:100%;padding:14px;background:var(--green);color:#fff;border:none;border-radius:10px;font-family:inherit;font-size:16px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:.2s;margin-top:8px}
+    .btn:hover{background:var(--green-dark);box-shadow:var(--shadow-green)}
+    .links{display:flex;justify-content:space-between;margin-top:20px;font-size:13px}
+    .links a{color:var(--green-dark);font-weight:500}
+    .divider{border:none;border-top:1px solid var(--border);margin:24px 0}
+    .back-link{text-align:center;font-size:13px;color:var(--text-muted);margin-top:16px}
+    .back-link a{color:var(--green-dark);font-weight:500}
+    .alert{background:#fff3f3;border:1px solid #fbc6c6;border-radius:8px;padding:10px 14px;font-size:13px;color:var(--error);margin-bottom:16px;display:none}
+    .help-text{font-size:12px;color:var(--text-muted);text-align:center;margin-top:16px;line-height:1.5}
+  </style>
+</head>
+<body>
+
+<div class="card">
+  <div class="logo">
+    <img src="../assets/logo.png" alt="Mais Saúde" onerror="this.style.display='none'">
+  </div>
+  <p class="subtitle">Portal do Cliente</p>
+  <div class="badge"><span class="material-symbols-rounded" style="font-size:14px">business</span> Acesso Empresas</div>
+
+  <div class="alert" id="alertBox">
+    <span class="material-symbols-rounded" style="font-size:16px;vertical-align:middle">error</span>
+    E-mail ou senha incorretos. Verifique e tente novamente.
+  </div>
+
+  <form id="loginForm" onsubmit="handleLogin(event)">
+    <div>
+      <label for="email">E-mail corporativo</label>
+      <div class="input-wrap">
+        <span class="material-symbols-rounded">mail</span>
+        <input type="email" id="email" name="email" placeholder="empresa@exemplo.com.br" required autocomplete="email">
+      </div>
+    </div>
+    <div>
+      <label for="password">Senha</label>
+      <div class="input-wrap">
+        <span class="material-symbols-rounded">lock</span>
+        <input type="password" id="password" name="password" placeholder="Sua senha" required autocomplete="current-password">
+      </div>
+    </div>
+    <button type="submit" class="btn">
+      <span class="material-symbols-rounded">login</span>
+      Entrar no Portal
+    </button>
+  </form>
+
+  <div class="links">
+    <a href="primeiro-acesso.html">Primeiro acesso?</a>
+    <a href="#">Esqueci minha senha</a>
+  </div>
+
+  <hr class="divider">
+
+  <p class="help-text">
+    Problemas para acessar? Entre em contato:<br>
+    <a href="tel:+551143221234" style="color:var(--green-dark);font-weight:500">(11) 4322-1234</a> &bull;
+    <a href="mailto:suporte@maissaude.seg.br" style="color:var(--green-dark);font-weight:500">suporte@maissaude.seg.br</a>
+  </p>
+
+  <p class="back-link"><a href="../index.html">← Voltar ao site</a></p>
+</div>
+
+<script>
+function handleLogin(e){
+  e.preventDefault();
+  // TODO: integrar com Supabase Auth
+  const email = document.getElementById('email').value;
+  const pass = document.getElementById('password').value;
+  if(email && pass){
+    // Simula redirect para dashboard
+    window.location.href = 'dashboard.html';
+  } else {
+    document.getElementById('alertBox').style.display = 'block';
+  }
+}
+</script>
+</body>
+</html>

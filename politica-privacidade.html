@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Política de Privacidade — Mais Saúde</title>
+  <meta name="description" content="Política de Privacidade da Mais Saúde. Saiba como coletamos, usamos e protegemos seus dados pessoais conforme a LGPD.">
+  <link rel="canonical" href="https://www.maissaude.seg.br/politica-privacidade.html">
+  <link rel="icon" type="image/png" sizes="512x512" href="assets/favicon-512.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0&display=block" rel="stylesheet">
+  <style>
+    :root {
+      --green: #12897E; --green-dark: #0d6b62; --green-light: #e6f4f2;
+      --bg: #F4F3EF; --surface: rgba(255,255,255,0.96); --border: rgba(15,23,42,0.10);
+      --text: #183028; --text-muted: #61756c;
+      --font-sans: 'DM Sans', 'Segoe UI', system-ui, sans-serif;
+      --radius-md: 14px;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: var(--font-sans); background: var(--bg); color: var(--text); line-height: 1.7; }
+
+    /* NAV */
+    nav { background: var(--surface); border-bottom: 1px solid var(--border); padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 64px; position: sticky; top: 0; z-index: 100; }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-logo img { height: 36px; }
+    .nav-logo span { font-weight: 700; font-size: 1.1rem; color: var(--green-dark); }
+    .nav-back { display: flex; align-items: center; gap: 6px; color: var(--green-dark); text-decoration: none; font-weight: 500; font-size: 0.9rem; }
+    .nav-back:hover { color: var(--green); }
+    .material-symbols-rounded { font-size: 20px; vertical-align: middle; }
+
+    /* HERO */
+    .hero { background: linear-gradient(135deg, var(--green-dark) 0%, var(--green) 100%); color: #fff; padding: 60px 24px 48px; text-align: center; }
+    .hero h1 { font-size: 2rem; font-weight: 700; margin-bottom: 12px; }
+    .hero p { font-size: 1rem; opacity: 0.9; max-width: 540px; margin: 0 auto; }
+    .hero .badge { display: inline-block; background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.3); border-radius: 20px; padding: 6px 16px; font-size: 0.82rem; margin-top: 16px; }
+
+    /* CONTENT */
+    .container { max-width: 820px; margin: 0 auto; padding: 48px 24px 80px; }
+    .toc { background: var(--green-light); border: 1px solid #b2e0cc; border-radius: var(--radius-md); padding: 24px 28px; margin-bottom: 40px; }
+    .toc h3 { font-size: 0.95rem; color: var(--green-dark); margin-bottom: 12px; font-weight: 700; }
+    .toc ol { padding-left: 20px; }
+    .toc li { margin-bottom: 6px; }
+    .toc a { color: var(--green-dark); text-decoration: none; font-size: 0.9rem; }
+    .toc a:hover { text-decoration: underline; }
+
+    section { margin-bottom: 40px; }
+    section h2 { font-size: 1.2rem; font-weight: 700; color: var(--green-dark); border-left: 4px solid var(--green); padding-left: 12px; margin-bottom: 16px; }
+    section p, section li { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 10px; }
+    section ul, section ol { padding-left: 20px; }
+    section li { margin-bottom: 6px; }
+    .highlight-box { background: var(--green-light); border-left: 4px solid var(--green); border-radius: 0 8px 8px 0; padding: 16px 20px; margin: 16px 0; }
+    .highlight-box p { color: var(--text); margin: 0; font-size: 0.92rem; }
+    table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.88rem; }
+    th { background: var(--green-dark); color: #fff; padding: 10px 14px; text-align: left; }
+    td { padding: 10px 14px; border-bottom: 1px solid var(--border); color: var(--text-muted); }
+    tr:hover td { background: var(--green-light); }
+    .contact-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 24px; margin-top: 16px; }
+    .contact-card p { margin-bottom: 6px; font-size: 0.9rem; }
+    .contact-card strong { color: var(--text); }
+    .last-update { background: #f1f3f4; border-radius: 8px; padding: 12px 16px; font-size: 0.82rem; color: var(--text-muted); text-align: center; margin-top: 40px; }
+
+    /* FOOTER */
+    footer { background: #1a1a1a; color: #9aa0a6; text-align: center; padding: 24px; font-size: 0.82rem; }
+    footer a { color: var(--green); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="assets/logo.png" alt="Mais Saúde" style="height:36px;width:auto;">
+  </a>
+  <a href="index.html" class="nav-back">
+    <span class="material-symbols-rounded">arrow_back</span>
+    Voltar ao site
+  </a>
+</nav>
+
+<div class="hero">
+  <h1>Política de Privacidade</h1>
+  <p>Transparência total sobre como tratamos seus dados pessoais e de saúde</p>
+  <span class="badge">Conforme a Lei nº 13.709/2018 (LGPD)</span>
+</div>
+
+<div class="container">
+
+  <div class="toc">
+    <h3>Índice</h3>
+    <ol>
+      <li><a href="#quem-somos">Quem somos</a></li>
+      <li><a href="#dados-coletados">Dados que coletamos</a></li>
+      <li><a href="#finalidade">Finalidade do tratamento</a></li>
+      <li><a href="#base-legal">Base legal</a></li>
+      <li><a href="#compartilhamento">Compartilhamento de dados</a></li>
+      <li><a href="#retencao">Retenção e exclusão</a></li>
+      <li><a href="#seguranca">Segurança</a></li>
+      <li><a href="#direitos">Seus direitos (LGPD)</a></li>
+      <li><a href="#cookies">Cookies e rastreamento</a></li>
+      <li><a href="#dpo">Encarregado (DPO) e contato</a></li>
+    </ol>
+  </div>
+
+  <section id="quem-somos">
+    <h2>1. Quem somos</h2>
+    <p>A <strong>Mais Saúde Medicina Ocupacional e Segurança do Trabalho Ltda.</strong> (“Mais Saúde”, “nós”) é uma empresa especializada em saúde ocupacional, medicina do trabalho, exames clínicos e gestão de SST, com sede em Guarulhos/SP.</p>
+    <p>Esta Política de Privacidade aplica-se ao site <strong>www.maissaude.seg.br</strong>, ao Portal do Cliente e a todos os sistemas e serviços da Mais Saúde.</p>
+    <div class="highlight-box">
+      <p><strong>Controladora:</strong> Mais Saúde Medicina Ocupacional e Segurança do Trabalho Ltda.<br>
+      <strong>CNPJ:</strong> A confirmar<br>
+      <strong>Endereço:</strong> Guarulhos/SP</p>
+    </div>
+  </section>
+
+  <section id="dados-coletados">
+    <h2>2. Dados que coletamos</h2>
+    <p>Coletamos diferentes categorias de dados conforme o serviço utilizado:</p>
+    <table>
+      <thead>
+        <tr><th>Categoria</th><th>Exemplos</th><th>Contexto</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Dados de identificação</td><td>Nome, CPF, RG, data de nascimento</td><td>Cadastro de funcionários e pacientes</td></tr>
+        <tr><td>Dados de contato</td><td>E-mail, telefone, endereço</td><td>Formulários do site e portal</td></tr>
+        <tr><td>Dados profissionais</td><td>Cargo, setor, empresa, CTPS, PIS</td><td>Gestão de vínculo trabalhista</td></tr>
+        <tr><td>Dados de saúde (sensíveis)</td><td>Resultados de exames, ASO, laudos, diagnósticos</td><td>Atendimento médico ocupacional</td></tr>
+        <tr><td>Dados de navegação</td><td>IP, cookies, páginas visitadas</td><td>Site institucional (Google Analytics)</td></tr>
+        <tr><td>Dados de empresa</td><td>CNPJ, CNAE, nome fantasia, contatos</td><td>Cadastro de empresas-clientes</td></tr>
+      </tbody>
+    </table>
+    <p><strong>Dados sensíveis de saúde</strong> só são tratados quando estritamente necessários para a prestação dos serviços médicos e ocupacionais, com medidas reforçadas de segurança e controle de acesso.</p>
+  </section>
+
+  <section id="finalidade">
+    <h2>3. Finalidade do tratamento</h2>
+    <ul>
+      <li>Realização de exames médicos ocupacionais (admissional, periódico, demissional, retorno e mudança de função)</li>
+      <li>Emissão de ASO (Atestado de Saúde Ocupacional)</li>
+      <li>Elaboração e gestão de PCMSO, PGR e GRO</li>
+      <li>Envio de eventos ao eSocial SST (S-2220, S-2240)</li>
+      <li>Gestão de agenda e atendimento</li>
+      <li>Comunicação com empresas-clientes e funcionários</li>
+      <li>Cumprimento de obrigações legais e regulatórias (NR-01, NR-07, NR-09, eSocial)</li>
+      <li>Melhoria dos serviços e experiência do usuário</li>
+      <li>Marketing e comunicação institucional (com consentimento)</li>
+    </ul>
+  </section>
+
+  <section id="base-legal">
+    <h2>4. Base legal (LGPD)</h2>
+    <table>
+      <thead>
+        <tr><th>Finalidade</th><th>Base legal</th><th>Art. LGPD</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Exames ocupacionais e ASO</td><td>Obrigação legal / Tutela da saúde</td><td>Art. 7º, II e Art. 11, II, f</td></tr>
+        <tr><td>PCMSO / PGR / eSocial</td><td>Obrigação legal</td><td>Art. 7º, II</td></tr>
+        <tr><td>Cadastro de clientes</td><td>Execução de contrato</td><td>Art. 7º, V</td></tr>
+        <tr><td>Contato / formulário do site</td><td>Consentimento</td><td>Art. 7º, I</td></tr>
+        <tr><td>Marketing / newsletter</td><td>Consentimento</td><td>Art. 7º, I</td></tr>
+        <tr><td>Analytics do site</td><td>Interesse legítimo</td><td>Art. 7º, IX</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="compartilhamento">
+    <h2>5. Compartilhamento de dados</h2>
+    <p>Seus dados podem ser compartilhados exclusivamente nas seguintes situações:</p>
+    <ul>
+      <li><strong>Laboratórios parceiros</strong> — para execução de exames e análises clínicas</li>
+      <li><strong>Médicos do trabalho</strong> — para emissão de laudos e ASO</li>
+      <li><strong>Empresa contratante</strong> — resultados de ASO e informações de aptidão (somente o que a legislação permite)</li>
+      <li><strong>eSocial/Receita Federal</strong> — obrigação legal de envio de eventos SST</li>
+      <li><strong>Provedores de tecnologia</strong> — Supabase (banco de dados, EUA/UE), Vercel (hospedagem), Google (analytics, e-mail)</li>
+      <li><strong>Autoridades pública</strong> — quando exigido por lei ou ordem judicial</li>
+    </ul>
+    <div class="highlight-box">
+      <p>Não vendemos, alugamos ou comercializamos dados pessoais para terceiros sob nenhuma circunstância.</p>
+    </div>
+  </section>
+
+  <section id="retencao">
+    <h2>6. Retenção e exclusão</h2>
+    <table>
+      <thead>
+        <tr><th>Dado</th><th>Prazo de retenção</th><th>Fundamento</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>ASO e prontuário ocupacional</td><td>20 anos após desligamento</td><td>NR-07 e CLT</td></tr>
+        <tr><td>PGR / PCMSO</td><td>20 anos</td><td>NR-01 / NR-09</td></tr>
+        <tr><td>Laudos de exames clínicos</td><td>10 anos</td><td>Resolução CFM</td></tr>
+        <tr><td>Dados contratuais empresa</td><td>5 anos após término do contrato</td><td>Código Civil</td></tr>
+        <tr><td>Leads e contatos do site</td><td>Até revogação do consentimento</td><td>LGPD Art. 7º, I</td></tr>
+        <tr><td>Logs de acesso</td><td>6 meses</td><td>Marco Civil da Internet</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="seguranca">
+    <h2>7. Segurança</h2>
+    <p>Adotamos medidas técnicas e organizacionais para proteger seus dados:</p>
+    <ul>
+      <li>Criptografia TLS/HTTPS em todas as conexões</li>
+      <li>Banco de dados com Row Level Security (RLS) por empresa/tenant</li>
+      <li>Autenticação com MFA disponível</li>
+      <li>Controle de acesso por perfil (RBAC)</li>
+      <li>Backups diários com retenção de 30 dias</li>
+      <li>Trilha de auditoria imutável para ações críticas</li>
+      <li>Revisão periódica de acessos e permissões</li>
+    </ul>
+    <p>Em caso de incidente de segurança, notificaremos a ANPD e os titulares afetados conforme exigido pela LGPD (Art. 48).</p>
+  </section>
+
+  <section id="direitos">
+    <h2>8. Seus direitos (LGPD Art. 18)</h2>
+    <p>Você tem os seguintes direitos sobre seus dados pessoais:</p>
+    <ul>
+      <li><strong>Confirmação</strong> — saber se tratamos seus dados</li>
+      <li><strong>Acesso</strong> — obter cópia dos seus dados</li>
+      <li><strong>Correção</strong> — corrigir dados incompletos ou desatualizados</li>
+      <li><strong>Anonimização ou exclusão</strong> — quando baseado em consentimento</li>
+      <li><strong>Portabilidade</strong> — receber seus dados em formato estruturado</li>
+      <li><strong>Revogação do consentimento</strong> — a qualquer momento</li>
+      <li><strong>Oposição</strong> — contestar tratamentos realizados sem base legal adequada</li>
+      <li><strong>Informação</strong> — saber com quem compartilhamos seus dados</li>
+    </ul>
+    <p>Para exercer seus direitos, entre em contato com nosso Encarregado (DPO) pelo e-mail abaixo.</p>
+  </section>
+
+  <section id="cookies">
+    <h2>9. Cookies e rastreamento</h2>
+    <p>Utilizamos os seguintes tipos de cookies:</p>
+    <table>
+      <thead>
+        <tr><th>Cookie</th><th>Tipo</th><th>Finalidade</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>_ga, _gid</td><td>Analytics</td><td>Google Analytics 4 — estatísticas de acesso</td></tr>
+        <tr><td>Sessão de autenticação</td><td>Essencial</td><td>Manter login no portal do cliente</td></tr>
+        <tr><td>Preferências</td><td>Funcional</td><td>Idioma, tema e preferências de navegação</td></tr>
+      </tbody>
+    </table>
+    <p>Você pode gerenciar ou desativar cookies pelo painel de preferências do seu navegador. A desativação de cookies essenciais pode afetar o funcionamento do portal.</p>
+  </section>
+
+  <section id="dpo">
+    <h2>10. Encarregado (DPO) e contato</h2>
+    <p>Para dúvidas, solicitações ou exercício de direitos relacionados a esta Política:</p>
+    <div class="contact-card">
+      <p><strong>Encarregado de Dados (DPO):</strong> A designar</p>
+      <p><strong>E-mail:</strong> <a href="mailto:privacidade@maissaude.seg.br" style="color:var(--green-dark)">privacidade@maissaude.seg.br</a></p>
+      <p><strong>Telefone:</strong> (11) 2412-5518</p>
+      <p><strong>Endereço:</strong> Guarulhos/SP</p>
+      <p><strong>Horário:</strong> Segunda a Sexta, 8h às 17h30</p>
+    </div>
+    <p style="margin-top:16px;">Você também pode entrar em contato com a <strong>ANPD</strong> (Autoridade Nacional de Proteção de Dados) em <a href="https://www.gov.br/anpd" target="_blank" style="color:var(--green-dark)">www.gov.br/anpd</a>.</p>
+  </section>
+
+  <div class="last-update">
+    📅 Última atualização: <strong>06 de junho de 2026</strong> &nbsp;|&nbsp; Versão 1.0 &nbsp;|&nbsp;
+    Esta política pode ser atualizada periodicamente. Comunicações relevantes serão enviadas por e-mail.
+  </div>
+
+</div>
+
+<footer>
+  <p>&copy; 2026 Mais Saúde Medicina Ocupacional e Segurança do Trabalho Ltda. &nbsp;|&nbsp;
+  <a href="index.html">Site</a> &nbsp;|&nbsp;
+  <a href="lgpd.html">LGPD</a> &nbsp;|&nbsp;
+  <a href="contato.html">Contato</a>
+  </p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LGPD e Proteção de Dados — Mais Saúde</title>
+  <meta name="description" content="Entenda como a Mais Saúde trata dados pessoais e dados sensíveis de saúde com conformidade à LGPD, segurança em camadas e atendimento aos direitos dos titulares.">
+  <link rel="canonical" href="https://www.maissaude.seg.br/lgpd.html">
+  <meta property="og:title" content="LGPD e Proteção de Dados — Mais Saúde">
+  <meta property="og:description" content="Privacidade, segurança e governança de dados aplicadas à saúde ocupacional.">
+  <meta property="og:image" content="assets/og-maissaude.png">
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+  <link rel="icon" type="image/png" sizes="512x512" href="assets/maisaude_icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0&display=block" rel="stylesheet">
+  <style>
+    :root {
+      --green:#2bb673;--green-dark:#1c7c52;--green-light:#e8f7f0;--green-mid:#d0f0e2;
+      --bg:#f8f9fa;--surface:#ffffff;--surface-2:#f1f3f4;
+      --border:#e8eaed;--border-strong:#dadce0;
+      --text:#202124;--text-muted:#5f6368;--text-caption:#80868b;
+      --warning:#f9ab00;--error:#d93025;--success:#1e8e3e;--info:#1a73e8;
+      --font-sans:'Google Sans','Segoe UI',system-ui,sans-serif;
+      --radius-sm:8px;--radius-md:14px;--radius-lg:24px;--radius-full:999px;
+      --shadow-sm:0 1px 3px rgba(0,0,0,.08);--shadow-md:0 4px 16px rgba(0,0,0,.10);
+      --shadow-lg:0 12px 40px rgba(0,0,0,.12);--shadow-green:0 8px 32px rgba(43,182,115,.25);
+      --max-w:1200px;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{font-family:var(--font-sans);font-size:16px;line-height:1.6;color:var(--text);background:var(--bg);-webkit-font-smoothing:antialiased;}
+    a{color:inherit;text-decoration:none;}
+    ul{list-style:none;}
+    button{cursor:pointer;font-family:inherit;border:none;background:none;}
+    .container{width:100%;max-width:var(--max-w);margin:0 auto;padding:0 24px;}
+    .material-symbols-rounded{font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 24;vertical-align:middle;line-height:1;}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:var(--radius-full);font-size:15px;font-weight:600;transition:all .2s ease;}
+    .btn-primary{background:var(--green);color:#fff;box-shadow:var(--shadow-green);}
+    .btn-primary:hover{background:var(--green-dark);transform:translateY(-1px);}
+    .btn-outline{background:transparent;color:var(--text);border:1.5px solid var(--border-strong);}
+    .btn-outline:hover{background:var(--surface-2);border-color:var(--green);color:var(--green);}
+
+    .topbar{background:var(--green-dark);color:rgba(255,255,255,.85);font-size:13px;padding:8px 0;}
+    .topbar-inner{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+    .topbar-contacts{display:flex;gap:20px;flex-wrap:wrap;}
+    .topbar-contacts a{display:flex;align-items:center;gap:6px;color:rgba(255,255,255,.85);transition:color .2s;}
+    .topbar-contacts a:hover{color:#fff;}
+    .topbar-contacts .material-symbols-rounded{font-size:16px;}
+
+    .navbar{position:sticky;top:0;z-index:1000;background:rgba(255,255,255,.92);backdrop-filter:blur(16px) saturate(180%);border-bottom:1px solid var(--border);box-shadow:var(--shadow-md);}
+    .navbar-inner{display:flex;align-items:center;justify-content:space-between;padding:0 24px;max-width:var(--max-w);margin:0 auto;height:64px;}
+    .navbar-logo{display:flex;align-items:center;gap:10px;font-size:20px;font-weight:700;color:var(--text);}
+    .navbar-logo img{height:40px;width:auto;display:block;}
+    .navbar-nav{display:flex;align-items:center;gap:2px;}
+    .navbar-nav a{padding:8px 14px;border-radius:var(--radius-sm);font-size:14px;font-weight:500;color:var(--text-muted);transition:all .18s;white-space:nowrap;}
+    .navbar-nav a:hover{color:var(--text);background:var(--surface-2);}
+    .navbar-nav a.active{color:var(--green);background:var(--green-light);}
+    .navbar-cta{display:flex;align-items:center;gap:10px;}
+    @media(max-width:900px){.navbar-nav{display:none;}.navbar-cta .btn-outline{display:none;}}
+
+    .page-hero{background:linear-gradient(135deg,#0f2d1e,#1a4a32);padding:64px 0 56px;color:#fff;}
+    .page-hero-inner{display:flex;flex-direction:column;align-items:center;text-align:center;gap:16px;}
+    .page-hero-label{font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.55);}
+    .page-hero h1{font-size:clamp(28px,4vw,44px);font-weight:700;line-height:1.15;}
+    .page-hero h1 em{font-style:normal;background:linear-gradient(90deg,#2bb673,#7ee8b5);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+    .page-hero-desc{font-size:17px;color:rgba(255,255,255,.65);max-width:760px;}
+    .breadcrumb{display:flex;align-items:center;gap:6px;font-size:13px;color:rgba(255,255,255,.45);margin-bottom:8px;}
+    .breadcrumb a{color:rgba(255,255,255,.55);transition:color .2s;}
+    .breadcrumb a:hover{color:#fff;}
+    .breadcrumb .material-symbols-rounded{font-size:14px;}
+
+    .lgpd-section{padding:72px 0 96px;}
+    .lgpd-layout{display:grid;grid-template-columns:360px minmax(0,1fr);gap:40px;align-items:start;}
+    @media(max-width:980px){.lgpd-layout{grid-template-columns:1fr;}}
+
+    .sidebar-stack{display:flex;flex-direction:column;gap:18px;position:sticky;top:96px;}
+    @media(max-width:980px){.sidebar-stack{position:static;}}
+    .side-card,.content-card,.right-card,.pillar,.contact-card,.process-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);box-shadow:var(--shadow-sm);}
+    .side-card{padding:24px;}
+    .side-card h2{font-size:22px;font-weight:700;margin-bottom:8px;}
+    .side-card p{font-size:14px;color:var(--text-muted);line-height:1.7;}
+    .side-list{display:flex;flex-direction:column;gap:12px;margin-top:20px;}
+    .side-list-item{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--text-muted);line-height:1.5;}
+    .side-list-item .material-symbols-rounded{font-size:18px;color:var(--green);}
+
+    .contact-card{padding:20px;display:flex;align-items:flex-start;gap:14px;}
+    .contact-card-icon{width:44px;height:44px;border-radius:var(--radius-sm);background:var(--green-light);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+    .contact-card-icon .material-symbols-rounded{color:var(--green);font-size:22px;}
+    .contact-card-label{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text-caption);margin-bottom:4px;}
+    .contact-card-value{font-size:15px;font-weight:600;color:var(--text);}
+    .contact-card-sub{font-size:13px;color:var(--text-muted);margin-top:2px;}
+    .contact-card a{color:var(--text);}
+    .contact-card a:hover{color:var(--green);}
+
+    .content-stack{display:flex;flex-direction:column;gap:20px;}
+    .content-card{padding:32px;}
+    .section-kicker{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--green-dark);background:var(--green-light);border:1px solid var(--green-mid);border-radius:var(--radius-full);padding:6px 12px;margin-bottom:16px;}
+    .content-card h2{font-size:26px;font-weight:700;margin-bottom:12px;line-height:1.2;}
+    .content-card p{font-size:15px;color:var(--text-muted);line-height:1.8;margin-bottom:14px;}
+    .content-card ul{display:flex;flex-direction:column;gap:10px;margin-top:12px;}
+    .content-card li{font-size:15px;color:var(--text-muted);line-height:1.7;display:flex;gap:10px;}
+    .content-card li::before{content:'•';color:var(--green);font-weight:700;}
+
+    .pillars{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin-top:22px;}
+    .pillar{padding:18px;text-align:center;background:var(--green-light);border-color:var(--green-mid);}
+    .pillar .num{font-size:28px;font-weight:700;color:var(--green-dark);}
+    .pillar p{font-size:13px;color:var(--green-dark);font-weight:600;line-height:1.5;margin:8px 0 0;}
+
+    .rights-grid,.process-grid,.contact-grid{display:grid;gap:16px;}
+    .rights-grid{grid-template-columns:repeat(auto-fit,minmax(220px,1fr));margin-top:20px;}
+    .process-grid{grid-template-columns:repeat(auto-fit,minmax(220px,1fr));margin-top:20px;}
+    .contact-grid{grid-template-columns:repeat(auto-fit,minmax(220px,1fr));margin-top:20px;}
+    .right-card,.process-card{padding:20px;}
+    .right-card .icon,.process-card .icon{width:44px;height:44px;border-radius:12px;background:var(--green-light);display:flex;align-items:center;justify-content:center;color:var(--green-dark);font-size:22px;margin-bottom:14px;}
+    .right-card h4,.process-card h4{font-size:15px;font-weight:700;color:var(--text);margin-bottom:6px;}
+    .right-card p,.process-card p{font-size:13px;color:var(--text-muted);line-height:1.6;margin:0;}
+
+    .info-box,.green-box{padding:18px 20px;border-radius:var(--radius-md);margin-top:18px;}
+    .info-box{background:#e8f0fe;border:1px solid #c6dafc;}
+    .green-box{background:var(--green-light);border:1px solid var(--green-mid);}
+    .info-box p,.green-box p{margin:0;color:var(--text);font-size:14px;line-height:1.7;}
+
+    .form-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:32px;box-shadow:var(--shadow-sm);}
+    .form-card h3{font-size:22px;font-weight:700;margin-bottom:6px;}
+    .form-card .form-subtitle{font-size:14px;color:var(--text-muted);margin-bottom:24px;}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+    @media(max-width:640px){.form-grid{grid-template-columns:1fr;}}
+    .form-group{display:flex;flex-direction:column;gap:6px;}
+    .form-group.full{grid-column:1/-1;}
+    .form-label{font-size:13px;font-weight:600;color:var(--text);}
+    .form-label span{color:var(--error);margin-left:2px;}
+    .form-input,.form-select,.form-textarea{
+      width:100%;padding:12px 16px;border:1.5px solid var(--border-strong);border-radius:var(--radius-sm);
+      font-family:var(--font-sans);font-size:15px;color:var(--text);background:var(--bg);
+      transition:border-color .18s,box-shadow .18s;outline:none;
+    }
+    .form-input:focus,.form-select:focus,.form-textarea:focus{
+      border-color:var(--green);box-shadow:0 0 0 3px rgba(43,182,115,.12);
+    }
+    .form-textarea{resize:vertical;min-height:120px;}
+    .form-select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%235f6368' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:40px;}
+    .form-check{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--text-muted);margin-top:4px;}
+    .form-check input{margin-top:2px;accent-color:var(--green);width:16px;height:16px;flex-shrink:0;cursor:pointer;}
+    .form-check a{color:var(--green-dark);text-decoration:underline;}
+    .form-btn{width:100%;padding:16px;font-size:16px;font-weight:700;border-radius:var(--radius-full);background:var(--green);color:#fff;border:none;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:10px;box-shadow:var(--shadow-green);margin-top:8px;}
+    .form-btn:hover{background:var(--green-dark);transform:translateY(-1px);}
+    .form-note{font-size:12px;color:var(--text-caption);margin-top:12px;line-height:1.7;}
+
+    .footer-mini{background:#0a1a12;color:rgba(255,255,255,.5);padding:28px 0;text-align:center;font-size:13px;}
+    .footer-mini a{color:rgba(255,255,255,.6);transition:color .2s;}
+    .footer-mini a:hover{color:#fff;}
+  </style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="container">
+    <div class="topbar-inner">
+      <div class="topbar-contacts">
+        <a href="tel:+551140035555"><span class="material-symbols-rounded">call</span>(11) 4003-5555</a>
+        <a href="mailto:contato@maissaude.seg.br"><span class="material-symbols-rounded">mail</span>contato@maissaude.seg.br</a>
+        <a href="https://wa.me/5511940035555" target="_blank" rel="noopener"><span class="material-symbols-rounded">chat</span>WhatsApp</a>
+      </div>
+      <span style="color:rgba(255,255,255,.5);font-size:12px;">Guarulhos/SP — Seg–Sex 08h–18h</span>
+    </div>
+  </div>
+</div>
+
+<nav class="navbar">
+  <div class="navbar-inner">
+    <a href="index.html" class="navbar-logo">
+      <img src="assets/maisaude_logo.png" alt="Mais Saúde" onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+      <span style="display:none;font-weight:700;">Mais <span style="color:var(--green)">Saúde</span></span>
+    </a>
+    <div class="navbar-nav">
+      <a href="index.html#servicos">Serviços</a>
+      <a href="index.html#sobre">Sobre</a>
+      <a href="index.html#blog">Blog</a>
+      <a href="index.html#clientes">Clientes</a>
+      <a href="contato.html">Contato</a>
+    </div>
+    <div class="navbar-cta">
+      <a href="area-cliente.html" class="btn btn-outline" style="padding:10px 20px;font-size:13px;"><span class="material-symbols-rounded">login</span>Área do Cliente</a>
+      <a href="https://wa.me/5511940035555?text=Olá%2C%20quero%20falar%20sobre%20LGPD%20e%20proteção%20de%20dados" target="_blank" rel="noopener" class="btn btn-primary" style="padding:10px 20px;font-size:13px;"><span class="material-symbols-rounded">chat</span>WhatsApp</a>
+    </div>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="page-hero-inner">
+      <div class="breadcrumb">
+        <a href="index.html">Início</a>
+        <span class="material-symbols-rounded">chevron_right</span>
+        <span>LGPD</span>
+      </div>
+      <p class="page-hero-label">Privacidade e governança</p>
+      <h1>LGPD e <em>proteção de dados sensíveis</em></h1>
+      <p class="page-hero-desc">A Mais Saúde trata dados ocupacionais e clínicos com controles reforçados, acesso mínimo por perfil, trilha de auditoria e resposta estruturada aos direitos dos titulares.</p>
+    </div>
+  </div>
+</section>
+
+<section class="lgpd-section">
+  <div class="container">
+    <div class="lgpd-layout">
+
+      <aside class="sidebar-stack">
+        <div class="side-card">
+          <h2>Compromisso real com a LGPD</h2>
+          <p>Tratamos dados pessoais e dados sensíveis de saúde dentro de um contexto regulado por obrigações legais, tutela da saúde e controles de segurança em múltiplas camadas.</p>
+          <div class="side-list">
+            <div class="side-list-item"><span class="material-symbols-rounded">verified_user</span><span>Finalidade definida para cada dado coletado</span></div>
+            <div class="side-list-item"><span class="material-symbols-rounded">shield_lock</span><span>Acesso mínimo por função e trilha de auditoria</span></div>
+            <div class="side-list-item"><span class="material-symbols-rounded">data_object</span><span>Separação entre operação, gestão e informação clínica</span></div>
+            <div class="side-list-item"><span class="material-symbols-rounded">health_and_safety</span><span>Revisão humana obrigatória em decisões críticas</span></div>
+          </div>
+        </div>
+
+        <div class="contact-card">
+          <div class="contact-card-icon"><span class="material-symbols-rounded">mail</span></div>
+          <div>
+            <div class="contact-card-label">E-mail DPO</div>
+            <div class="contact-card-value"><a href="mailto:privacidade@maissaude.seg.br">privacidade@maissaude.seg.br</a></div>
+            <div class="contact-card-sub">Canal para solicitações dos titulares</div>
+          </div>
+        </div>
+
+        <div class="contact-card">
+          <div class="contact-card-icon"><span class="material-symbols-rounded">schedule</span></div>
+          <div>
+            <div class="contact-card-label">Prazo de resposta</div>
+            <div class="contact-card-value">Até 15 dias úteis</div>
+            <div class="contact-card-sub">Com validação e rastreabilidade interna</div>
+          </div>
+        </div>
+      </aside>
+
+      <div class="content-stack">
+        <div class="content-card">
+          <span class="section-kicker"><span class="material-symbols-rounded">gpp_good</span>Base legal e proteção</span>
+          <h2>Como a Mais Saúde trata dados pessoais e dados de saúde</h2>
+          <p>Dados de saúde são classificados pela LGPD como <strong>dados sensíveis</strong> e exigem tratamento ainda mais rigoroso. Na Mais Saúde, isso significa limitar acesso, registrar evidências, separar perfis de uso e manter governança contínua sobre cada fluxo crítico.</p>
+          <p>Os tratamentos relacionados à medicina ocupacional, exames, ASO, PGR, PCMSO e eventos legais são conduzidos com base em obrigação legal, tutela da saúde e, quando aplicável, consentimento específico e destacado.</p>
+          <div class="pillars">
+            <div class="pillar"><div class="num">01</div><p>Finalidade definida</p></div>
+            <div class="pillar"><div class="num">02</div><p>Acesso mínimo</p></div>
+            <div class="pillar"><div class="num">03</div><p>Segurança em camadas</p></div>
+            <div class="pillar"><div class="num">04</div><p>Auditoria contínua</p></div>
+            <div class="pillar"><div class="num">05</div><p>Revisão humana crítica</p></div>
+          </div>
+          <div class="info-box">
+            <p><strong>Dados clínicos não circulam livremente.</strong> Perfis operacionais visualizam status, agenda e pendências; informações sensíveis ficam restritas aos responsáveis autorizados e aos contextos estritamente necessários.</p>
+          </div>
+        </div>
+
+        <div class="content-card">
+          <span class="section-kicker"><span class="material-symbols-rounded">fact_check</span>Direitos do titular</span>
+          <h2>Seus principais direitos segundo a LGPD</h2>
+          <div class="rights-grid">
+            <div class="right-card"><div class="icon"><span class="material-symbols-rounded">check_circle</span></div><h4>Confirmação</h4><p>Saber se tratamos seus dados e em que contexto.</p></div>
+            <div class="right-card"><div class="icon"><span class="material-symbols-rounded">description</span></div><h4>Acesso</h4><p>Solicitar cópia ou resumo estruturado dos seus dados.</p></div>
+            <div class="right-card"><div class="icon"><span class="material-symbols-rounded">edit_square</span></div><h4>Correção</h4><p>Ajustar dados incompletos, inexatos ou desatualizados.</p></div>
+            <div class="right-card"><div class="icon"><span class="material-symbols-rounded">delete</span></div><h4>Exclusão</h4><p>Pedir eliminação quando o tratamento depender de consentimento.</p></div>
+            <div class="right-card"><div class="icon"><span class="material-symbols-rounded">swap_horiz</span></div><h4>Portabilidade</h4><p>Receber seus dados em formato estruturado, quando aplicável.</p></div>
+            <div class="right-card"><div class="icon"><span class="material-symbols-rounded">report</span></div><h4>Oposição</h4><p>Contestar tratamentos sem base legal adequada.</p></div>
+            <div class="right-card"><div class="icon"><span class="material-symbols-rounded">notifications_off</span></div><h4>Revogação</h4><p>Retirar consentimento nos casos em que ele for a base legal.</p></div>
+            <div class="right-card"><div class="icon"><span class="material-symbols-rounded">share</span></div><h4>Compartilhamentos</h4><p>Entender com quem os dados podem ser compartilhados.</p></div>
+          </div>
+        </div>
+
+        <div class="content-card">
+          <span class="section-kicker"><span class="material-symbols-rounded">health_and_safety</span>Dados sensíveis</span>
+          <h2>Tratamento especial para dados de saúde ocupacional</h2>
+          <p>Na prática, dados de saúde ocupacional exigem base legal específica e controles mais rígidos. Na Mais Saúde, os principais fundamentos usados são:</p>
+          <ul>
+            <li><strong>Obrigação legal:</strong> cumprimento de normas como NR-07, NR-09 e exigências relacionadas ao eSocial SST.</li>
+            <li><strong>Tutela da saúde:</strong> execução de exames, ASO, avaliações ocupacionais e demais rotinas assistenciais previstas.</li>
+            <li><strong>Consentimento específico:</strong> fluxos opcionais ou complementares em que a lei exigir consentimento expresso.</li>
+          </ul>
+          <div class="green-box">
+            <p><strong>Decisão crítica com IA não acontece sozinha.</strong> Qualquer apoio automatizado relevante para saúde, risco ou conduta ocupacional deve passar por revisão humana apropriada antes de gerar efeito material.</p>
+          </div>
+        </div>
+
+        <div class="content-card">
+          <span class="section-kicker"><span class="material-symbols-rounded">security</span>Segurança operacional</span>
+          <h2>Controles que sustentam nossa governança</h2>
+          <div class="process-grid">
+            <div class="process-card"><div class="icon"><span class="material-symbols-rounded">lock</span></div><h4>Criptografia e transporte seguro</h4><p>Conexões protegidas, endurecimento de acesso e boas práticas de confidencialidade.</p></div>
+            <div class="process-card"><div class="icon"><span class="material-symbols-rounded">group</span></div><h4>Perfis por função</h4><p>Separação entre médico, operação, gestão e suporte conforme necessidade real.</p></div>
+            <div class="process-card"><div class="icon"><span class="material-symbols-rounded">apartment</span></div><h4>Isolamento por empresa</h4><p>Dados tratados com segregação por cliente, unidade e contexto operacional.</p></div>
+            <div class="process-card"><div class="icon"><span class="material-symbols-rounded">history</span></div><h4>Trilha de auditoria</h4><p>Registro de ações críticas para apuração, governança e responsabilização.</p></div>
+          </div>
+        </div>
+
+        <div class="form-card">
+          <h3>Exercer seus direitos</h3>
+          <p class="form-subtitle">Preencha o formulário para solicitar confirmação, acesso, correção, oposição, exclusão, revogação de consentimento ou outro direito previsto na LGPD.</p>
+          <form action="https://formsubmit.co/privacidade@maissaude.seg.br" method="POST">
+            <input type="hidden" name="_subject" value="Solicitação LGPD - Mais Saúde">
+            <input type="hidden" name="_next" value="https://www.maissaude.seg.br/lgpd.html?solicitado=ok">
+            <input type="hidden" name="_captcha" value="false">
+            <div class="form-grid">
+              <div class="form-group">
+                <label class="form-label" for="nome">Nome completo <span>*</span></label>
+                <input class="form-input" type="text" id="nome" name="nome" required placeholder="Seu nome completo">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="cpf">CPF <span>*</span></label>
+                <input class="form-input" type="text" id="cpf" name="cpf" required placeholder="000.000.000-00">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="email">E-mail <span>*</span></label>
+                <input class="form-input" type="email" id="email" name="email" required placeholder="seu@email.com">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="telefone">Telefone / WhatsApp</label>
+                <input class="form-input" type="tel" id="telefone" name="telefone" placeholder="(11) 99999-9999">
+              </div>
+              <div class="form-group full">
+                <label class="form-label" for="direito">Direito que deseja exercer <span>*</span></label>
+                <select class="form-select" id="direito" name="direito" required>
+                  <option value="">Selecione...</option>
+                  <option>Confirmação de tratamento</option>
+                  <option>Acesso aos dados</option>
+                  <option>Correção de dados</option>
+                  <option>Exclusão de dados</option>
+                  <option>Portabilidade</option>
+                  <option>Revogação de consentimento</option>
+                  <option>Oposição ao tratamento</option>
+                  <option>Informação sobre compartilhamento</option>
+                  <option>Outro</option>
+                </select>
+              </div>
+              <div class="form-group full">
+                <label class="form-label" for="descricao">Descrição da solicitação <span>*</span></label>
+                <textarea class="form-textarea" id="descricao" name="descricao" required placeholder="Descreva sua solicitação com o máximo de contexto possível..."></textarea>
+              </div>
+              <div class="form-group full">
+                <label class="form-check">
+                  <input type="checkbox" required>
+                  <span>Confirmo que os dados informados são verdadeiros e autorizo o uso destas informações exclusivamente para atendimento desta solicitação LGPD.</span>
+                </label>
+              </div>
+            </div>
+            <button type="submit" class="form-btn"><span class="material-symbols-rounded">send</span>Enviar solicitação</button>
+            <p class="form-note">Prazo estimado de resposta: até 15 dias úteis, com possibilidade de contato adicional para validação de identidade.</p>
+          </form>
+        </div>
+
+        <div class="content-card">
+          <span class="section-kicker"><span class="material-symbols-rounded">support_agent</span>Contato e escalonamento</span>
+          <h2>Fale com o responsável por privacidade</h2>
+          <p>Se você precisa exercer direitos, reportar preocupação com tratamento de dados ou entender melhor nossas práticas, utilize os canais abaixo.</p>
+          <div class="contact-grid">
+            <div class="contact-card">
+              <div class="contact-card-icon"><span class="material-symbols-rounded">mail</span></div>
+              <div>
+                <div class="contact-card-label">E-mail do DPO</div>
+                <div class="contact-card-value"><a href="mailto:privacidade@maissaude.seg.br">privacidade@maissaude.seg.br</a></div>
+                <div class="contact-card-sub">Canal principal para privacidade</div>
+              </div>
+            </div>
+            <div class="contact-card">
+              <div class="contact-card-icon"><span class="material-symbols-rounded">call</span></div>
+              <div>
+                <div class="contact-card-label">Telefone</div>
+                <div class="contact-card-value">(11) 2412-5518</div>
+                <div class="contact-card-sub">Seg–Sex, 8h às 17h30</div>
+              </div>
+            </div>
+            <div class="contact-card">
+              <div class="contact-card-icon"><span class="material-symbols-rounded">gavel</span></div>
+              <div>
+                <div class="contact-card-label">Autoridade reguladora</div>
+                <div class="contact-card-value"><a href="https://www.gov.br/anpd" target="_blank" rel="noopener">ANPD</a></div>
+                <div class="contact-card-sub">www.gov.br/anpd</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer-mini">
+  <div class="container">
+    <p>&copy; 2026 Mais Saúde Medicina Ocupacional e Segurança do Trabalho Ltda. &nbsp;|&nbsp;
+      <a href="index.html">Site</a> &nbsp;|&nbsp;
+      <a href="politica-privacidade.html">Política de Privacidade</a> &nbsp;|&nbsp;
+      <a href="contato.html">Contato</a>
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>

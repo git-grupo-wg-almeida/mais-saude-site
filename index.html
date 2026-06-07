@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mais Saúde — Saúde e Segurança do Trabalho em Guarulhos</title>
-  <!-- v2.4 - 20260606 - logo novo real + icone + dropdown area cliente 2 opcoes + footer link sistema -->
+  <!-- v3.0 - 20260607 - design system unificado com sistema demo: DM Sans, paleta #12897E, bg #F4F3EF, shadows, radius -->
   <meta name="description" content="Mais Saúde: empresa especializada em Medicina Ocupacional, PPRA, PCMSO, Exames Admissionais e Segurança do Trabalho em Guarulhos/SP. 8+ anos, 250+ empresas atendidas.">
   <meta name="keywords" content="medicina ocupacional, PPRA, PCMSO, eSocial, exame admissional, RBAC 120, segurança do trabalho, Guarulhos, FAP, SIGMAS, SOC">
   <meta name="author" content="Mais Saúde | WG Build.tech">
@@ -24,15 +24,50 @@
   <meta name="twitter:description" content="Especialistas em Medicina Ocupacional há mais de 8 anos.">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
-  <link rel="icon" type="image/png" sizes="512x512" href="assets/maisaude_icon.png">
-  <link rel="apple-touch-icon" href="assets/maisaude_icon.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="assets/favicon-512.png">
+  <link rel="apple-touch-icon" href="assets/favicon-512.png">
 
-  <!-- Google Fonts -->
+  <!-- Google Fonts — DM Sans (aprovado no sistema demo) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0&display=block" rel="stylesheet">
+
+  <!-- Schema JSON-LD MedicalOrganization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MedicalOrganization",
+    "name": "Mais Saúde Medicina Ocupacional e Segurança do Trabalho",
+    "alternateName": "Mais Saúde",
+    "url": "https://www.maissaude.seg.br",
+    "logo": "https://www.maissaude.seg.br/assets/maisaude_icon.png",
+    "description": "Especialistas em Medicina Ocupacional, PCMSO, PGR, eSocial SST e Segurança do Trabalho há mais de 8 anos em Guarulhos/SP.",
+    "medicalSpecialty": "OccupationalMedicine",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Guarulhos",
+      "addressRegion": "SP",
+      "addressCountry": "BR"
+    },
+    "telephone": "+55-11-2412-5518",
+    "email": "contato@maissaude.seg.br",
+    "sameAs": [
+      "https://www.instagram.com/maissaude.seg.br/",
+      "https://www.linkedin.com/company/mais-sa%C3%BAde-seguran%C3%A7a-no-trabalho/",
+      "https://www.facebook.com/maissaudesegbr2021/"
+    ],
+    "areaServed": {
+      "@type": "State",
+      "name": "São Paulo"
+    },
+    "foundingDate": "2016",
+    "numberOfEmployees": {
+      "@type": "QuantitativeValue",
+      "value": 50
+    }
+  }
+  </script>
 
   <!-- GA4 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-7VVDS874Q3"></script>
@@ -45,20 +80,34 @@
 
   <style>
     :root {
-      --green: #2bb673; --green-dark: #1c7c52; --green-light: #e8f7f0; --green-mid: #d0f0e2;
-      --bg: #f8f9fa; --surface: #ffffff; --surface-2: #f1f3f4;
-      --border: #e8eaed; --border-strong: #dadce0;
-      --text: #202124; --text-muted: #5f6368; --text-caption: #80868b;
-      --warning: #f9ab00; --error: #d93025; --success: #1e8e3e; --info: #1a73e8;
-      --font-sans: 'Google Sans', 'Segoe UI', system-ui, sans-serif;
+      /* — Paleta aprovada no sistema demo — */
+      --green: #12897E;      /* accent principal do demo */
+      --green-dark: #0d6b62;
+      --green-light: #e6f4f2;
+      --green-mid: #c2e8e4;
+      --blue: #2330D2;       /* accent2 do demo */
+      --bg: #F4F3EF;         /* fundo off-white aprovado */
+      --surface: rgba(255,255,255,0.88);
+      --surface-2: rgba(255,255,255,0.96);
+      --surface-3: #ffffff;
+      --border: rgba(15,23,42,0.10);
+      --border-accent: rgba(18,137,126,0.20);
+      --text: #183028;       /* texto escuro do demo */
+      --text-muted: #61756c;
+      --text-caption: #8a9e97;
+      --warning: #d97706; --error: #dc2626; --success: #16a34a; --info: #2330D2;
+      --font-sans: 'DM Sans', 'Segoe UI', system-ui, sans-serif;
+      --font-mono: 'DM Mono', Consolas, monospace;
       --radius-sm: 8px; --radius-md: 14px; --radius-lg: 24px; --radius-xl: 32px; --radius-full: 999px;
-      --shadow-sm: 0 1px 3px rgba(0,0,0,.08); --shadow-md: 0 4px 16px rgba(0,0,0,.10);
-      --shadow-lg: 0 12px 40px rgba(0,0,0,.12); --shadow-green: 0 8px 32px rgba(43,182,115,.25);
+      --shadow-sm: 0 8px 22px rgba(15,23,42,0.06), 0 1px 2px rgba(15,23,42,0.04);
+      --shadow-md: 0 20px 48px rgba(15,23,42,0.08), 0 4px 12px rgba(15,23,42,0.04);
+      --shadow-lg: 0 12px 40px rgba(0,0,0,.12);
+      --shadow-green: 0 0 0 1px rgba(18,137,126,0.10), 0 10px 30px rgba(18,137,126,0.18);
       --max-w: 1200px; --section-pad: clamp(60px, 8vw, 120px);
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-    body { font-family: var(--font-sans); font-size: 16px; line-height: 1.6; color: var(--text); background: var(--bg); -webkit-font-smoothing: antialiased; }
+    body { font-family: var(--font-sans); font-size: 16px; line-height: 1.6; color: var(--text); background: radial-gradient(circle at top right, rgba(18,137,126,0.10), transparent 30%), linear-gradient(180deg, #f7f6f2 0%, #F4F3EF 52%, #eceae4 100%); -webkit-font-smoothing: antialiased; }
     img { max-width: 100%; height: auto; display: block; }
     a { color: inherit; text-decoration: none; }
     ul { list-style: none; }
@@ -98,15 +147,39 @@
     .client-dropdown-divider { height: 1px; background: var(--border); margin: 4px 0; }
 
     /* TOPBAR */
-    .topbar { background: var(--green-dark); color: rgba(255,255,255,.85); font-size: 13px; padding: 8px 0; }
-    .topbar-inner { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+    .topbar { position: relative; z-index: 1202; overflow: visible; background: var(--green-dark); color: rgba(255,255,255,.85); font-size: 13px; padding: 8px 0; }
+    .topbar-inner { position: relative; overflow: visible; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
     .topbar-contacts { display: flex; gap: 20px; flex-wrap: wrap; }
     .topbar-contacts a { display: flex; align-items: center; gap: 6px; color: rgba(255,255,255,.85); transition: color .2s; }
     .topbar-contacts a:hover { color: #fff; }
     .topbar-contacts .material-symbols-rounded { font-size: 16px; }
+    .topbar-meta { position: relative; overflow: visible; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; justify-content: flex-end; }
     .topbar-social { display: flex; gap: 10px; }
     .topbar-social a { width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: rgba(255,255,255,.12); color: #fff; font-size: 13px; transition: background .2s; }
     .topbar-social a:hover { background: rgba(255,255,255,.25); }
+    .lang-switcher { position: relative; display: flex; align-items: center; z-index: 1300; }
+    .lang-current { display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; border-radius: 999px; border: 1px solid rgba(255,255,255,.16); background: rgba(255,255,255,.08); color: rgba(255,255,255,.92); font-size: 11px; font-weight: 600; cursor: pointer; transition: all .18s ease; }
+    .lang-current:hover { background: rgba(255,255,255,.16); color: #fff; }
+    .lang-caret { font-size: 14px; opacity: .8; }
+    .lang-menu { position: absolute; top: calc(100% + 8px); right: 0; min-width: 180px; padding: 8px; border-radius: 16px; border: 1px solid rgba(255,255,255,.16); background: rgba(8,53,49,.96); box-shadow: 0 18px 40px rgba(0,0,0,.22); display: none; flex-direction: column; gap: 4px; z-index: 1400; }
+    .lang-switcher.open .lang-menu { display: flex; }
+    .lang-option { display: inline-flex; align-items: center; gap: 8px; width: 100%; padding: 9px 10px; border: 0; background: transparent; color: rgba(255,255,255,.82); border-radius: 12px; font-size: 12px; font-weight: 600; cursor: pointer; text-align: left; transition: background .18s ease, color .18s ease; }
+    .lang-option:hover, .lang-option.active { background: rgba(255,255,255,.12); color: #fff; }
+    .lang-flag { width: 18px; height: 18px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; overflow: hidden; background: rgba(255,255,255,.14); }
+    .lang-flag img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    html[dir="rtl"] body { text-align: right; }
+    html[dir="rtl"] .topbar-inner,
+    html[dir="rtl"] .navbar-inner,
+    html[dir="rtl"] .hero-inner,
+    html[dir="rtl"] .footer-bottom { direction: rtl; }
+    html[dir="rtl"] .navbar-cta,
+    html[dir="rtl"] .hero-actions,
+    html[dir="rtl"] .topbar-meta,
+    html[dir="rtl"] .topbar-social,
+    html[dir="rtl"] .lang-switcher { justify-content: flex-start; }
+    html[dir="rtl"] .lang-menu { left: 0; right: auto; }
+    html[dir="rtl"] .hero-stats,
+    html[dir="rtl"] .topbar-contacts { flex-direction: row-reverse; }
 
     /* NAVBAR */
     .navbar { position: sticky; top: 0; z-index: 1000; background: rgba(255,255,255,.92); backdrop-filter: blur(16px) saturate(180%); border-bottom: 1px solid var(--border); transition: box-shadow .3s; }
@@ -131,7 +204,7 @@
     .mobile-menu-panel a .material-symbols-rounded { color: var(--green); font-size: 20px; }
 
     /* HERO */
-    .hero { position: relative; overflow: hidden; background: linear-gradient(135deg, #0f2d1e 0%, #1a4a32 35%, #0d3b28 100%); padding: clamp(80px, 12vw, 160px) 0 clamp(60px, 10vw, 120px); color: #fff; }
+    .hero { position: relative; overflow: hidden; background: linear-gradient(135deg, #0f2d1e 0%, #1a4a32 35%, #0d3b28 100%); padding: clamp(40px, 6vw, 72px) 0 clamp(40px, 6vw, 72px); color: #fff; }
     .hero::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(43,182,115,.08) 1px, transparent 1px), linear-gradient(90deg, rgba(43,182,115,.08) 1px, transparent 1px); background-size: 60px 60px; }
     .hero::after { content: ''; position: absolute; top: -120px; right: -80px; width: 600px; height: 600px; background: radial-gradient(circle, rgba(43,182,115,.18) 0%, transparent 65%); pointer-events: none; }
     .hero-inner { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 60px; }
@@ -351,12 +424,14 @@
     }
     @media (max-width: 768px) {
       .hero-inner, .about-inner { grid-template-columns: 1fr; gap: 40px; }
-      .hero-visual { display: none; }
+      .hero-visual { position: relative; display: flex; align-items: center; justify-content: center; }
       .navbar-nav, .navbar-cta .btn-outline { display: none; }
       .navbar-menu-btn { display: flex; }
       .services-grid, .clients-grid, .testimonials-grid, .numbers-grid { grid-template-columns: 1fr; }
       .footer-grid { grid-template-columns: 1fr; }
       .about-badge-float { display: none; }
+      .topbar-meta { width: 100%; justify-content: flex-start; }
+      .lang-current { font-size: 10px; padding: 5px 9px; }
     }
   </style>
 </head>
@@ -377,16 +452,35 @@
           </a>
           <a href="#" style="color:rgba(255,255,255,.6)">
             <span class="material-symbols-rounded">location_on</span>
-            Guarulhos, SP
+            <span data-i18n="topbar_location">Guarulhos, SP</span>
           </a>
         </div>
-        <div class="topbar-social">
-          <a href="#" aria-label="Instagram" title="Instagram">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-          </a>
-          <a href="#" aria-label="LinkedIn" title="LinkedIn">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          </a>
+        <div class="topbar-meta">
+          <div class="lang-switcher" aria-label="Seletor de idiomas">
+            <button type="button" class="lang-current" aria-haspopup="true" aria-expanded="false">
+              <span class="lang-flag lang-current-flag" aria-hidden="true"><img src="https://flagcdn.com/w40/br.png" alt="Bandeira do Brasil"></span>
+              <span class="lang-current-label">Português</span>
+              <span class="material-symbols-rounded lang-caret" aria-hidden="true">expand_more</span>
+            </button>
+            <div class="lang-menu" role="menu">
+              <button type="button" class="lang-option active" data-lang="pt" data-flag-src="https://flagcdn.com/w40/br.png" data-flag-alt="Bandeira do Brasil" data-label="Português"><span class="lang-flag" aria-hidden="true"><img src="https://flagcdn.com/w40/br.png" alt="Bandeira do Brasil"></span><span>Português</span></button>
+              <button type="button" class="lang-option" data-lang="en" data-flag-src="https://flagcdn.com/w40/us.png" data-flag-alt="Flag of the United States" data-label="English"><span class="lang-flag" aria-hidden="true"><img src="https://flagcdn.com/w40/us.png" alt="Flag of the United States"></span><span>English</span></button>
+              <button type="button" class="lang-option" data-lang="es" data-flag-src="https://flagcdn.com/w40/es.png" data-flag-alt="Bandera de España" data-label="Español"><span class="lang-flag" aria-hidden="true"><img src="https://flagcdn.com/w40/es.png" alt="Bandera de España"></span><span>Español</span></button>
+              <button type="button" class="lang-option" data-lang="ar" data-flag-src="https://flagcdn.com/w40/sa.png" data-flag-alt="علم السعودية" data-label="عربي"><span class="lang-flag" aria-hidden="true"><img src="https://flagcdn.com/w40/sa.png" alt="علم السعودية"></span><span>عربي</span></button>
+              <button type="button" class="lang-option" data-lang="tr" data-flag-src="https://flagcdn.com/w40/tr.png" data-flag-alt="Türkiye Bayrağı" data-label="Türkçe"><span class="lang-flag" aria-hidden="true"><img src="https://flagcdn.com/w40/tr.png" alt="Türkiye Bayrağı"></span><span>Türkçe</span></button>
+            </div>
+          </div>
+          <div class="topbar-social">
+            <a href="https://www.instagram.com/maissaude.seg.br/" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/company/mais-sa%C3%BAde-seguran%C3%A7a-no-trabalho/" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+            <a href="https://www.facebook.com/maissaudesegbr2021/" target="_blank" rel="noopener" aria-label="Facebook" title="Facebook">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -396,27 +490,42 @@
   <nav class="navbar" id="navbar">
     <div class="navbar-inner">
       <a href="#" class="navbar-logo">
-        <img src="assets/logo_nova-branca.png"
+        <img src="assets/logo.png"
              alt="Mais Saúde"
              height="40"
-             style="height:40px;width:auto;filter:invert(1) sepia(1) saturate(3) hue-rotate(100deg);">
+             style="height:40px;width:auto;">
       </a>
       <div class="navbar-nav">
-        <a href="#servicos" class="active">Serviços</a>
-        <a href="#sobre">Sobre</a>
-          <a href="#blog">Blog</a>
-        <a href="#clientes">Clientes</a>
-        <a href="#depoimentos">Depoimentos</a>
-        <a href="#contato">Contato</a>
+        <a href="#servicos" class="active" data-i18n="nav_services">Serviços</a>
+        <a href="#sobre" data-i18n="nav_about">Sobre</a>
+          <a href="#blog" data-i18n="nav_blog">Blog</a>
+        <a href="#clientes" data-i18n="nav_clients">Clientes</a>
+        <a href="#depoimentos" data-i18n="nav_testimonials">Depoimentos</a>
+        <a href="#contato" data-i18n="nav_contact">Contato</a>
       </div>
       <div class="navbar-cta">
-        <a href="https://www.socnet.com.br" target="_blank" rel="noopener" class="btn btn-outline" style="padding:10px 20px;font-size:13px;">
-          <span class="material-symbols-rounded" style="font-size:16px;">login</span>
-          Área do Cliente
-        </a>
+        <!-- DROPDOWN ÁREA DO CLIENTE -->
+        <div class="client-dropdown" id="clientDropdown">
+          <button class="client-dropdown-btn" id="clientDropdownBtn" aria-haspopup="true" aria-expanded="false">
+            <span class="material-symbols-rounded" style="font-size:16px;">login</span>
+            <span data-i18n="client_area">Área do Cliente</span>
+            <span class="material-symbols-rounded arrow">expand_more</span>
+          </button>
+          <div class="client-dropdown-menu" id="clientDropdownMenu" role="menu">
+            <a href="http://127.0.0.1:3013/05_DEMO_E_PROTOTIPO/maissaude-os-demo.html" target="_blank" rel="noopener" role="menuitem">
+              <span class="material-symbols-rounded">flight</span>
+              <span data-i18n="client_aviation">Aviação Civil</span>
+            </a>
+            <div class="client-dropdown-divider"></div>
+            <a href="http://127.0.0.1:3013/05_DEMO_E_PROTOTIPO/maissaude-os-demo.html" target="_blank" rel="noopener" role="menuitem">
+              <span class="material-symbols-rounded">health_and_safety</span>
+              <span data-i18n="client_sst">Gestão SST</span>
+            </a>
+          </div>
+        </div>
         <a href="https://wa.me/5511940035555?text=Olá%2C%20gostaria%20de%20um%20orçamento" target="_blank" rel="noopener" class="btn btn-primary" style="padding:10px 20px;font-size:13px;">
           <span class="material-symbols-rounded" style="font-size:16px;">chat</span>
-          Falar com Especialista
+          <span data-i18n="nav_cta">Falar com Especialista</span>
         </a>
       </div>
       <button class="navbar-menu-btn" id="menuBtn" aria-label="Menu">
@@ -434,14 +543,17 @@
           <span class="material-symbols-rounded">close</span>
         </button>
       </div>
-      <a href="#servicos"><span class="material-symbols-rounded">medical_services</span>Serviços</a>
-      <a href="#sobre"><span class="material-symbols-rounded">info</span>Sobre</a>
-      <a href="#clientes"><span class="material-symbols-rounded">business</span>Clientes</a>
-      <a href="#depoimentos"><span class="material-symbols-rounded">star</span>Depoimentos</a>
-      <a href="#contato"><span class="material-symbols-rounded">contact_phone</span>Contato</a>
-      <div style="margin-top:16px;">
-        <a href="https://www.socnet.com.br" target="_blank" class="btn btn-primary" style="width:100%;justify-content:center;">
-          <span class="material-symbols-rounded">login</span>Área do Cliente
+      <a href="#servicos"><span class="material-symbols-rounded">medical_services</span><span data-i18n="nav_services">Serviços</span></a>
+      <a href="#sobre"><span class="material-symbols-rounded">info</span><span data-i18n="nav_about">Sobre</span></a>
+      <a href="#clientes"><span class="material-symbols-rounded">business</span><span data-i18n="nav_clients">Clientes</span></a>
+      <a href="#depoimentos"><span class="material-symbols-rounded">star</span><span data-i18n="nav_testimonials">Depoimentos</span></a>
+      <a href="#contato"><span class="material-symbols-rounded">contact_phone</span><span data-i18n="nav_contact">Contato</span></a>
+      <div style="margin-top:16px;display:flex;flex-direction:column;gap:10px;">
+        <a href="http://127.0.0.1:3013/05_DEMO_E_PROTOTIPO/maissaude-os-demo.html" target="_blank" rel="noopener" class="btn btn-primary" style="width:100%;justify-content:center;">
+          <span class="material-symbols-rounded">flight</span><span data-i18n="client_aviation">Aviação Civil</span>
+        </a>
+        <a href="http://127.0.0.1:3013/05_DEMO_E_PROTOTIPO/maissaude-os-demo.html" target="_blank" rel="noopener" class="btn btn-outline" style="width:100%;justify-content:center;">
+          <span class="material-symbols-rounded">health_and_safety</span><span data-i18n="client_sst">Gestão SST</span>
         </a>
       </div>
     </div>
@@ -454,58 +566,60 @@
         <div class="hero-content">
           <div class="hero-badge fade-in">
             <div class="hero-badge-dot"></div>
-            Medicina Ocupacional · Guarulhos/SP
+            <span data-i18n="hero_badge">Medicina Ocupacional · Guarulhos/SP</span>
           </div>
-          <h1 class="fade-in">
+          <h1 class="fade-in" data-i18n-html="hero_title">
             Saúde e Segurança<br>do Trabalho<br><em>que protege sua empresa</em>
           </h1>
-          <p class="hero-desc fade-in fade-in-delay-1">
+          <p class="hero-desc fade-in fade-in-delay-1" data-i18n="hero_desc">
             Há mais de 8 anos cuidando da saúde ocupacional de grandes empresas. PPRA, PCMSO, eSocial, RBAC 120 e muito mais — tudo integrado ao sistema SOC.
           </p>
           <div class="hero-actions fade-in fade-in-delay-2">
             <a href="https://wa.me/5511940035555?text=Olá%2C%20gostaria%20de%20um%20orçamento" target="_blank" rel="noopener" class="btn btn-primary">
               <span class="material-symbols-rounded">chat</span>
-              Solicitar Orçamento
+              <span data-i18n="hero_primary_cta">Solicitar Orçamento</span>
             </a>
             <a href="#servicos" class="btn btn-ghost">
               <span class="material-symbols-rounded">arrow_downward</span>
-              Conhecer Serviços
+              <span data-i18n="hero_secondary_cta">Conhecer Serviços</span>
             </a>
           </div>
           <div class="hero-stats fade-in fade-in-delay-3">
             <div>
               <div class="hero-stat-value">8+</div>
-              <div class="hero-stat-label">Anos de experiência</div>
+              <div class="hero-stat-label" data-i18n="hero_stat_1">Anos de experiência</div>
             </div>
             <div>
               <div class="hero-stat-value">250+</div>
-              <div class="hero-stat-label">Empresas atendidas</div>
+              <div class="hero-stat-label" data-i18n="hero_stat_2">Empresas atendidas</div>
             </div>
             <div>
               <div class="hero-stat-value">3M</div>
-              <div class="hero-stat-label">Exames realizados</div>
+              <div class="hero-stat-label" data-i18n="hero_stat_3">Exames realizados</div>
             </div>
           </div>
         </div>
         <div class="hero-visual">
+          <!-- Foto real como fundo do card visual -->
+          <!-- foto-hero removida -->
           <div class="hero-card fade-in fade-in-delay-1">
             <div class="hero-card-header">
               <div class="hero-card-icon">
                 <span class="material-symbols-rounded">monitor_heart</span>
               </div>
               <div>
-                <div class="hero-card-title">Painel SOC — Ao Vivo</div>
-                <div class="hero-card-subtitle">Última atualização: agora</div>
+                <div class="hero-card-title" data-i18n="hero_card_title">Painel SOC — Ao Vivo</div>
+                <div class="hero-card-subtitle" data-i18n="hero_card_subtitle">Última atualização: agora</div>
               </div>
             </div>
             <div class="hero-metric-row">
               <div class="hero-metric">
                 <div class="hero-metric-num">98%</div>
-                <div class="hero-metric-lbl">Conformidade eSocial</div>
+                <div class="hero-metric-lbl" data-i18n="hero_metric_1">Conformidade eSocial</div>
               </div>
               <div class="hero-metric">
                 <div class="hero-metric-num">247</div>
-                <div class="hero-metric-lbl">Empresas ativas</div>
+                <div class="hero-metric-lbl" data-i18n="hero_metric_2">Empresas ativas</div>
               </div>
             </div>
             <div class="ecg-bar">
@@ -515,7 +629,7 @@
             </div>
             <div class="hero-status-row">
               <div class="hero-status-dot"></div>
-              Monitoramento contínuo ativo
+              <span data-i18n="hero_status">Monitoramento contínuo ativo</span>
             </div>
           </div>
         </div>
@@ -526,7 +640,7 @@
   <!-- PARCEIROS / CLIENTES LOGO STRIP -->
   <section class="partners">
     <div class="container">
-      <p class="partners-label">Empresas que confiam na Mais Saúde</p>
+      <p class="partners-label" data-i18n="partners_label">Empresas que confiam na Mais Saúde</p>
       <div class="partners-track-wrapper">
         <div class="partners-track">
           <span class="partner-name">CCR</span>
@@ -684,37 +798,37 @@
       <div class="clients-grid">
         <div class="client-card fade-in">
           <div class="client-logo-wrap">
-            <span class="client-logo-text">CCR</span>
+            <img src="assets/clientes/ccr.png" alt="CCR" style="max-height:48px;max-width:140px;object-fit:contain;filter:grayscale(1);opacity:.7;transition:all .3s;" onmouseover="this.style.filter='grayscale(0)';this.style.opacity='1'" onmouseout="this.style.filter='grayscale(1)';this.style.opacity='.7'">
           </div>
           <div class="client-sector">Concessões / Infraestrutura</div>
         </div>
         <div class="client-card fade-in fade-in-delay-1">
           <div class="client-logo-wrap">
-            <span class="client-logo-text">Gestamp</span>
+            <img src="assets/clientes/gestamp.png" alt="Gestamp" style="max-height:48px;max-width:140px;object-fit:contain;filter:grayscale(1);opacity:.7;transition:all .3s;" onmouseover="this.style.filter='grayscale(0)';this.style.opacity='1'" onmouseout="this.style.filter='grayscale(1)';this.style.opacity='.7'">
           </div>
           <div class="client-sector">Autopeças / Metalurgia</div>
         </div>
         <div class="client-card fade-in fade-in-delay-2">
           <div class="client-logo-wrap">
-            <span class="client-logo-text">Graal</span>
+            <img src="assets/clientes/graal.png" alt="Graal" style="max-height:48px;max-width:140px;object-fit:contain;filter:grayscale(1);opacity:.7;transition:all .3s;" onmouseover="this.style.filter='grayscale(0)';this.style.opacity='1'" onmouseout="this.style.filter='grayscale(1)';this.style.opacity='.7'">
           </div>
           <div class="client-sector">Alimentação / Food Service</div>
         </div>
         <div class="client-card fade-in">
           <div class="client-logo-wrap">
-            <span class="client-logo-text">DNata</span>
+            <img src="assets/clientes/dnata-travel.png" alt="DNata" style="max-height:48px;max-width:140px;object-fit:contain;filter:grayscale(1);opacity:.7;transition:all .3s;" onmouseover="this.style.filter='grayscale(0)';this.style.opacity='1'" onmouseout="this.style.filter='grayscale(1)';this.style.opacity='.7'">
           </div>
           <div class="client-sector">Aviação / Ground Handling</div>
         </div>
         <div class="client-card fade-in fade-in-delay-1">
           <div class="client-logo-wrap">
-            <span class="client-logo-text">Proair</span>
+            <img src="assets/clientes/proair.png" alt="Proair" style="max-height:48px;max-width:140px;object-fit:contain;filter:grayscale(1);opacity:.7;transition:all .3s;" onmouseover="this.style.filter='grayscale(0)';this.style.opacity='1'" onmouseout="this.style.filter='grayscale(1)';this.style.opacity='.7'">
           </div>
           <div class="client-sector">Aviação / Serviços Aeroportuários</div>
         </div>
         <div class="client-card fade-in fade-in-delay-2">
           <div class="client-logo-wrap">
-            <span class="client-logo-text">Santa Clara</span>
+            <img src="assets/clientes/santa-clara.png" alt="Santa Clara" style="max-height:48px;max-width:140px;object-fit:contain;filter:grayscale(1);opacity:.7;transition:all .3s;" onmouseover="this.style.filter='grayscale(0)';this.style.opacity='1'" onmouseout="this.style.filter='grayscale(1)';this.style.opacity='.7'">
           </div>
           <div class="client-sector">Alimentos / Laticínios</div>
         </div>
@@ -831,6 +945,8 @@
           </ul>
         </div>
         <div class="about-visual fade-in fade-in-delay-1">
+          <!-- Foto real da equipe/laboratorio -->
+          <img src="assets/foto-lab.png" alt="Laboratório Mais Saúde" style="width:100%;border-radius:var(--radius-lg);object-fit:cover;max-height:220px;margin-bottom:20px;box-shadow:var(--shadow-md);">
           <div class="about-card-main">
             <div class="about-card-header">
               <span class="material-symbols-rounded">analytics</span>
@@ -949,31 +1065,31 @@
   <section class="cta-final" id="contato">
     <div class="container">
       <div class="cta-final-inner">
-        <span class="section-label cta-final-label fade-in">Pronto para começar?</span>
-        <h2 class="fade-in">Proteja seus colaboradores<br>com quem entende de <em>saúde ocupacional</em></h2>
-        <p class="cta-final-desc fade-in">Entre em contato agora e receba uma proposta personalizada para a realidade da sua empresa. Atendemos Guarulhos e Grande SP.</p>
+        <span class="section-label cta-final-label fade-in" data-i18n="cta_label">Pronto para começar?</span>
+        <h2 class="fade-in" data-i18n-html="cta_title">Proteja seus colaboradores<br>com quem entende de <em>saúde ocupacional</em></h2>
+        <p class="cta-final-desc fade-in" data-i18n="cta_desc">Entre em contato agora e receba uma proposta personalizada para a realidade da sua empresa. Atendemos Guarulhos e Grande SP.</p>
         <div class="cta-final-actions fade-in">
-          <a href="https://wa.me/5511940035555?text=Olá%2C%20quero%20uma%20proposta%20personalizada" target="_blank" rel="noopener" class="btn btn-primary" style="font-size:16px;padding:16px 32px;">
-            <span class="material-symbols-rounded">whatsapp</span>
-            Falar pelo WhatsApp
+          <a href="contato.html" class="btn btn-primary" style="font-size:16px;padding:16px 32px;">
+            <span class="material-symbols-rounded">edit_square</span>
+            <span data-i18n="cta_primary">Solicitar Contato</span>
           </a>
-          <a href="mailto:contato@maissaude.seg.br" class="btn btn-ghost" style="font-size:16px;padding:16px 32px;">
-            <span class="material-symbols-rounded">mail</span>
-            Enviar E-mail
+          <a href="https://wa.me/5511940035555?text=Olá%2C%20vim%20pelo%20site%20e%20quero%20falar%20sobre%20Medicina%20Ocupacional%20e%20Segurança%20do%20Trabalho." target="_blank" rel="noopener" class="btn btn-ghost" style="font-size:16px;padding:16px 32px;">
+            <span class="material-symbols-rounded">chat</span>
+            <span data-i18n="cta_secondary">Falar no WhatsApp</span>
           </a>
         </div>
         <div class="cta-trust fade-in">
           <span class="cta-trust-item">
             <span class="material-symbols-rounded">verified</span>
-            Equipe médica certificada
+            <span data-i18n="cta_trust_1">Equipe médica certificada</span>
           </span>
           <span class="cta-trust-item">
             <span class="material-symbols-rounded">schedule</span>
-            Resposta em até 2h úteis
+            <span data-i18n="cta_trust_2">Resposta em até 2h úteis</span>
           </span>
           <span class="cta-trust-item">
             <span class="material-symbols-rounded">lock</span>
-            LGPD Compliant
+            <span data-i18n="cta_trust_3">LGPD Compliant</span>
           </span>
         </div>
       </div>
@@ -986,23 +1102,26 @@
       <div class="footer-grid">
         <div>
           <div class="footer-brand-logo">
-            <img src="assets/logo_nova-branca.png"
+            <img src="assets/logo.png"
                  alt="Mais Saúde"
                  height="44"
-                 style="height:44px;width:auto;filter:brightness(0) invert(1);">
+                 style="height:44px;width:auto;">
           </div>
           <p class="footer-brand-desc">Especialistas em Medicina Ocupacional e Segurança do Trabalho em Guarulhos/SP. 8+ anos cuidando da saúde dos colaboradores de mais de 250 empresas.</p>
           <div class="footer-social">
-            <a href="#" aria-label="Instagram">
+            <a href="https://www.instagram.com/maissaude.seg.br/" target="_blank" rel="noopener" aria-label="Instagram">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
             </a>
-            <a href="#" aria-label="LinkedIn">
+            <a href="https://www.linkedin.com/company/mais-sa%C3%BAde-seguran%C3%A7a-no-trabalho/" target="_blank" rel="noopener" aria-label="LinkedIn">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+            <a href="https://www.facebook.com/maissaudesegbr2021/" target="_blank" rel="noopener" aria-label="Facebook">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
             </a>
           </div>
         </div>
         <div>
-          <div class="footer-col-title">Serviços</div>
+          <div class="footer-col-title" data-i18n="footer_services">Serviços</div>
           <ul class="footer-links">
             <li><a href="#servicos">PPRA</a></li>
             <li><a href="#servicos">PCMSO</a></li>
@@ -1015,17 +1134,17 @@
           </ul>
         </div>
         <div>
-          <div class="footer-col-title">Empresa</div>
+          <div class="footer-col-title" data-i18n="footer_company">Empresa</div>
           <ul class="footer-links">
-            <li><a href="#sobre">Sobre nós</a></li>
-            <li><a href="#clientes">Clientes</a></li>
-            <li><a href="#depoimentos">Depoimentos</a></li>
-            <li><a href="https://www.socnet.com.br" target="_blank">Portal SOC</a></li>
-            <li><a href="#contato">Contato</a></li>
+            <li><a href="#sobre" data-i18n="footer_about">Sobre nós</a></li>
+            <li><a href="#clientes" data-i18n="footer_clients">Clientes</a></li>
+            <li><a href="#depoimentos" data-i18n="footer_testimonials">Depoimentos</a></li>
+            <li><a href="area-cliente.html" data-i18n="footer_client_area">Área do Cliente</a></li>
+            <li><a href="#contato" data-i18n="footer_contact">Contato</a></li>
           </ul>
         </div>
         <div>
-          <div class="footer-col-title">Contato</div>
+          <div class="footer-col-title" data-i18n="footer_contact_title">Contato</div>
           <div class="footer-contact-item">
             <span class="material-symbols-rounded">location_on</span>
             <span>Guarulhos, São Paulo — SP</span>
@@ -1044,13 +1163,20 @@
           </div>
         </div>
       </div>
+      <!-- Acesso ao Sistema -->
+      <div style="border-top:1px solid rgba(255,255,255,.08);padding-top:32px;margin-bottom:0;display:flex;align-items:center;justify-content:center;margin-bottom:24px;">
+        <a href="http://127.0.0.1:3013/05_DEMO_E_PROTOTIPO/maissaude-os-demo.html" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;background:var(--green);color:#fff;padding:14px 28px;border-radius:999px;font-size:15px;font-weight:600;text-decoration:none;transition:all .2s;box-shadow:0 8px 24px rgba(18,137,126,.3);" onmouseover="this.style.background='var(--green-dark)'" onmouseout="this.style.background='var(--green)'">
+          <span class="material-symbols-rounded" style="font-size:20px;">login</span>
+          <span data-i18n="footer_system">Acessar Sistema de Gestão</span>
+        </a>
+      </div>
       <div class="footer-bottom">
-        <span>© 2026 Mais Saúde — Medicina Ocupacional. Todos os direitos reservados.</span>
+        <span data-i18n="footer_copy">© 2026 Mais Saúde — Medicina Ocupacional. Todos os direitos reservados.</span>
         <div class="footer-bottom-links">
-          <a href="#">Política de Privacidade</a>
-          <a href="#">LGPD</a>
+          <a href="politica-privacidade.html" data-i18n="footer_privacy">Política de Privacidade</a>
+          <a href="lgpd.html">LGPD</a>
         </div>
-        <span class="footer-credit">Desenvolvido por <a href="https://wgalmeida.com.br" target="_blank">WG Build.tech</a></span>
+        <span class="footer-credit"><span data-i18n="footer_built_by">Desenvolvido por</span> <a href="https://wgalmeida.com.br" target="_blank" style="text-decoration:none;"><span style="color:rgba(255,255,255,.7);font-weight:600;">WG/</span><span style="color:var(--green);font-weight:600;">Build.tech</span></a></span>
       </div>
     </div>
   </footer>
@@ -1063,6 +1189,274 @@
   </div>
 
   <script>
+    const translations = {
+      pt: {
+        topbar_location: 'Guarulhos, SP',
+        nav_services: 'Serviços',
+        nav_about: 'Sobre',
+        nav_blog: 'Blog',
+        nav_clients: 'Clientes',
+        nav_testimonials: 'Depoimentos',
+        nav_contact: 'Contato',
+        client_area: 'Área do Cliente',
+        client_aviation: 'Aviação Civil',
+        client_sst: 'Gestão SST',
+        nav_cta: 'Falar com Especialista',
+        hero_badge: 'Medicina Ocupacional · Guarulhos/SP',
+        hero_title: 'Saúde e Segurança<br>do Trabalho<br><em>que protege sua empresa</em>',
+        hero_desc: 'Há mais de 8 anos cuidando da saúde ocupacional de grandes empresas. PPRA, PCMSO, eSocial, RBAC 120 e muito mais — tudo integrado ao sistema SOC.',
+        hero_primary_cta: 'Solicitar Orçamento',
+        hero_secondary_cta: 'Conhecer Serviços',
+        hero_stat_1: 'Anos de experiência',
+        hero_stat_2: 'Empresas atendidas',
+        hero_stat_3: 'Exames realizados',
+        hero_card_title: 'Painel SOC — Ao Vivo',
+        hero_card_subtitle: 'Última atualização: agora',
+        hero_metric_1: 'Conformidade eSocial',
+        hero_metric_2: 'Empresas ativas',
+        hero_status: 'Monitoramento contínuo ativo',
+        partners_label: 'Empresas que confiam na Mais Saúde',
+        cta_label: 'Pronto para começar?',
+        cta_title: 'Proteja seus colaboradores<br>com quem entende de <em>saúde ocupacional</em>',
+        cta_desc: 'Entre em contato agora e receba uma proposta personalizada para a realidade da sua empresa. Atendemos Guarulhos e Grande SP.',
+        cta_primary: 'Solicitar Contato',
+        cta_secondary: 'Falar no WhatsApp',
+        cta_trust_1: 'Equipe médica certificada',
+        cta_trust_2: 'Resposta em até 2h úteis',
+        cta_trust_3: 'LGPD Compliant',
+        footer_services: 'Serviços',
+        footer_company: 'Empresa',
+        footer_about: 'Sobre nós',
+        footer_clients: 'Clientes',
+        footer_testimonials: 'Depoimentos',
+        footer_client_area: 'Área do Cliente',
+        footer_contact: 'Contato',
+        footer_contact_title: 'Contato',
+        footer_system: 'Acessar Sistema de Gestão',
+        footer_copy: '© 2026 Mais Saúde — Medicina Ocupacional. Todos os direitos reservados.',
+        footer_privacy: 'Política de Privacidade',
+        footer_built_by: 'Desenvolvido por'
+      },
+      en: {
+        topbar_location: 'Guarulhos, SP',
+        nav_services: 'Services',
+        nav_about: 'About',
+        nav_blog: 'Blog',
+        nav_clients: 'Clients',
+        nav_testimonials: 'Testimonials',
+        nav_contact: 'Contact',
+        client_area: 'Client Area',
+        client_aviation: 'Civil Aviation',
+        client_sst: 'OHS Management',
+        nav_cta: 'Talk to a Specialist',
+        hero_badge: 'Occupational Health · Guarulhos/SP',
+        hero_title: 'Workplace Health and Safety<br><em>that protects your company</em>',
+        hero_desc: 'For more than 8 years, we have supported major companies in occupational health. PGR, PCMSO, eSocial, RBAC 120 and more — all integrated with the SOC system.',
+        hero_primary_cta: 'Request a Quote',
+        hero_secondary_cta: 'Explore Services',
+        hero_stat_1: 'Years of experience',
+        hero_stat_2: 'Companies served',
+        hero_stat_3: 'Exams completed',
+        hero_card_title: 'SOC Dashboard — Live',
+        hero_card_subtitle: 'Last update: now',
+        hero_metric_1: 'eSocial compliance',
+        hero_metric_2: 'Active companies',
+        hero_status: 'Continuous monitoring active',
+        partners_label: 'Companies that trust Mais Saúde',
+        cta_label: 'Ready to get started?',
+        cta_title: 'Protect your workforce<br>with specialists in <em>occupational health</em>',
+        cta_desc: 'Get in touch now and receive a proposal tailored to your company. We serve Guarulhos and Greater São Paulo.',
+        cta_primary: 'Request Contact',
+        cta_secondary: 'Talk on WhatsApp',
+        cta_trust_1: 'Certified medical team',
+        cta_trust_2: 'Reply within 2 business hours',
+        cta_trust_3: 'LGPD compliant',
+        footer_services: 'Services',
+        footer_company: 'Company',
+        footer_about: 'About us',
+        footer_clients: 'Clients',
+        footer_testimonials: 'Testimonials',
+        footer_client_area: 'Client Area',
+        footer_contact: 'Contact',
+        footer_contact_title: 'Contact',
+        footer_system: 'Access Management System',
+        footer_copy: '© 2026 Mais Saúde — Occupational Medicine. All rights reserved.',
+        footer_privacy: 'Privacy Policy',
+        footer_built_by: 'Built by'
+      },
+      es: {
+        topbar_location: 'Guarulhos, SP',
+        nav_services: 'Servicios',
+        nav_about: 'Sobre',
+        nav_blog: 'Blog',
+        nav_clients: 'Clientes',
+        nav_testimonials: 'Testimonios',
+        nav_contact: 'Contacto',
+        client_area: 'Área del Cliente',
+        client_aviation: 'Aviación Civil',
+        client_sst: 'Gestión SST',
+        nav_cta: 'Hablar con un Especialista',
+        hero_badge: 'Salud Ocupacional · Guarulhos/SP',
+        hero_title: 'Salud y Seguridad<br>en el Trabajo<br><em>que protege su empresa</em>',
+        hero_desc: 'Hace más de 8 años cuidamos la salud ocupacional de grandes empresas. PGR, PCMSO, eSocial, RBAC 120 y más — todo integrado al sistema SOC.',
+        hero_primary_cta: 'Solicitar Presupuesto',
+        hero_secondary_cta: 'Conocer Servicios',
+        hero_stat_1: 'Años de experiencia',
+        hero_stat_2: 'Empresas atendidas',
+        hero_stat_3: 'Exámenes realizados',
+        hero_card_title: 'Panel SOC — En vivo',
+        hero_card_subtitle: 'Última actualización: ahora',
+        hero_metric_1: 'Cumplimiento eSocial',
+        hero_metric_2: 'Empresas activas',
+        hero_status: 'Monitoreo continuo activo',
+        partners_label: 'Empresas que confían en Mais Saúde',
+        cta_label: '¿Listo para comenzar?',
+        cta_title: 'Proteja a sus colaboradores<br>con especialistas en <em>salud ocupacional</em>',
+        cta_desc: 'Contáctenos ahora y reciba una propuesta adaptada a su empresa. Atendemos Guarulhos y Gran São Paulo.',
+        cta_primary: 'Solicitar Contacto',
+        cta_secondary: 'Hablar por WhatsApp',
+        cta_trust_1: 'Equipo médico certificado',
+        cta_trust_2: 'Respuesta en hasta 2 horas hábiles',
+        cta_trust_3: 'Cumplimiento LGPD',
+        footer_services: 'Servicios',
+        footer_company: 'Empresa',
+        footer_about: 'Sobre nosotros',
+        footer_clients: 'Clientes',
+        footer_testimonials: 'Testimonios',
+        footer_client_area: 'Área del Cliente',
+        footer_contact: 'Contacto',
+        footer_contact_title: 'Contacto',
+        footer_system: 'Acceder al Sistema de Gestión',
+        footer_copy: '© 2026 Mais Saúde — Medicina Ocupacional. Todos los derechos reservados.',
+        footer_privacy: 'Política de Privacidad',
+        footer_built_by: 'Desarrollado por'
+      },
+      ar: {
+        topbar_location: 'غواروليوس، ساو باولو',
+        nav_services: 'الخدمات',
+        nav_about: 'من نحن',
+        nav_blog: 'المدونة',
+        nav_clients: 'العملاء',
+        nav_testimonials: 'الشهادات',
+        nav_contact: 'التواصل',
+        client_area: 'منطقة العميل',
+        client_aviation: 'الطيران المدني',
+        client_sst: 'إدارة الصحة والسلامة',
+        nav_cta: 'تحدث مع مختص',
+        hero_badge: 'الطب المهني · غواروليوس/ساو باولو',
+        hero_title: 'الصحة والسلامة المهنية<br><em>التي تحمي شركتك</em>',
+        hero_desc: 'منذ أكثر من 8 سنوات ونحن ندعم كبرى الشركات في الصحة المهنية. PGR وPCMSO وeSocial وRBAC 120 وأكثر — كلها متكاملة مع نظام SOC.',
+        hero_primary_cta: 'اطلب عرض سعر',
+        hero_secondary_cta: 'استكشف الخدمات',
+        hero_stat_1: 'سنوات من الخبرة',
+        hero_stat_2: 'شركات تمت خدمتها',
+        hero_stat_3: 'فحوصات منجزة',
+        hero_card_title: 'لوحة SOC — مباشرة',
+        hero_card_subtitle: 'آخر تحديث: الآن',
+        hero_metric_1: 'امتثال eSocial',
+        hero_metric_2: 'شركات نشطة',
+        hero_status: 'المراقبة المستمرة مفعلة',
+        partners_label: 'شركات تثق في Mais Saúde',
+        cta_label: 'هل أنتم جاهزون للبدء؟',
+        cta_title: 'احمِ فريقك<br>مع خبراء في <em>الصحة المهنية</em>',
+        cta_desc: 'تواصل معنا الآن واحصل على عرض مناسب لواقع شركتك. نخدم غواروليوس ومنطقة ساو باولو الكبرى.',
+        cta_primary: 'طلب تواصل',
+        cta_secondary: 'التحدث عبر واتساب',
+        cta_trust_1: 'فريق طبي معتمد',
+        cta_trust_2: 'رد خلال ساعتين عمل',
+        cta_trust_3: 'متوافق مع LGPD',
+        footer_services: 'الخدمات',
+        footer_company: 'الشركة',
+        footer_about: 'من نحن',
+        footer_clients: 'العملاء',
+        footer_testimonials: 'الشهادات',
+        footer_client_area: 'منطقة العميل',
+        footer_contact: 'التواصل',
+        footer_contact_title: 'التواصل',
+        footer_system: 'الدخول إلى نظام الإدارة',
+        footer_copy: '© 2026 مايس ساودي — الطب المهني. جميع الحقوق محفوظة.',
+        footer_privacy: 'سياسة الخصوصية',
+        footer_built_by: 'تم التطوير بواسطة'
+      },
+      tr: {
+        topbar_location: 'Guarulhos, SP',
+        nav_services: 'Hizmetler',
+        nav_about: 'Hakkımızda',
+        nav_blog: 'Blog',
+        nav_clients: 'Müşteriler',
+        nav_testimonials: 'Yorumlar',
+        nav_contact: 'İletişim',
+        client_area: 'Müşteri Alanı',
+        client_aviation: 'Sivil Havacılık',
+        client_sst: 'İSG Yönetimi',
+        nav_cta: 'Uzmanla Görüşün',
+        hero_badge: 'İş Sağlığı · Guarulhos/SP',
+        hero_title: 'İş Sağlığı ve Güvenliği<br><em>şirketinizi korur</em>',
+        hero_desc: '8 yıldan uzun süredir büyük şirketlerin iş sağlığını destekliyoruz. PGR, PCMSO, eSocial, RBAC 120 ve daha fazlası — hepsi SOC sistemine entegre.',
+        hero_primary_cta: 'Teklif İsteyin',
+        hero_secondary_cta: 'Hizmetleri İnceleyin',
+        hero_stat_1: 'Yıllık deneyim',
+        hero_stat_2: 'Hizmet verilen şirket',
+        hero_stat_3: 'Tamamlanan muayene',
+        hero_card_title: 'SOC Paneli — Canlı',
+        hero_card_subtitle: 'Son güncelleme: şimdi',
+        hero_metric_1: 'eSocial uyumu',
+        hero_metric_2: 'Aktif şirketler',
+        hero_status: 'Sürekli izleme aktif',
+        partners_label: 'Mais Saúde’ye güvenen şirketler',
+        cta_label: 'Başlamaya hazır mısınız?',
+        cta_title: 'Çalışanlarınızı<br><em>iş sağlığı uzmanlarıyla</em> koruyun',
+        cta_desc: 'Hemen iletişime geçin ve şirketinize uygun bir teklif alın. Guarulhos ve Büyük São Paulo bölgesine hizmet veriyoruz.',
+        cta_primary: 'İletişim Talebi',
+        cta_secondary: 'WhatsApp ile Görüşün',
+        cta_trust_1: 'Sertifikalı sağlık ekibi',
+        cta_trust_2: '2 iş saati içinde dönüş',
+        cta_trust_3: 'LGPD uyumlu',
+        footer_services: 'Hizmetler',
+        footer_company: 'Şirket',
+        footer_about: 'Hakkımızda',
+        footer_clients: 'Müşteriler',
+        footer_testimonials: 'Yorumlar',
+        footer_client_area: 'Müşteri Alanı',
+        footer_contact: 'İletişim',
+        footer_contact_title: 'İletişim',
+        footer_system: 'Yönetim Sistemine Gir',
+        footer_copy: '© 2026 Mais Saúde — İş Sağlığı. Tüm hakları saklıdır.',
+        footer_privacy: 'Gizlilik Politikası',
+        footer_built_by: 'Geliştiren'
+      }
+    };
+
+    function applyLanguage(lang) {
+      const pack = translations[lang] || translations.pt;
+      document.documentElement.lang = lang === 'pt' ? 'pt-BR' : lang;
+      document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+      document.querySelectorAll('[data-i18n]').forEach((el) => {
+        const key = el.getAttribute('data-i18n');
+        if (pack[key]) el.textContent = pack[key];
+      });
+      document.querySelectorAll('[data-i18n-html]').forEach((el) => {
+        const key = el.getAttribute('data-i18n-html');
+        if (pack[key]) el.innerHTML = pack[key];
+      });
+      document.querySelectorAll('.lang-option').forEach((btn) => {
+        const isActive = btn.dataset.lang === lang;
+        btn.classList.toggle('active', isActive);
+        const switcher = btn.closest('.lang-switcher');
+        if (isActive && switcher) {
+          const flag = switcher.querySelector('.lang-current-flag');
+          const label = switcher.querySelector('.lang-current-label');
+          if (flag) {
+            const src = btn.dataset.flagSrc || 'https://flagcdn.com/w40/un.png';
+            const alt = btn.dataset.flagAlt || 'Idioma';
+            flag.innerHTML = `<img src="${src}" alt="${alt}">`;
+          }
+          if (label) label.textContent = btn.dataset.label || btn.textContent.trim();
+        }
+      });
+      try { localStorage.setItem('maissaude_lang', lang); } catch {}
+    }
+
     // Navbar scroll
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => {
@@ -1088,6 +1482,23 @@
     }, { threshold: 0.12 });
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
+    // Dropdown Área do Cliente
+    const dropBtn = document.getElementById('clientDropdownBtn');
+    const dropMenu = document.getElementById('clientDropdownMenu');
+    if (dropBtn && dropMenu) {
+      dropBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const open = dropMenu.classList.toggle('open');
+        dropBtn.classList.toggle('open', open);
+        dropBtn.setAttribute('aria-expanded', open);
+      });
+      document.addEventListener('click', () => {
+        dropMenu.classList.remove('open');
+        dropBtn.classList.remove('open');
+        dropBtn.setAttribute('aria-expanded', 'false');
+      });
+    }
+
     // Active nav link
     const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('.navbar-nav a');
@@ -1101,6 +1512,37 @@
       });
     }, { rootMargin: '-40% 0px -50% 0px' });
     sections.forEach(s => io.observe(s));
+
+    document.querySelectorAll('.lang-switcher').forEach((switcher) => {
+      const trigger = switcher.querySelector('.lang-current');
+      const options = switcher.querySelectorAll('.lang-option');
+      if (trigger) {
+        trigger.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const open = switcher.classList.toggle('open');
+          trigger.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+      }
+      options.forEach((btn) => {
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          applyLanguage(btn.dataset.lang);
+          switcher.classList.remove('open');
+          if (trigger) trigger.setAttribute('aria-expanded', 'false');
+        });
+      });
+    });
+    document.addEventListener('click', () => {
+      document.querySelectorAll('.lang-switcher').forEach((switcher) => {
+        switcher.classList.remove('open');
+        const trigger = switcher.querySelector('.lang-current');
+        if (trigger) trigger.setAttribute('aria-expanded', 'false');
+      });
+    });
+    const initialLang = (() => {
+      try { return localStorage.getItem('maissaude_lang') || 'pt'; } catch { return 'pt'; }
+    })();
+    applyLanguage(initialLang);
   </script>
 </body>
 </html>
